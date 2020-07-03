@@ -5,7 +5,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2020-07-03T13:39:21-07:00</updated>
+<updated>2020-07-03T13:50:32-07:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Akshay Ravikumar</name>
@@ -76,7 +76,7 @@
   &lt;li&gt;If everything looks good, check the special conditions.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Of course, we weren’t trying to generate every possible 15x15 grid: just enough that we’d run into one that satisfied all the conditions. However, we were generating these grids so naively that a very, very small percentage of generated grids even made it to Step 4–perhaps one or two every minute. Of the grids that passed Step 4, we couldn’t find any that &lt;em&gt;really&lt;/em&gt; worked. Perhaps the grid was too sparse, or it’d be otherwise infeasible to actually find words that fill that grid.&lt;/p&gt;
+&lt;p&gt;Of course, we weren’t trying to generate every possible 15x15 grid: just enough that we’d run into one that satisfied all the conditions. However, we were generating these grids so naively that a very, very small percentage of generated grids even made it to Step 4–perhaps one or two every minute. Of the grids that passed Step 4, we couldn’t find any that &lt;em&gt;really&lt;/em&gt; worked: they were too sparse, or it’d be too hard to fill them with English words.&lt;/p&gt;
 
 &lt;p&gt;To tally things up:&lt;/p&gt;
 
@@ -104,7 +104,7 @@
   &lt;li&gt;Check vertical clue lengths, run the DFS check, and check special conditions.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Now we’re looking at \(O((1.6^n)^{n/2}) = O(1.6^{n^2/2})\) candidate grids. Decreasing the base of the exponent is a huge improvement.&lt;/p&gt;
+&lt;p&gt;Now we’re looking at something like \(O((1.6^n)^{n/2}) = O(1.6^{n^2/2})\) candidate grids. Decreasing the base of the exponent is a huge improvement.&lt;/p&gt;
 
 &lt;h4 id=&quot;take-3-considering-columns&quot;&gt;Take 3: Considering Columns&lt;/h4&gt;
 
@@ -136,7 +136,7 @@
 
 &lt;p&gt;The solution: instead of booleans, treat each square as a bit! We can fit each row in a 16-bit integer, so our new grid representation is simply an array of 15 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;uint16&lt;/code&gt; values. How nice. To implement this, a measly Python program wasn’t going to cut it. We needed to take things to the next level.&lt;/p&gt;
 
-&lt;p&gt;(Okay, in retrospect I’m not convinced that we &lt;em&gt;needed&lt;/em&gt; to: like, if I ran the program for long enough I’m sure we would have found something. But the project had transcended this one crossword puzzle, and had become something much deeper. Or I was going insane.)&lt;/p&gt;
+&lt;p&gt;(Okay, in retrospect I’m not convinced that we &lt;em&gt;needed&lt;/em&gt; to: like, if I ran the program for long enough I’m sure we would have found a grid that worked. But the project had transcended this one crossword puzzle, and had become something much deeper. Or I was going insane.)&lt;/p&gt;
 
 &lt;p&gt;Anyways, I rewrote the whole thing in Go. It’d been a few years, and I wanted to brush up. Go also made it easier to implement Grid Representation 2.0.&lt;/p&gt;
 

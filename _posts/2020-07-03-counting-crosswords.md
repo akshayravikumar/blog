@@ -53,7 +53,7 @@ We started off with a Python program that generated grids one square at a time. 
 - Also check some "obvious" conditions: for example, the grid can't have all-black rows or columns (otherwise it wouldn't really be a 15x15 grid).
 4. If everything looks good, check the special conditions.
 
-Of course, we weren't trying to generate every possible 15x15 grid: just enough that we'd run into one that satisfied all the conditions. However, we were generating these grids so naively that a very, very small percentage of generated grids even made it to Step 4--perhaps one or two every minute. Of the grids that passed Step 4, we couldn't find any that _really_ worked. Perhaps the grid was too sparse, or it'd be otherwise infeasible to actually find words that fill that grid.
+Of course, we weren't trying to generate every possible 15x15 grid: just enough that we'd run into one that satisfied all the conditions. However, we were generating these grids so naively that a very, very small percentage of generated grids even made it to Step 4--perhaps one or two every minute. Of the grids that passed Step 4, we couldn't find any that _really_ worked: they were too sparse, or it'd be too hard to fill them with English words.
 
 To tally things up:
 
@@ -77,7 +77,7 @@ So now our algorithm looked like this:
 2. Fill in the first 8 rows of the crossword, and set the last 7 rows to the reverse of the first 7.
 3. Check vertical clue lengths, run the DFS check, and check special conditions.
 
-Now we're looking at \\(O((1.6^n)^{n/2}) = O(1.6^{n^2/2})\\) candidate grids. Decreasing the base of the exponent is a huge improvement. 
+Now we're looking at something like \\(O((1.6^n)^{n/2}) = O(1.6^{n^2/2})\\) candidate grids. Decreasing the base of the exponent is a huge improvement. 
 
 #### Take 3: Considering Columns
 
@@ -107,7 +107,7 @@ We were beginning to reach the limits of this grid representation: boolean array
 
 The solution: instead of booleans, treat each square as a bit! We can fit each row in a 16-bit integer, so our new grid representation is simply an array of 15 `uint16` values. How nice. To implement this, a measly Python program wasn't going to cut it. We needed to take things to the next level. 
 
-(Okay, in retrospect I'm not convinced that we _needed_ to: like, if I ran the program for long enough I'm sure we would have found something. But the project had transcended this one crossword puzzle, and had become something much deeper. Or I was going insane.)
+(Okay, in retrospect I'm not convinced that we _needed_ to: like, if I ran the program for long enough I'm sure we would have found a grid that worked. But the project had transcended this one crossword puzzle, and had become something much deeper. Or I was going insane.)
 
 Anyways, I rewrote the whole thing in Go. It'd been a few years, and I wanted to brush up. Go also made it easier to implement Grid Representation 2.0. 
 
