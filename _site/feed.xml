@@ -5,7 +5,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2020-07-03T13:50:32-07:00</updated>
+<updated>2020-07-03T14:53:58-07:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Akshay Ravikumar</name>
@@ -27,7 +27,7 @@
   </author>
   <content type="html">&lt;p&gt;Last year, some friends and I got really into crossword puzzles and set out to construct a puzzle for the New York Times. I can’t get into details, but the puzzle idea required finding a crossword grid that satisfied a strict set of constraints. The search for this grid turned into an unnecessarily-complicated-but-really-fun coding project with some cool extensions. It’s been a year but I’ve been really bored during quarantine, so figured I might as well write it up!&lt;/p&gt;
 
-&lt;h3 id=&quot;what-defines-a-valid-crossword-grid&quot;&gt;What defines a valid crossword grid?&lt;/h3&gt;
+&lt;h2 id=&quot;what-defines-a-valid-crossword-grid&quot;&gt;What defines a valid crossword grid?&lt;/h2&gt;
 
 &lt;p&gt;A New York Times crossword puzzle typically satisfies the following conditions:&lt;/p&gt;
 
@@ -55,11 +55,11 @@
 
 &lt;p&gt;The New York Times usually runs 15x15 puzzles on weekdays and 21x21 puzzles on weekends. Since we wanted to write a weekday puzzle, we focused on 15x15 grids. Note that even though we’re working with a fixed-size grid, we can still express algorithmic complexity in terms of \(n\), where \(n\) is the width of the grid.&lt;/p&gt;
 
-&lt;h3 id=&quot;generating-crossword-puzzles&quot;&gt;Generating Crossword Puzzles&lt;/h3&gt;
+&lt;h2 id=&quot;generating-crossword-puzzles&quot;&gt;Generating Crossword Puzzles&lt;/h2&gt;
 
 &lt;p&gt;Alright, so we needed to generate valid 15x15 crossword grids and check a set of special conditions. It turns out these conditions were extremely rare, so performance was extremely important. In this section, I’ll go through different iterations of the algorithm, describing the optimizations that eventually brought us to an acceptable state. This isn’t exactly the order in which we arrived at the solution, but it’s close.&lt;/p&gt;
 
-&lt;h4 id=&quot;take-1-python-and-chill&quot;&gt;Take 1: Python and Chill&lt;/h4&gt;
+&lt;h3 id=&quot;take-1-python-and-chill&quot;&gt;Take 1: Python and Chill&lt;/h3&gt;
 
 &lt;p&gt;We started off with a Python program that generated grids one square at a time. The pseudocode was something like this:&lt;/p&gt;
 
@@ -88,7 +88,7 @@
 
 &lt;p&gt;To get this to work, we needed to take a smarter approach.&lt;/p&gt;
 
-&lt;h4 id=&quot;take-2-one-row-at-a-time&quot;&gt;Take 2: One Row at a Time&lt;/h4&gt;
+&lt;h3 id=&quot;take-2-one-row-at-a-time&quot;&gt;Take 2: One Row at a Time&lt;/h3&gt;
 
 &lt;p&gt;Generating grids square by square was doomed to fail because the conditions depend on the relationship between squares–it made more sense to think in terms of rows. This way, we could eliminate invalid rows from the get-go. In fact, of the \(2^{15} = 32,768\) possible rows, &lt;strong&gt;less than 800&lt;/strong&gt; satisfy the three-letter minimum!&lt;/p&gt;
 
@@ -106,7 +106,7 @@
 
 &lt;p&gt;Now we’re looking at something like \(O((1.6^n)^{n/2}) = O(1.6^{n^2/2})\) candidate grids. Decreasing the base of the exponent is a huge improvement.&lt;/p&gt;
 
-&lt;h4 id=&quot;take-3-considering-columns&quot;&gt;Take 3: Considering Columns&lt;/h4&gt;
+&lt;h3 id=&quot;take-3-considering-columns&quot;&gt;Take 3: Considering Columns&lt;/h3&gt;
 
 &lt;p&gt;We could improve this algorithm by only adding rows that satisfy the three-letter minimum &lt;strong&gt;vertically&lt;/strong&gt;. Because the middle three rows are so constrained, it helps to start from the middle row then move towards the edge. Recall that the 8th row is a palindrome, and the 7th and 9th rows are reverses of each other.&lt;/p&gt;
 
@@ -123,14 +123,14 @@
 &lt;ol&gt;
   &lt;li&gt;Precompute valid rows.&lt;/li&gt;
   &lt;li&gt;For every possible 8th row, find all valid 7th rows.&lt;/li&gt;
-  &lt;li&gt;For the 6th row, only consider rows that satisfy the three-letter minimum with rows 7 through 9. Continue this until the edge of the grid. Note that the first three rows have special restrictions because they’re near the edge of the grid.&lt;/li&gt;
+  &lt;li&gt;For the 6th row, only consider rows that satisfy the three-letter minimum with rows 7 through 9. Continue this until the edge of the grid. Note that the first three rows have special restrictions because they’re near the edge.&lt;/li&gt;
   &lt;li&gt;Do the DFS check.&lt;/li&gt;
   &lt;li&gt;Check special conditions.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;I’ve lost track of how many grids make it to Step 4, but it’s probably \(O(c^{n^2/2})\) for an even smaller value of \(c\). However, calculating the next row is an inefficient operation: we need to iterate through all valid rows, and do an \(O(n)\) check for each one. It’d be nice if we could precompute things.&lt;/p&gt;
 
-&lt;h4 id=&quot;take-4-going-a-bit-crazy&quot;&gt;Take 4: “Go”ing a “Bit” Crazy&lt;/h4&gt;
+&lt;h3 id=&quot;take-4-going-a-bit-crazy&quot;&gt;Take 4: “Go”ing a “Bit” Crazy&lt;/h3&gt;
 
 &lt;p&gt;We were beginning to reach the limits of this grid representation: boolean arrays weren’t fun to work with, and we couldn’t precompute too much because it’s so space-inefficient.&lt;/p&gt;
 
@@ -181,7 +181,7 @@ EDGE   ---------------
 
 &lt;p&gt;This helped a lot! We removed the \(O(n)\) check when evaluating rows, and the bithacks were wonderful. I don’t think we decreased the number of candidate grids, but we improved the constant factor significantly.&lt;/p&gt;
 
-&lt;h4 id=&quot;take-5-final-touches&quot;&gt;Take 5: Final Touches&lt;/h4&gt;
+&lt;h3 id=&quot;take-5-final-touches&quot;&gt;Take 5: Final Touches&lt;/h3&gt;
 
 &lt;p&gt;To top things off, we added a few more optimizations: first, Go made it easy to parallelize the search. Simply create &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;t&lt;/code&gt; goroutines and assign each thread a subset of the middle rows.&lt;/p&gt;
 
@@ -189,11 +189,11 @@ EDGE   ---------------
 
 &lt;p&gt;And that’s it! The program was spitting out hundreds of grids every minute, and we eventually found one that worked. You can check out &lt;a href=&quot;https://github.com/akshayravikumar/crosswords&quot;&gt;the source code&lt;/a&gt;, but it’s quite a mess.&lt;/p&gt;
 
-&lt;h4 id=&quot;the-end-of-the-story&quot;&gt;The End of the Story&lt;/h4&gt;
+&lt;h3 id=&quot;the-end-of-the-story&quot;&gt;The End of the Story&lt;/h3&gt;
 
 &lt;p&gt;So we filled up the grid, wrote clues, and submitted it to the New York Times. Unfortunately, it got rejected–it’s an extremely slow and competitive process!–but we submitted a revision and are awaiting feedback.&lt;/p&gt;
 
-&lt;h3 id=&quot;theres-more&quot;&gt;…there’s more?&lt;/h3&gt;
+&lt;h2 id=&quot;theres-more&quot;&gt;…there’s more?&lt;/h2&gt;
 
 &lt;p&gt;While working on this, I ran into a &lt;a href=&quot;https://fivethirtyeight.com/features/how-many-crossword-puzzles-can-you-make/&quot;&gt;FiveThirtyEight challenge&lt;/a&gt; that asked how many valid 15x15 New York Times crossword grids you can make. Unfortunately, this program wasn’t going to cut it: there’s no point in generating every grid if you’re just trying to count them. I’ll talk about this in Part 2!&lt;/p&gt;
 

@@ -11,7 +11,7 @@ image:
 
 Last year, some friends and I got really into crossword puzzles and set out to construct a puzzle for the New York Times. I can't get into details, but the puzzle idea required finding a crossword grid that satisfied a strict set of constraints. The search for this grid turned into an unnecessarily-complicated-but-really-fun coding project with some cool extensions. It's been a year but I've been really bored during quarantine, so figured I might as well write it up!
 
-### What defines a valid crossword grid?
+## What defines a valid crossword grid?
 
 A New York Times crossword puzzle typically satisfies the following conditions:
 
@@ -37,11 +37,11 @@ The following grid satisfies all the conditions:
 
 The New York Times usually runs 15x15 puzzles on weekdays and 21x21 puzzles on weekends. Since we wanted to write a weekday puzzle, we focused on 15x15 grids. Note that even though we're working with a fixed-size grid, we can still express algorithmic complexity in terms of \\(n\\), where \\(n\\) is the width of the grid.
 
-### Generating Crossword Puzzles
+## Generating Crossword Puzzles
 
 Alright, so we needed to generate valid 15x15 crossword grids and check a set of special conditions. It turns out these conditions were extremely rare, so performance was extremely important. In this section, I'll go through different iterations of the algorithm, describing the optimizations that eventually brought us to an acceptable state. This isn't exactly the order in which we arrived at the solution, but it's close.
 
-#### Take 1: Python and Chill
+### Take 1: Python and Chill
 
 We started off with a Python program that generated grids one square at a time. The pseudocode was something like this:
 
@@ -63,7 +63,7 @@ To tally things up:
 
 To get this to work, we needed to take a smarter approach.
 
-#### Take 2: One Row at a Time
+### Take 2: One Row at a Time
 
 Generating grids square by square was doomed to fail because the conditions depend on the relationship between squares--it made more sense to think in terms of rows. This way, we could eliminate invalid rows from the get-go. In fact, of the \\(2^{15} = 32,768\\) possible rows, **less than 800** satisfy the three-letter minimum! 
 
@@ -79,7 +79,7 @@ So now our algorithm looked like this:
 
 Now we're looking at something like \\(O((1.6^n)^{n/2}) = O(1.6^{n^2/2})\\) candidate grids. Decreasing the base of the exponent is a huge improvement. 
 
-#### Take 3: Considering Columns
+### Take 3: Considering Columns
 
 We could improve this algorithm by only adding rows that satisfy the three-letter minimum **vertically**. Because the middle three rows are so constrained, it helps to start from the middle row then move towards the edge. Recall that the 8th row is a palindrome, and the 7th and 9th rows are reverses of each other.
 
@@ -95,13 +95,13 @@ With that in mind, here's the new algorithm:
 
 1. Precompute valid rows.
 2. For every possible 8th row, find all valid 7th rows. 
-3. For the 6th row, only consider rows that satisfy the three-letter minimum with rows 7 through 9. Continue this until the edge of the grid. Note that the first three rows have special restrictions because they're near the edge of the grid.
+3. For the 6th row, only consider rows that satisfy the three-letter minimum with rows 7 through 9. Continue this until the edge of the grid. Note that the first three rows have special restrictions because they're near the edge.
 4. Do the DFS check. 
 5. Check special conditions.
 
 I've lost track of how many grids make it to Step 4, but it's probably \\(O(c^{n^2/2})\\) for an even smaller value of \\(c\\). However, calculating the next row is an inefficient operation: we need to iterate through all valid rows, and do an \\(O(n)\\) check for each one. It'd be nice if we could precompute things. 
 
-#### Take 4: "Go"ing a "Bit" Crazy
+### Take 4: "Go"ing a "Bit" Crazy
 
 We were beginning to reach the limits of this grid representation: boolean arrays weren't fun to work with, and we couldn't precompute too much because it's so space-inefficient.
 
@@ -152,7 +152,7 @@ Here's our hyper-optimized algorithm:
 
 This helped a lot! We removed the \\(O(n)\\) check when evaluating rows, and the bithacks were wonderful. I don't think we decreased the number of candidate grids, but we improved the constant factor significantly.
 
-#### Take 5: Final Touches
+### Take 5: Final Touches
 
 To top things off, we added a few more optimizations: first, Go made it easy to parallelize the search. Simply create `t` goroutines and assign each thread a subset of the middle rows.
 
@@ -160,11 +160,11 @@ Second, we also cared about the _number_ of words in the grid. Most NYT crosswor
 
 And that's it! The program was spitting out hundreds of grids every minute, and we eventually found one that worked. You can check out [the source code](https://github.com/akshayravikumar/crosswords), but it's quite a mess.
 
-#### The End of the Story
+### The End of the Story
 
 So we filled up the grid, wrote clues, and submitted it to the New York Times. Unfortunately, it got rejected--it's an extremely slow and competitive process!--but we submitted a revision and are awaiting feedback.
 
-### ...there's more? 
+## ...there's more? 
 
 While working on this, I ran into a [FiveThirtyEight challenge](https://fivethirtyeight.com/features/how-many-crossword-puzzles-can-you-make/) that asked how many valid 15x15 New York Times crossword grids you can make. Unfortunately, this program wasn't going to cut it: there's no point in generating every grid if you're just trying to count them. I'll talk about this in Part 2!
 
