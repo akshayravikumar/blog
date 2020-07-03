@@ -9,9 +9,6 @@ image:
  feature: crossword-header.jpg
 ---
 
-
-{% katexmm %}
-
 Last year, some friends and I got really into crossword puzzles and set out to construct a puzzle for the New York Times. I can't get into details, but the puzzle idea required finding a crossword grid that satisfied a strict set of constraints. The search for this grid turned into an unnecessarily-complicated-but-really-fun coding project with some cool extensions. It's been a year but I've been really bored during quarantine, so figured I might as well write it up!
 
 ### What defines a valid crossword grid?
@@ -40,7 +37,7 @@ The following grid satisfies all the conditions:
 
 <img src="/blog/images/cross4.png" style="width:min(100%, 400px)">
 
-The New York Times usually runs 15x15 puzzles on weekdays and 21x21 puzzles on weekends. Since we wanted to write a weekday puzzle, we focused on 15x15 grids. Note that even though we're working with a fixed-size grid, we can still express algorithmic complexity in terms of $n$, where $n$ is the width of the grid.
+The New York Times usually runs 15x15 puzzles on weekdays and 21x21 puzzles on weekends. Since we wanted to write a weekday puzzle, we focused on 15x15 grids. Note that even though we're working with a fixed-size grid, we can still express algorithmic complexity in terms of $$n$$, where $$n$$ is the width of the grid.
 
 ### Generating Crossword Puzzles
 
@@ -174,6 +171,4 @@ So we filled up the grid, wrote clues, and submitted it to the New York Times. U
 ### ...there's more? 
 
 While working on this, I ran into a [FiveThirtyEight challenge](https://fivethirtyeight.com/features/how-many-crossword-puzzles-can-you-make/) that asked how many valid 15x15 New York Times crossword grids you can make. Unfortunately, this program wasn't going to cut it: there's no point in generating every grid if you're trying to count valid grids. I'll talk about this in Part 2!
-
-{% endkatexmm %}
 
