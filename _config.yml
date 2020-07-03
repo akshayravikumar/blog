@@ -1,10 +1,11 @@
 title:            Akshay's Blog
 canonical:  https://akshayr.me/blog/
-baseUrl: /blog
+
 # Owner/author information
 owner:
   name:           Akshay Ravikumar
   github:         akshayravikumar
+  email:          akshay.ravikumar+blog@gmail.com
 
   # Plug in your disqus shortname!
 
@@ -16,8 +17,7 @@ tools:
 opengraph:
   locale:           en_US
 
-url: https://akshayr.me/blog
-
+url: /blog
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone:    America/Los_Angeles
