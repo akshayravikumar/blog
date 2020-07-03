@@ -6,12 +6,13 @@ owner:
   name:           Akshay Ravikumar
   github:         akshayravikumar
   email:          akshay.ravikumar+blog@gmail.com
+  disqus:         akshay-blog
 
   # Plug in your disqus shortname!
 
 plugins:
   - jekyll-katex
-  
+
 tools:
   standards:      "HTML, SCSS, Jekyll"
   software:       "git"
