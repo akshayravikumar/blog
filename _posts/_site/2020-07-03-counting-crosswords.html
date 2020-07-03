@@ -1,0 +1,50 @@
+<p>Last year, some friends and I got really into crossword puzzles and set out to construct a puzzle for the New York Times. I don’t want to get into the details right now, but the puzzle idea required finding a crossword grid that satisfied a pretty strict set of constraints. The search for this magical grid turned into an unnecessarily-complicated-but-really-fun coding project with some cool extensions. It’s been around a year but I’ve been really bored during quarantine, so figured I might as well write it up!</p>
+
+<p>For the rest of this post, I will use <code class="highlighter-rouge">X</code> and <code class="highlighter-rouge">-</code> to represent black and white squares, respectively.</p>
+
+<h1 id="what-defines-a-valid-crossword-grid">What defines a valid crossword grid?</h1>
+
+<p>A valid New York Times crossword puzzle typically satisfies the following constraints:</p>
+
+<ol>
+  <li>The white squares are fully connected.</li>
+  <li>It is rotationally symmetric. A useful way to think about this is that the first row should be the reverse of the last row, the second row should be the reverse of the second-to-last row, etc.</li>
+  <li>Every answer must be at least three letters long.</li>
+</ol>
+
+<p>For example, the following 5x5 grid is invalid beacuse the white squares aren’t fully connected:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>X X - - -
+- X - - -
+- - X - -
+- - - X X
+- - - - X
+</code></pre></div></div>
+
+<p>The following grid is connected, but it isn’t rotationally symmetric:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>X X - - -
+- - - - -
+- - - - -
+- - - - X
+- - - - X
+</code></pre></div></div>
+
+<p>And the following is connected and rotationally symmetric, but it has clue answers with lengths 1 and 2 (for example, see the first row and last column):</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>X X - - X
+X - - - -
+X - - - X
+- - - - X
+X - - X X
+</code></pre></div></div>
+
+<p>The following grid satisfies all the conditions:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>X X - - -
+X - - - -
+- - - - -
+- - - - X
+- - - X X
+</code></pre></div></div>
+
