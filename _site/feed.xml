@@ -5,7 +5,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2020-07-03T12:42:15-07:00</updated>
+<updated>2020-07-03T12:44:16-07:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Akshay Ravikumar</name>
@@ -65,7 +65,7 @@
 
 &lt;ol&gt;
   &lt;li&gt;Represent each square using a boolean: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;True&lt;/code&gt; is black, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;False&lt;/code&gt; is white. Rather than store a two-dimensional 15x15 array, we concatenate the rows and represent each grid as a length-225 array.&lt;/li&gt;
-  &lt;li&gt;Recursively generate rotationally symmetric grids by filling in the first \(113 = \lceil 225/2 \rceiln\) values with every combination of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;True&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;False&lt;/code&gt;. The remaining 112 values would just be the reverse of the first 112.&lt;/li&gt;
+  &lt;li&gt;Recursively generate rotationally symmetric grids by filling in the first \(113 = \lceil 225/2 \rceil\) values with every combination of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;True&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;False&lt;/code&gt;. The remaining 112 values would just be the reverse of the first 112.&lt;/li&gt;
   &lt;li&gt;For every grid, check the following conditions:
     &lt;ul&gt;
       &lt;li&gt;Check the three-letter minimum. In other words, a consecutive run of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;False&lt;/code&gt; values in any row or column must have length at least 3.&lt;/li&gt;

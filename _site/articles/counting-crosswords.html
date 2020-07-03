@@ -140,7 +140,7 @@
 
 <ol>
   <li>Represent each square using a boolean: <code class="language-plaintext highlighter-rouge">True</code> is black, <code class="language-plaintext highlighter-rouge">False</code> is white. Rather than store a two-dimensional 15x15 array, we concatenate the rows and represent each grid as a length-225 array.</li>
-  <li>Recursively generate rotationally symmetric grids by filling in the first \(113 = \lceil 225/2 \rceiln\) values with every combination of <code class="language-plaintext highlighter-rouge">True</code> and <code class="language-plaintext highlighter-rouge">False</code>. The remaining 112 values would just be the reverse of the first 112.</li>
+  <li>Recursively generate rotationally symmetric grids by filling in the first \(113 = \lceil 225/2 \rceil\) values with every combination of <code class="language-plaintext highlighter-rouge">True</code> and <code class="language-plaintext highlighter-rouge">False</code>. The remaining 112 values would just be the reverse of the first 112.</li>
   <li>For every grid, check the following conditions:
     <ul>
       <li>Check the three-letter minimum. In other words, a consecutive run of <code class="language-plaintext highlighter-rouge">False</code> values in any row or column must have length at least 3.</li>

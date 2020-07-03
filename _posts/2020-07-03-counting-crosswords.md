@@ -48,7 +48,7 @@ Alright, so we needed to generate valid 15x15 crossword grids and check a set of
 We started off with a Python program that generated grids one square at a time. The pseudocode was something like this:
 
 1. Represent each square using a boolean: `True` is black, `False` is white. Rather than store a two-dimensional 15x15 array, we concatenate the rows and represent each grid as a length-225 array.
-2. Recursively generate rotationally symmetric grids by filling in the first \\(113 = \lceil 225/2 \rceiln\\) values with every combination of `True` and `False`. The remaining 112 values would just be the reverse of the first 112.
+2. Recursively generate rotationally symmetric grids by filling in the first \\(113 = \lceil 225/2 \rceil\\) values with every combination of `True` and `False`. The remaining 112 values would just be the reverse of the first 112.
 3. For every grid, check the following conditions:
 - Check the three-letter minimum. In other words, a consecutive run of `False` values in any row or column must have length at least 3.
 - Run a depth-first search on the white squares to ensure connectedness.
