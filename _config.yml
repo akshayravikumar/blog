@@ -25,6 +25,8 @@ tools:
 opengraph:
   locale:           en_US
 
+url: https://akshayr.me/blog
+
 # Links to include in top navigation
 # For external links add external: true
 links:
