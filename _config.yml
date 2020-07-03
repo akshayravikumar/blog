@@ -1,6 +1,6 @@
 title:            Akshay's Blog
-canonical: https://akshayr.me/blog
-
+canonical:  https://akshayr.me/blog/
+baseUrl: /blog
 # Owner/author information
 owner:
   name:           Akshay Ravikumar
@@ -18,12 +18,6 @@ opengraph:
 
 url: https://akshayr.me/blog
 
-# Links to include in top navigation
-# For external links add external: true
-links:
-  - title: Akshay's Website
-    url: https://akshayr.me
-    external: true
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone:    America/Los_Angeles
