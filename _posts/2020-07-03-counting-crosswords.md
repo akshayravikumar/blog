@@ -19,7 +19,7 @@ A New York Times crossword puzzle typically satisfies the following conditions:
 2. It is rotationally symmetric. This means the first row should be the reverse of the last row, the second row should be the reverse of the second-to-last row, etc. And the middle row is a palindrome, i.e. the reverse of itself.
 3. Every square must be in both a down and an across answer, and every answer must be at least three letters long.
 
-For example, the following 5x5 grid is invalid because the white squares aren't fully connected:
+For example, the following grid is invalid because the white squares aren't fully connected:
 
 <img src="/blog/images/cross1.png" style="width:min(100%, 400px)">
 
@@ -27,11 +27,9 @@ The following grid is connected, but it isn't rotationally symmetric:
 
 <img src="/blog/images/cross3.png" style="width:min(100%, 400px)">
 
-
 And the following is connected and rotationally symmetric, but has one and two-letter answers (like 37-Across and 57-Down):
 
 <img src="/blog/images/cross2.png" style="width:min(100%, 400px)">
-
 
 The following grid satisfies all the conditions:
 
@@ -48,18 +46,18 @@ Alright, so we needed to generate valid 15x15 crossword grids and check a set of
 We started off with a Python program that generated grids one square at a time. The pseudocode was something like this:
 
 1. Represent each square using a boolean: `True` is black, `False` is white. Rather than store a two-dimensional 15x15 array, we concatenate the rows and represent each grid as a length-225 array.
-2. Recursively generate rotationally symmetric grids by filling in the first \\(113 = \lceil 225/2 \rceil\\) values with every combination of `True` and `False`. The remaining 112 values would just be the reverse of the first 112.
+2. Recursively generate rotationally symmetric grids by filling in the first \\(113 = \lceil 225/2 \rceil\\) values with every combination of `True` and `False`. Set the remaining 112 values to the reverse of the first 112.
 3. For every grid, check the following conditions:
 - Check the three-letter minimum. In other words, a consecutive run of `False` values in any row or column must have length at least 3.
 - Run a depth-first search on the white squares to ensure connectedness.
 - Also check some "obvious" conditions: for example, the grid can't have all-black rows or columns (otherwise it wouldn't really be a 15x15 grid).
 4. If everything looks good, check the special conditions.
 
-Of course, we weren't trying to generate every possible 15x15 grid: just enough that we'd run into one that satisfied all the conditions. However, we were generating these grids so naively that a very, very small percentage of generated grids even made it to Step 4. If I recall correctly, maybe a couple of grids would pass Step 4 every minute, but we couldn't find any grids that _really_ worked (the grid was too sparse, or it'd be otherwise infeasible to actually find words that fill that specific grid).
+Of course, we weren't trying to generate every possible 15x15 grid: just enough that we'd run into one that satisfied all the conditions. However, we were generating these grids so naively that a very, very small percentage of generated grids even made it to Step 4--perhaps one or two every minute. Of the grids that passed Step 4, we couldn't find any that _really_ worked. Perhaps the grid was too sparse, or it'd be otherwise infeasible to actually find words that fill that grid.
 
 To tally things up:
 
-- We were generating \\(O(2^{n^2/2})\\) candidate grids.
+- This algorithm generates \\(O(2^{n^2/2})\\) candidate grids.
 - Checking all the conditions (DFS, clue-length, all-black, etc.) takes \\(O(n^2)\\) time.
 - Each grid takes \\(O(n^2)\\) space.
 
@@ -79,11 +77,11 @@ So now our algorithm looked like this:
 2. Fill in the first 8 rows of the crossword, and set the last 7 rows to the reverse of the first 7.
 3. Check vertical clue lengths, run the DFS check, and check special conditions.
 
-Now we're looking at \\(O((1.6^n)^{n/2}) = O(1.6^{n^2/2})\\) candidate grids. Decreasing the base of the exponent is a huge deal. 
+Now we're looking at \\(O((1.6^n)^{n/2}) = O(1.6^{n^2/2})\\) candidate grids. Decreasing the base of the exponent is a huge improvement. 
 
 #### Take 3: Considering Columns
 
-We could improve this algorithm by only adding rows that satisfy the three-letter minimum **vertically**. Because the middle three rows are so constrained, it helps to start from the middle row then move towards the edge (recall that the 8th row is a palindrome, and the 7th and 9th rows are reverses of each other).
+We could improve this algorithm by only adding rows that satisfy the three-letter minimum **vertically**. Because the middle three rows are so constrained, it helps to start from the middle row then move towards the edge. Recall that the 8th row is a palindrome, and the 7th and 9th rows are reverses of each other.
 
 For example, the following isn't allowed:
 
@@ -93,11 +91,11 @@ But this is:
 
 <img src="/blog/images/rows2.png" style="width:min(100%, 500px)">
 
-Here's the new algorithm:
+With that in mind, here's the new algorithm:
 
 1. Precompute valid rows.
 2. For every possible 8th row, find all valid 7th rows. 
-3. For the 6th row, only consider rows that satisfy the three-letter minimum with rows 7 through 9. Continue this until the edge of the grid. Note that the first three rows have some special restrictions because they're near the edge of the grid.
+3. For the 6th row, only consider rows that satisfy the three-letter minimum with rows 7 through 9. Continue this until the edge of the grid. Note that the first three rows have special restrictions because they're near the edge of the grid.
 4. Do the DFS check. 
 5. Check special conditions.
 
@@ -111,11 +109,11 @@ The solution: instead of booleans, treat each square as a bit! We can fit each r
 
 (Okay, in retrospect I'm not convinced that we _needed_ to: like, if I ran the program for long enough I'm sure we would have found something. But the project had transcended this one crossword puzzle, and had become something much deeper. Or I was going insane.)
 
-Anyways, I rewrote the whole thing in Go. It'd been a few years, and I wanted to brush up. Go also made it easier to implement Grid Representation 2.0.
+Anyways, I rewrote the whole thing in Go. It'd been a few years, and I wanted to brush up. Go also made it easier to implement Grid Representation 2.0. 
 
 Now, we can precompute valid rows as a list of `uint16` values. We can also compute a map `reverse` where `reverse[x]` stores the bitwise reverse of `x`: this makes it easier to fill the bottom half of the grid.
 
-So, given three rows `a`, `b`, and `c`, how do we calculate all possible next rows `x`? It might help to look at a diagram (`1` represents black, and `0` represents white):
+So given three rows `a`, `b`, and `c`, how do we calculate all possible next rows `x`? It might help to look at a diagram (`1` represents black, and `0` represents white):
 
 ```
 a      100011100010000
@@ -126,7 +124,7 @@ x      000001000100000
 
 We have a one-letter answer whenever there's a column with `101` in rows `b`, `c`, and `x`. In other words, if `b & ~c & x` has any ones (where `&` is bitwise AND, and `~` is bitwise negation), then we're in trouble. This means we must have `b & ~c & x == 0`, which I will slightly rewrite as `(b & ~c) & x == 0`. Similarly, we must have `(a & ~b & ~c) & x == 0` to avoid any two-letter answers.
 
-Awesome! So we can precompute a map `avoidOneOne` where `avoidOneOne[j]` stores every `k` satisfying `j & k == 0` (i.e. `j` and `k` don't have any one bits in the same position, hence the name). Therefore, `x` is simply the set of values in both `avoidOneOne[b & ~c]` and `avoidOneOne[a & ~b & ~c]`. 
+Awesome! So we can precompute a map `avoidOneOne` where `avoidOneOne[j]` stores every `k` satisfying `j & k == 0` (i.e. `j` and `k` don't have any `1` bits in the same position, hence the name). Therefore, `x` is simply the set of values in both `avoidOneOne[b & ~c]` and `avoidOneOne[a & ~b & ~c]`. 
 
 If `avoidOneOne[j]` stored a list of `uint16` values for every `j`, we'd need to write some nontrivial logic to intersect the two lists. We can expedite this by storing bitarrays instead! Go has a `bitarray` [package](https://godoc.org/github.com/golang-collections/go-datastructures/bitarray) that supports sparse bitarrays, so this was pretty easy to implement. There are only \\(2^{16} = 65536\\) possible `uint16` values, so each bitarray is 8.192 kilobytes in the worst case. No biggie.
 
@@ -148,7 +146,7 @@ Here's our hyper-optimized algorithm:
 1. Precompute all valid rows.
 2. Precompute `reverse`, `avoidOneOne` and `avoidOneZero`.
 2. For every possible value of Row 8 (`r8`), consider values of `r7` satisfying `r7 & ~r8 & reverse[r7] == 0`. Can't have a `101` in the middle three rows!
-3. Use `avoidOneOne` and `avoidOneZero` to compute the possibilities for the rest of the grid.
+3. Use `avoidOneOne` and `avoidOneZero` to compute the possibilities for the remaining rows.
 4. Turn candidate grids into a two-dimensional array and do the DFS check.
 5. Check special conditions.
 
@@ -158,7 +156,7 @@ This helped a lot! We removed the \\(O(n)\\) check when evaluating rows, and the
 
 To top things off, we added a few more optimizations: first, Go made it easy to parallelize the search. Simply create `t` goroutines and assign each thread a subset of the middle rows.
 
-Second, we also constrained the _number_ of words in the grid. Most NYT crossword grids have around 60-80 words--more than that looks ugly, and fewer than that is essentially impossible to fill. As newbie constructors, we were looking at the 70-80 range. I won't get into details, but we figured out an \\(O(n)\\) method to compute this value using bithacks and precomputation. This way, we'd eliminate a majority of grids before the DFS check. (Hint: In every row or column, a new word starts when we move from from an edge/black square to a white square.)
+Second, we also cared about the _number_ of words in the grid. Most NYT crossword grids have around 60-80 words--more than that looks ugly, and fewer than that is essentially impossible to fill. As newbie constructors, we were looking at the 70-80 range. I won't get into details, but we figured out an \\(O(n)\\) method to compute this value using bithacks and precomputation. This way, we'd eliminate a majority of grids before the DFS check. (Hint: In every row or column, a new word starts when we move from from an edge/black square to a white square.)
 
 And that's it! The program was spitting out hundreds of grids every minute, and we eventually found one that worked. You can check out [the source code](https://github.com/akshayravikumar/crosswords), but it's quite a mess.
 
@@ -168,5 +166,5 @@ So we filled up the grid, wrote clues, and submitted it to the New York Times. U
 
 ### ...there's more? 
 
-While working on this, I ran into a [FiveThirtyEight challenge](https://fivethirtyeight.com/features/how-many-crossword-puzzles-can-you-make/) that asked how many valid 15x15 New York Times crossword grids you can make. Unfortunately, this program wasn't going to cut it: there's no point in generating every grid if you're trying to count valid grids. I'll talk about this in Part 2!
+While working on this, I ran into a [FiveThirtyEight challenge](https://fivethirtyeight.com/features/how-many-crossword-puzzles-can-you-make/) that asked how many valid 15x15 New York Times crossword grids you can make. Unfortunately, this program wasn't going to cut it: there's no point in generating every grid if you're just trying to count them. I'll talk about this in Part 2!
 

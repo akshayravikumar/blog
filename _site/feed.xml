@@ -5,7 +5,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2020-07-03T13:28:02-07:00</updated>
+<updated>2020-07-03T13:39:21-07:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Akshay Ravikumar</name>
@@ -37,7 +37,7 @@
   &lt;li&gt;Every square must be in both a down and an across answer, and every answer must be at least three letters long.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;For example, the following 5x5 grid is invalid because the white squares aren’t fully connected:&lt;/p&gt;
+&lt;p&gt;For example, the following grid is invalid because the white squares aren’t fully connected:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/blog/images/cross1.png&quot; style=&quot;width:min(100%, 400px)&quot; /&gt;&lt;/p&gt;
 
@@ -65,7 +65,7 @@
 
 &lt;ol&gt;
   &lt;li&gt;Represent each square using a boolean: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;True&lt;/code&gt; is black, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;False&lt;/code&gt; is white. Rather than store a two-dimensional 15x15 array, we concatenate the rows and represent each grid as a length-225 array.&lt;/li&gt;
-  &lt;li&gt;Recursively generate rotationally symmetric grids by filling in the first \(113 = \lceil 225/2 \rceil\) values with every combination of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;True&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;False&lt;/code&gt;. The remaining 112 values would just be the reverse of the first 112.&lt;/li&gt;
+  &lt;li&gt;Recursively generate rotationally symmetric grids by filling in the first \(113 = \lceil 225/2 \rceil\) values with every combination of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;True&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;False&lt;/code&gt;. Set the remaining 112 values to the reverse of the first 112.&lt;/li&gt;
   &lt;li&gt;For every grid, check the following conditions:
     &lt;ul&gt;
       &lt;li&gt;Check the three-letter minimum. In other words, a consecutive run of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;False&lt;/code&gt; values in any row or column must have length at least 3.&lt;/li&gt;
@@ -76,12 +76,12 @@
   &lt;li&gt;If everything looks good, check the special conditions.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Of course, we weren’t trying to generate every possible 15x15 grid: just enough that we’d run into one that satisfied all the conditions. However, we were generating these grids so naively that a very, very small percentage of generated grids even made it to Step 4. If I recall correctly, maybe a couple of grids would pass Step 4 every minute, but we couldn’t find any grids that &lt;em&gt;really&lt;/em&gt; worked (the grid was too sparse, or it’d be otherwise infeasible to actually find words that fill that specific grid).&lt;/p&gt;
+&lt;p&gt;Of course, we weren’t trying to generate every possible 15x15 grid: just enough that we’d run into one that satisfied all the conditions. However, we were generating these grids so naively that a very, very small percentage of generated grids even made it to Step 4–perhaps one or two every minute. Of the grids that passed Step 4, we couldn’t find any that &lt;em&gt;really&lt;/em&gt; worked. Perhaps the grid was too sparse, or it’d be otherwise infeasible to actually find words that fill that grid.&lt;/p&gt;
 
 &lt;p&gt;To tally things up:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;We were generating \(O(2^{n^2/2})\) candidate grids.&lt;/li&gt;
+  &lt;li&gt;This algorithm generates \(O(2^{n^2/2})\) candidate grids.&lt;/li&gt;
   &lt;li&gt;Checking all the conditions (DFS, clue-length, all-black, etc.) takes \(O(n^2)\) time.&lt;/li&gt;
   &lt;li&gt;Each grid takes \(O(n^2)\) space.&lt;/li&gt;
 &lt;/ul&gt;
@@ -104,11 +104,11 @@
   &lt;li&gt;Check vertical clue lengths, run the DFS check, and check special conditions.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Now we’re looking at \(O((1.6^n)^{n/2}) = O(1.6^{n^2/2})\) candidate grids. Decreasing the base of the exponent is a huge deal.&lt;/p&gt;
+&lt;p&gt;Now we’re looking at \(O((1.6^n)^{n/2}) = O(1.6^{n^2/2})\) candidate grids. Decreasing the base of the exponent is a huge improvement.&lt;/p&gt;
 
 &lt;h4 id=&quot;take-3-considering-columns&quot;&gt;Take 3: Considering Columns&lt;/h4&gt;
 
-&lt;p&gt;We could improve this algorithm by only adding rows that satisfy the three-letter minimum &lt;strong&gt;vertically&lt;/strong&gt;. Because the middle three rows are so constrained, it helps to start from the middle row then move towards the edge (recall that the 8th row is a palindrome, and the 7th and 9th rows are reverses of each other).&lt;/p&gt;
+&lt;p&gt;We could improve this algorithm by only adding rows that satisfy the three-letter minimum &lt;strong&gt;vertically&lt;/strong&gt;. Because the middle three rows are so constrained, it helps to start from the middle row then move towards the edge. Recall that the 8th row is a palindrome, and the 7th and 9th rows are reverses of each other.&lt;/p&gt;
 
 &lt;p&gt;For example, the following isn’t allowed:&lt;/p&gt;
 
@@ -118,12 +118,12 @@
 
 &lt;p&gt;&lt;img src=&quot;/blog/images/rows2.png&quot; style=&quot;width:min(100%, 500px)&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Here’s the new algorithm:&lt;/p&gt;
+&lt;p&gt;With that in mind, here’s the new algorithm:&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Precompute valid rows.&lt;/li&gt;
   &lt;li&gt;For every possible 8th row, find all valid 7th rows.&lt;/li&gt;
-  &lt;li&gt;For the 6th row, only consider rows that satisfy the three-letter minimum with rows 7 through 9. Continue this until the edge of the grid. Note that the first three rows have some special restrictions because they’re near the edge of the grid.&lt;/li&gt;
+  &lt;li&gt;For the 6th row, only consider rows that satisfy the three-letter minimum with rows 7 through 9. Continue this until the edge of the grid. Note that the first three rows have special restrictions because they’re near the edge of the grid.&lt;/li&gt;
   &lt;li&gt;Do the DFS check.&lt;/li&gt;
   &lt;li&gt;Check special conditions.&lt;/li&gt;
 &lt;/ol&gt;
@@ -142,7 +142,7 @@
 
 &lt;p&gt;Now, we can precompute valid rows as a list of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;uint16&lt;/code&gt; values. We can also compute a map &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reverse&lt;/code&gt; where &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reverse[x]&lt;/code&gt; stores the bitwise reverse of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt;: this makes it easier to fill the bottom half of the grid.&lt;/p&gt;
 
-&lt;p&gt;So, given three rows &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b&lt;/code&gt;, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;c&lt;/code&gt;, how do we calculate all possible next rows &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt;? It might help to look at a diagram (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1&lt;/code&gt; represents black, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0&lt;/code&gt; represents white):&lt;/p&gt;
+&lt;p&gt;So given three rows &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b&lt;/code&gt;, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;c&lt;/code&gt;, how do we calculate all possible next rows &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt;? It might help to look at a diagram (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1&lt;/code&gt; represents black, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0&lt;/code&gt; represents white):&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a      100011100010000
 b      000000000110001
@@ -152,7 +152,7 @@ x      000001000100000
 
 &lt;p&gt;We have a one-letter answer whenever there’s a column with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;101&lt;/code&gt; in rows &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;c&lt;/code&gt;, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt;. In other words, if &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b &amp;amp; ~c &amp;amp; x&lt;/code&gt; has any ones (where &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;amp;&lt;/code&gt; is bitwise AND, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~&lt;/code&gt; is bitwise negation), then we’re in trouble. This means we must have &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b &amp;amp; ~c &amp;amp; x == 0&lt;/code&gt;, which I will slightly rewrite as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(b &amp;amp; ~c) &amp;amp; x == 0&lt;/code&gt;. Similarly, we must have &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(a &amp;amp; ~b &amp;amp; ~c) &amp;amp; x == 0&lt;/code&gt; to avoid any two-letter answers.&lt;/p&gt;
 
-&lt;p&gt;Awesome! So we can precompute a map &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;avoidOneOne&lt;/code&gt; where &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;avoidOneOne[j]&lt;/code&gt; stores every &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k&lt;/code&gt; satisfying &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;j &amp;amp; k == 0&lt;/code&gt; (i.e. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;j&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k&lt;/code&gt; don’t have any one bits in the same position, hence the name). Therefore, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt; is simply the set of values in both &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;avoidOneOne[b &amp;amp; ~c]&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;avoidOneOne[a &amp;amp; ~b &amp;amp; ~c]&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Awesome! So we can precompute a map &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;avoidOneOne&lt;/code&gt; where &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;avoidOneOne[j]&lt;/code&gt; stores every &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k&lt;/code&gt; satisfying &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;j &amp;amp; k == 0&lt;/code&gt; (i.e. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;j&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k&lt;/code&gt; don’t have any &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1&lt;/code&gt; bits in the same position, hence the name). Therefore, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt; is simply the set of values in both &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;avoidOneOne[b &amp;amp; ~c]&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;avoidOneOne[a &amp;amp; ~b &amp;amp; ~c]&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;If &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;avoidOneOne[j]&lt;/code&gt; stored a list of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;uint16&lt;/code&gt; values for every &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;j&lt;/code&gt;, we’d need to write some nontrivial logic to intersect the two lists. We can expedite this by storing bitarrays instead! Go has a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bitarray&lt;/code&gt; &lt;a href=&quot;https://godoc.org/github.com/golang-collections/go-datastructures/bitarray&quot;&gt;package&lt;/a&gt; that supports sparse bitarrays, so this was pretty easy to implement. There are only \(2^{16} = 65536\) possible &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;uint16&lt;/code&gt; values, so each bitarray is 8.192 kilobytes in the worst case. No biggie.&lt;/p&gt;
 
@@ -174,7 +174,7 @@ EDGE   ---------------
   &lt;li&gt;Precompute all valid rows.&lt;/li&gt;
   &lt;li&gt;Precompute &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reverse&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;avoidOneOne&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;avoidOneZero&lt;/code&gt;.&lt;/li&gt;
   &lt;li&gt;For every possible value of Row 8 (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;r8&lt;/code&gt;), consider values of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;r7&lt;/code&gt; satisfying &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;r7 &amp;amp; ~r8 &amp;amp; reverse[r7] == 0&lt;/code&gt;. Can’t have a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;101&lt;/code&gt; in the middle three rows!&lt;/li&gt;
-  &lt;li&gt;Use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;avoidOneOne&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;avoidOneZero&lt;/code&gt; to compute the possibilities for the rest of the grid.&lt;/li&gt;
+  &lt;li&gt;Use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;avoidOneOne&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;avoidOneZero&lt;/code&gt; to compute the possibilities for the remaining rows.&lt;/li&gt;
   &lt;li&gt;Turn candidate grids into a two-dimensional array and do the DFS check.&lt;/li&gt;
   &lt;li&gt;Check special conditions.&lt;/li&gt;
 &lt;/ol&gt;
@@ -185,7 +185,7 @@ EDGE   ---------------
 
 &lt;p&gt;To top things off, we added a few more optimizations: first, Go made it easy to parallelize the search. Simply create &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;t&lt;/code&gt; goroutines and assign each thread a subset of the middle rows.&lt;/p&gt;
 
-&lt;p&gt;Second, we also constrained the &lt;em&gt;number&lt;/em&gt; of words in the grid. Most NYT crossword grids have around 60-80 words–more than that looks ugly, and fewer than that is essentially impossible to fill. As newbie constructors, we were looking at the 70-80 range. I won’t get into details, but we figured out an \(O(n)\) method to compute this value using bithacks and precomputation. This way, we’d eliminate a majority of grids before the DFS check. (Hint: In every row or column, a new word starts when we move from from an edge/black square to a white square.)&lt;/p&gt;
+&lt;p&gt;Second, we also cared about the &lt;em&gt;number&lt;/em&gt; of words in the grid. Most NYT crossword grids have around 60-80 words–more than that looks ugly, and fewer than that is essentially impossible to fill. As newbie constructors, we were looking at the 70-80 range. I won’t get into details, but we figured out an \(O(n)\) method to compute this value using bithacks and precomputation. This way, we’d eliminate a majority of grids before the DFS check. (Hint: In every row or column, a new word starts when we move from from an edge/black square to a white square.)&lt;/p&gt;
 
 &lt;p&gt;And that’s it! The program was spitting out hundreds of grids every minute, and we eventually found one that worked. You can check out &lt;a href=&quot;https://github.com/akshayravikumar/crosswords&quot;&gt;the source code&lt;/a&gt;, but it’s quite a mess.&lt;/p&gt;
 
@@ -195,7 +195,7 @@ EDGE   ---------------
 
 &lt;h3 id=&quot;theres-more&quot;&gt;…there’s more?&lt;/h3&gt;
 
-&lt;p&gt;While working on this, I ran into a &lt;a href=&quot;https://fivethirtyeight.com/features/how-many-crossword-puzzles-can-you-make/&quot;&gt;FiveThirtyEight challenge&lt;/a&gt; that asked how many valid 15x15 New York Times crossword grids you can make. Unfortunately, this program wasn’t going to cut it: there’s no point in generating every grid if you’re trying to count valid grids. I’ll talk about this in Part 2!&lt;/p&gt;
+&lt;p&gt;While working on this, I ran into a &lt;a href=&quot;https://fivethirtyeight.com/features/how-many-crossword-puzzles-can-you-make/&quot;&gt;FiveThirtyEight challenge&lt;/a&gt; that asked how many valid 15x15 New York Times crossword grids you can make. Unfortunately, this program wasn’t going to cut it: there’s no point in generating every grid if you’re just trying to count them. I’ll talk about this in Part 2!&lt;/p&gt;
 
 
   &lt;p&gt;&lt;a href=&quot;http://localhost:4000/articles/counting-crosswords&quot;&gt;Counting Crosswords, Part 1&lt;/a&gt; was originally published by Akshay Ravikumar at &lt;a href=&quot;http://localhost:4000&quot;&gt;Akshay's Blog&lt;/a&gt; on July 03, 2020.&lt;/p&gt;</content>
