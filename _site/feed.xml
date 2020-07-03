@@ -5,7 +5,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2020-07-02T19:53:19-04:00</updated>
+<updated>2020-07-02T20:04:46-04:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Cole Townsend</name>
@@ -85,7 +85,7 @@ grown-ups could see it clearly. They always need to have things explained.&lt;/p
     <uri>http://localhost:4000</uri>
     <email>cole@coletownsend.com</email>
   </author>
-  <content type="html">&lt;p&gt;This is a post that uses a &lt;code&gt;figure&lt;/code&gt;. It stacks these images and places a nice little caption below if you fill out &lt;code&gt;figcaption&lt;/code&gt;.&lt;/p&gt;
+  <content type="html">&lt;p&gt;This is a post that uses a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;figure&lt;/code&gt;. It stacks these images and places a nice little caption below if you fill out &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;figcaption&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;single-image-figure&quot;&gt;Single Image Figure&lt;/h3&gt;
 
