@@ -1,5 +1,9 @@
 /************ Basic *************/
 
+.katex { 
+    font-size: 1em; 
+}
+
 body {
   font-family: $serif;
   color: $black;
@@ -31,9 +35,10 @@ a:hover {
 }
 
 em {
-    padding: 1px 2px;
-    border-radius: 2px;
-    background: #ffe8c0;
+    font-style: italic;
+    // padding: 1px 2px;
+    // border-radius: 2px;
+    // background: #ffe8c0;
 }
 
 strong {

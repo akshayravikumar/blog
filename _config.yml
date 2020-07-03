@@ -9,6 +9,9 @@ owner:
 
   # Plug in your disqus shortname!
 
+plugins:
+  - jekyll-katex
+  
 tools:
   standards:      "HTML, SCSS, Jekyll"
   software:       "git"

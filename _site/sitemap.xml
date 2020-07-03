@@ -6,6 +6,10 @@
 
     
     <url>
+        <loc>http://localhost:4000/articles/counting-crosswords</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/articles/hello-world</loc>
     </url>
     
