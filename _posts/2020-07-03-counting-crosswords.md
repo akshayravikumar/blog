@@ -1,5 +1,5 @@
 ---
-layout: post-light-feature
+layout: post
 title: "Counting Crosswords, Part 1"
 description: "An incredibly useless but very fun side project."
 comments: true
@@ -126,7 +126,7 @@ We have a one-letter answer whenever there's a column with `101` in rows `b`, `c
 
 Awesome! So we can precompute a map `avoidOneOne` where `avoidOneOne[j]` stores every `k` satisfying `j & k == 0` (i.e. `j` and `k` don't have any `1` bits in the same position, hence the name). Therefore, `x` is simply the set of values in both `avoidOneOne[b & ~c]` and `avoidOneOne[a & ~b & ~c]`. 
 
-If `avoidOneOne[j]` stored a list of `uint16` values for every `j`, we'd need to write some nontrivial logic to intersect the two lists. We can expedite this by storing bitarrays instead! Go has a `bitarray` [package](https://godoc.org/github.com/golang-collections/go-datastructures/bitarray) that supports sparse bitarrays, so this was pretty easy to implement. There are only \\(2^{16} = 65536\\) possible `uint16` values, so each bitarray is 8.192 kilobytes in the worst case. No biggie.
+If `avoidOneOne[j]` stored a list of `uint16` values for every `j`, we'd need to write some nontrivial logic to intersect the two lists. We can expedite this by storing bitarrays instead! Go has a `bitarray` [package](https://godoc.org/github.com/golang-collections/go-datastructures/bitarray) that supports sparse bitarrays, so this was pretty easy to implement. There are only \\(2^{16} = 65536\\) possible `uint16` values, so each bitarray is around 8kilobytes in the worst case. No biggie.
 
 Now, we can simply find all values of `x` by computing `avoidOneOne[b & ~c].And(avoidOneOne[a & ~b & ~c]).ToNums()`, which intersects the two bitarrays and converts the result into a list of `uint16` values.
 
