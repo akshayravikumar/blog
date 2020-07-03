@@ -79,11 +79,15 @@ code {
     font-weight: bold;
 }
 
+
+div.highlight {
+    margin-bottom: $lh;
+}
+
 .highlight {
     background: $black;
     padding: 12px;
     border-radius: 4px;
-    margin-bottom: $lh;
     overflow-x: scroll;
 
     code {
@@ -563,7 +567,7 @@ header.site-header nav {
         li {
             list-style: disc;
             list-style-type: disc;
-            margin-left: $lh*2;
+            margin-left: $lh;
             padding-left: $lh/3;
         &:last-child {
             margin-bottom: 0;
@@ -578,7 +582,7 @@ header.site-header nav {
             @include underline(2px, solid, $grey-light);
         }
         li {
-            margin-left: $lh*2;
+            margin-left: $lh;
             padding-left: $lh/3;
             margin-bottom: $lh/3;
             line-height: $lh;

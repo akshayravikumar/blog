@@ -5,7 +5,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2020-07-03T12:47:12-07:00</updated>
+<updated>2020-07-03T13:28:02-07:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Akshay Ravikumar</name>
@@ -144,11 +144,10 @@
 
 &lt;p&gt;So, given three rows &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b&lt;/code&gt;, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;c&lt;/code&gt;, how do we calculate all possible next rows &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt;? It might help to look at a diagram (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1&lt;/code&gt; represents black, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0&lt;/code&gt; represents white):&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-a    100011100010000
-b    000000000110001
-c    100000100010001
-x    000001000100000
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a      100011100010000
+b      000000000110001
+c      100000100010001
+x      000001000100000
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;We have a one-letter answer whenever there’s a column with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;101&lt;/code&gt; in rows &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;c&lt;/code&gt;, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt;. In other words, if &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b &amp;amp; ~c &amp;amp; x&lt;/code&gt; has any ones (where &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;amp;&lt;/code&gt; is bitwise AND, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~&lt;/code&gt; is bitwise negation), then we’re in trouble. This means we must have &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b &amp;amp; ~c &amp;amp; x == 0&lt;/code&gt;, which I will slightly rewrite as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(b &amp;amp; ~c) &amp;amp; x == 0&lt;/code&gt;. Similarly, we must have &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(a &amp;amp; ~b &amp;amp; ~c) &amp;amp; x == 0&lt;/code&gt; to avoid any two-letter answers.&lt;/p&gt;
@@ -161,11 +160,10 @@ x    000001000100000
 
 &lt;p&gt;Note that we have to treat the last three rows carefully. Consider the following:&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-d    100011100010000
-e    000000000110001
-f    100000100010001
-EDGE ---------------    
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;d      100011100010000
+e      000000000110001
+f      100000100010001
+EDGE   ---------------    
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;If there’s a column ending in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;10&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;100&lt;/code&gt;, then we violate the three-letter minimum. In other words, we must have &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;e &amp;amp; ~f == 0&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;d &amp;amp; ~e &amp;amp; ~f == 0&lt;/code&gt; . To deal with this, we ended up precomputing another map &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;avoidOneZero&lt;/code&gt;, where &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;avoidOneZero[j]&lt;/code&gt; stores a bitarray of all &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k&lt;/code&gt; satisfying &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;j &amp;amp; ~k == 0&lt;/code&gt;.&lt;/p&gt;

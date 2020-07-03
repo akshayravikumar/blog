@@ -67,6 +67,12 @@ p {
     margin-bottom: $lhsmall/2;
 }
 
+.post ol li {
+  font-size: $fs5 !important;
+  line-height: $lhsmall !important;
+  margin-bottom: $lhsmall/2;
+}
+
 h1,.h1 {      font-size: $fs2; }
 h2,.h2 {      font-size: $fs3; } 
 h3,.h3 {      font-size: $fs4; } 

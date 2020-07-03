@@ -118,11 +118,10 @@ Now, we can precompute valid rows as a list of `uint16` values. We can also comp
 So, given three rows `a`, `b`, and `c`, how do we calculate all possible next rows `x`? It might help to look at a diagram (`1` represents black, and `0` represents white):
 
 ```
-
-a    100011100010000
-b    000000000110001
-c    100000100010001
-x    000001000100000
+a      100011100010000
+b      000000000110001
+c      100000100010001
+x      000001000100000
 ```
 
 We have a one-letter answer whenever there's a column with `101` in rows `b`, `c`, and `x`. In other words, if `b & ~c & x` has any ones (where `&` is bitwise AND, and `~` is bitwise negation), then we're in trouble. This means we must have `b & ~c & x == 0`, which I will slightly rewrite as `(b & ~c) & x == 0`. Similarly, we must have `(a & ~b & ~c) & x == 0` to avoid any two-letter answers.
@@ -136,11 +135,10 @@ Now, we can simply find all values of `x` by computing `avoidOneOne[b & ~c].And(
 Note that we have to treat the last three rows carefully. Consider the following:
 
 ```
-
-d    100011100010000
-e    000000000110001
-f    100000100010001
-EDGE ---------------    
+d      100011100010000
+e      000000000110001
+f      100000100010001
+EDGE   ---------------    
 ```
 
 If there's a column ending in `10` or `100`, then we violate the three-letter minimum. In other words, we must have `e & ~f == 0` and `d & ~e & ~f == 0` . To deal with this, we ended up precomputing another map `avoidOneZero`, where `avoidOneZero[j]` stores a bitarray of all `k` satisfying `j & ~k == 0`. 

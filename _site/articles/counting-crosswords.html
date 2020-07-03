@@ -219,11 +219,10 @@
 
 <p>So, given three rows <code class="language-plaintext highlighter-rouge">a</code>, <code class="language-plaintext highlighter-rouge">b</code>, and <code class="language-plaintext highlighter-rouge">c</code>, how do we calculate all possible next rows <code class="language-plaintext highlighter-rouge">x</code>? It might help to look at a diagram (<code class="language-plaintext highlighter-rouge">1</code> represents black, and <code class="language-plaintext highlighter-rouge">0</code> represents white):</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-a    100011100010000
-b    000000000110001
-c    100000100010001
-x    000001000100000
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a      100011100010000
+b      000000000110001
+c      100000100010001
+x      000001000100000
 </code></pre></div></div>
 
 <p>We have a one-letter answer whenever there’s a column with <code class="language-plaintext highlighter-rouge">101</code> in rows <code class="language-plaintext highlighter-rouge">b</code>, <code class="language-plaintext highlighter-rouge">c</code>, and <code class="language-plaintext highlighter-rouge">x</code>. In other words, if <code class="language-plaintext highlighter-rouge">b &amp; ~c &amp; x</code> has any ones (where <code class="language-plaintext highlighter-rouge">&amp;</code> is bitwise AND, and <code class="language-plaintext highlighter-rouge">~</code> is bitwise negation), then we’re in trouble. This means we must have <code class="language-plaintext highlighter-rouge">b &amp; ~c &amp; x == 0</code>, which I will slightly rewrite as <code class="language-plaintext highlighter-rouge">(b &amp; ~c) &amp; x == 0</code>. Similarly, we must have <code class="language-plaintext highlighter-rouge">(a &amp; ~b &amp; ~c) &amp; x == 0</code> to avoid any two-letter answers.</p>
@@ -236,11 +235,10 @@ x    000001000100000
 
 <p>Note that we have to treat the last three rows carefully. Consider the following:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-d    100011100010000
-e    000000000110001
-f    100000100010001
-EDGE ---------------    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>d      100011100010000
+e      000000000110001
+f      100000100010001
+EDGE   ---------------    
 </code></pre></div></div>
 
 <p>If there’s a column ending in <code class="language-plaintext highlighter-rouge">10</code> or <code class="language-plaintext highlighter-rouge">100</code>, then we violate the three-letter minimum. In other words, we must have <code class="language-plaintext highlighter-rouge">e &amp; ~f == 0</code> and <code class="language-plaintext highlighter-rouge">d &amp; ~e &amp; ~f == 0</code> . To deal with this, we ended up precomputing another map <code class="language-plaintext highlighter-rouge">avoidOneZero</code>, where <code class="language-plaintext highlighter-rouge">avoidOneZero[j]</code> stores a bitarray of all <code class="language-plaintext highlighter-rouge">k</code> satisfying <code class="language-plaintext highlighter-rouge">j &amp; ~k == 0</code>.</p>
