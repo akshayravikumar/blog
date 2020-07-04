@@ -166,5 +166,5 @@ So we filled up the grid, wrote clues, and submitted it to the New York Times. U
 
 ## ...there's more? 
 
-While working on this, I ran into a [FiveThirtyEight challenge](https://fivethirtyeight.com/features/how-many-crossword-puzzles-can-you-make/) that asked how many valid 15x15 New York Times crossword grids you can make. Unfortunately, this program wasn't going to cut it: there's no point in generating every grid if you're just trying to count them. I'll talk about this in Part 2!
+While working on this, I came across a [FiveThirtyEight challenge](https://fivethirtyeight.com/features/how-many-crossword-puzzles-can-you-make/) that asked how many valid 15x15 New York Times crossword grids you can make. Unfortunately, this program wasn't going to cut it: there's no point in generating every grid if you're just trying to count them. I'll talk about this in Part 2!
 
