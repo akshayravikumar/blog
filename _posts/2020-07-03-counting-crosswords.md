@@ -139,7 +139,7 @@ f      100000100010001
 EDGE   ---------------    
 ```
 
-If there's a column ending in `10` or `100`, then we violate the three-letter minimum. In other words, we must have `e & ~f == 0` and `d & ~e & ~f == 0` . To deal with this, we ended up precomputing another map `avoidOneZero`, where `avoidOneZero[j]` stores a bitarray of all `k` satisfying `j & ~k == 0`. 
+If there's a column ending in `10` or `100`, then we violate the three-letter minimum. In other words, we must have `e & ~f == 0` and `d & ~e & ~f == 0` . To deal with this, we can precompute another map `avoidOneZero`, where `avoidOneZero[j]` stores a bitarray of all `k` satisfying `j & ~k == 0`. 
 
 Here's our hyper-optimized algorithm:
 
