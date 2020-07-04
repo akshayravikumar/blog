@@ -142,7 +142,7 @@
 
 <h2 id="generating-crossword-puzzles">Generating Crossword Puzzles</h2>
 
-<p>Alright, so we needed to generate valid 15x15 crossword grids and check a set of special conditions. It turns out these conditions were extremely rare, so performance was extremely important. In this section, I’ll go through different iterations of the algorithm, describing the optimizations that eventually brought us to an acceptable state. This isn’t exactly the order in which we arrived at the solution, but it’s close.</p>
+<p>Alright, so we needed to generate valid 15x15 crossword grids and check a set of special conditions. It turns out these conditions were extremely rare, so performance was critical. In this section, I’ll go through different iterations of the algorithm, describing the optimizations that eventually brought us to an acceptable state. This isn’t exactly the order in which we arrived at the solution, but it’s close.</p>
 
 <h3 id="take-1-python-and-chill">Take 1: Python and Chill</h3>
 
@@ -175,7 +175,7 @@
 
 <h3 id="take-2-one-row-at-a-time">Take 2: One Row at a Time</h3>
 
-<p>Generating grids square by square was doomed to fail because the conditions depend on the relationship between squares–it made more sense to think in terms of rows. This way, we could eliminate invalid rows from the get-go. In fact, of the \(2^{15} = 32,768\) possible rows, <strong>less than 800</strong> satisfy the three-letter minimum!</p>
+<p>Generating grids square by square was doomed to fail because the conditions depend on the relationship between squares–it made more sense to think in terms of rows. This way, we could eliminate invalid rows from the get-go: in fact, of the \(2^{15} = 32,768\) possible rows, <strong>less than 800</strong> satisfy the three-letter minimum!</p>
 
 <p>I don’t know the exact solution, but it’s safe to say the number of valid rows is \(O(c^n)\) for some value of \(c &lt; 2\). I computed this for \(n = 5, 6, 7, \dots 20\) (see <a href="http://oeis.org/A130578">A130578</a>) and the ratio between consecutive terms indicates \(c \approx 1.6\).</p>
 
@@ -239,9 +239,9 @@ x      000001000100000
 
 <p>Awesome! So we can precompute a map <code class="language-plaintext highlighter-rouge">avoidOneOne</code> where <code class="language-plaintext highlighter-rouge">avoidOneOne[j]</code> stores every <code class="language-plaintext highlighter-rouge">k</code> satisfying <code class="language-plaintext highlighter-rouge">j &amp; k == 0</code> (i.e. <code class="language-plaintext highlighter-rouge">j</code> and <code class="language-plaintext highlighter-rouge">k</code> don’t have any <code class="language-plaintext highlighter-rouge">1</code> bits in the same position, hence the name). Therefore, <code class="language-plaintext highlighter-rouge">x</code> is simply the set of values in both <code class="language-plaintext highlighter-rouge">avoidOneOne[b &amp; ~c]</code> and <code class="language-plaintext highlighter-rouge">avoidOneOne[a &amp; ~b &amp; ~c]</code>.</p>
 
-<p>If <code class="language-plaintext highlighter-rouge">avoidOneOne[j]</code> stored a list of <code class="language-plaintext highlighter-rouge">uint16</code> values for every <code class="language-plaintext highlighter-rouge">j</code>, we’d need to write some nontrivial logic to intersect the two lists. We can expedite this by storing bitarrays instead! Go has a <code class="language-plaintext highlighter-rouge">bitarray</code> <a href="https://godoc.org/github.com/golang-collections/go-datastructures/bitarray">package</a> that supports sparse bitarrays, so this was pretty easy to implement. There are only \(2^{16} = 65536\) possible <code class="language-plaintext highlighter-rouge">uint16</code> values, so each bitarray is around 8kilobytes in the worst case. No biggie.</p>
+<p>If <code class="language-plaintext highlighter-rouge">avoidOneOne[j]</code> stored a list of <code class="language-plaintext highlighter-rouge">uint16</code> values for every <code class="language-plaintext highlighter-rouge">j</code>, we’d need to write some nontrivial logic to intersect the two lists. We can expedite this by storing bitarrays instead! Go has a <code class="language-plaintext highlighter-rouge">bitarray</code> <a href="https://godoc.org/github.com/golang-collections/go-datastructures/bitarray">package</a> that supports sparse bitarrays, so this was pretty easy to implement. There are only \(2^{16} = 65536\) possible <code class="language-plaintext highlighter-rouge">uint16</code> values, so each bitarray is around 8 kilobytes in the worst case. No biggie.</p>
 
-<p>Now, we can simply find all values of <code class="language-plaintext highlighter-rouge">x</code> by computing <code class="language-plaintext highlighter-rouge">avoidOneOne[b &amp; ~c].And(avoidOneOne[a &amp; ~b &amp; ~c]).ToNums()</code>, which intersects the two bitarrays and converts the result into a list of <code class="language-plaintext highlighter-rouge">uint16</code> values.</p>
+<p>Now, we can find all values of <code class="language-plaintext highlighter-rouge">x</code> by computing <code class="language-plaintext highlighter-rouge">avoidOneOne[b &amp; ~c].And(avoidOneOne[a &amp; ~b &amp; ~c]).ToNums()</code>, which intersects the two bitarrays and converts the result into a list of <code class="language-plaintext highlighter-rouge">uint16</code> values.</p>
 
 <p>Note that we have to treat the last three rows carefully. Consider the following:</p>
 
@@ -270,7 +270,7 @@ EDGE   ---------------
 
 <p>To top things off, we added a few more optimizations: first, Go made it easy to parallelize the search. Simply create <code class="language-plaintext highlighter-rouge">t</code> goroutines and assign each thread a subset of the middle rows.</p>
 
-<p>Second, we also cared about the <em>number</em> of words in the grid. Most NYT crossword grids have around 60-80 words–more than that looks ugly, and fewer than that is essentially impossible to fill. As newbie constructors, we were looking at the 70-80 range. I won’t get into details, but we figured out an \(O(n)\) method to compute this value using bithacks and precomputation. This way, we’d eliminate a majority of grids before the DFS check. (Hint: In every row or column, a new word starts when we move from from an edge/black square to a white square.)</p>
+<p>Second, we also cared about the <em>number</em> of words in the grid. Most NYT crossword grids have around 60-80 words–more than that looks ugly, and fewer than that is essentially impossible to fill. As amateur constructors, we were looking at the 70-80 range. I won’t get into details, but we figured out an \(O(n)\) method to compute this value using bithacks and precomputation. This way, we’d eliminate a majority of grids before the DFS check. (Hint: In every row or column, a new word starts when we move from from an edge/black square to a white square.)</p>
 
 <p>And that’s it! The program was spitting out hundreds of grids every minute, and we eventually found one that worked. You can check out <a href="https://github.com/akshayravikumar/crosswords">the source code</a>, but it’s quite a mess.</p>
 

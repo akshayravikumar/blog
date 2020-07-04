@@ -39,7 +39,7 @@ The New York Times usually runs 15x15 puzzles on weekdays and 21x21 puzzles on w
 
 ## Generating Crossword Puzzles
 
-Alright, so we needed to generate valid 15x15 crossword grids and check a set of special conditions. It turns out these conditions were extremely rare, so performance was extremely important. In this section, I'll go through different iterations of the algorithm, describing the optimizations that eventually brought us to an acceptable state. This isn't exactly the order in which we arrived at the solution, but it's close.
+Alright, so we needed to generate valid 15x15 crossword grids and check a set of special conditions. It turns out these conditions were extremely rare, so performance was critical. In this section, I'll go through different iterations of the algorithm, describing the optimizations that eventually brought us to an acceptable state. This isn't exactly the order in which we arrived at the solution, but it's close.
 
 ### Take 1: Python and Chill
 
@@ -65,7 +65,7 @@ To get this to work, we needed to take a smarter approach.
 
 ### Take 2: One Row at a Time
 
-Generating grids square by square was doomed to fail because the conditions depend on the relationship between squares--it made more sense to think in terms of rows. This way, we could eliminate invalid rows from the get-go. In fact, of the \\(2^{15} = 32,768\\) possible rows, **less than 800** satisfy the three-letter minimum! 
+Generating grids square by square was doomed to fail because the conditions depend on the relationship between squares--it made more sense to think in terms of rows. This way, we could eliminate invalid rows from the get-go: in fact, of the \\(2^{15} = 32,768\\) possible rows, **less than 800** satisfy the three-letter minimum! 
 
 I don't know the exact solution, but it's safe to say the number of valid rows is \\(O(c^n)\\) for some value of \\(c < 2\\). I computed this for \\(n = 5, 6, 7, \dots 20\\) (see [A130578](http://oeis.org/A130578)) and the ratio between consecutive terms indicates \\(c \approx 1.6\\). 
 
@@ -126,9 +126,9 @@ We have a one-letter answer whenever there's a column with `101` in rows `b`, `c
 
 Awesome! So we can precompute a map `avoidOneOne` where `avoidOneOne[j]` stores every `k` satisfying `j & k == 0` (i.e. `j` and `k` don't have any `1` bits in the same position, hence the name). Therefore, `x` is simply the set of values in both `avoidOneOne[b & ~c]` and `avoidOneOne[a & ~b & ~c]`. 
 
-If `avoidOneOne[j]` stored a list of `uint16` values for every `j`, we'd need to write some nontrivial logic to intersect the two lists. We can expedite this by storing bitarrays instead! Go has a `bitarray` [package](https://godoc.org/github.com/golang-collections/go-datastructures/bitarray) that supports sparse bitarrays, so this was pretty easy to implement. There are only \\(2^{16} = 65536\\) possible `uint16` values, so each bitarray is around 8kilobytes in the worst case. No biggie.
+If `avoidOneOne[j]` stored a list of `uint16` values for every `j`, we'd need to write some nontrivial logic to intersect the two lists. We can expedite this by storing bitarrays instead! Go has a `bitarray` [package](https://godoc.org/github.com/golang-collections/go-datastructures/bitarray) that supports sparse bitarrays, so this was pretty easy to implement. There are only \\(2^{16} = 65536\\) possible `uint16` values, so each bitarray is around 8 kilobytes in the worst case. No biggie.
 
-Now, we can simply find all values of `x` by computing `avoidOneOne[b & ~c].And(avoidOneOne[a & ~b & ~c]).ToNums()`, which intersects the two bitarrays and converts the result into a list of `uint16` values.
+Now, we can find all values of `x` by computing `avoidOneOne[b & ~c].And(avoidOneOne[a & ~b & ~c]).ToNums()`, which intersects the two bitarrays and converts the result into a list of `uint16` values.
 
 Note that we have to treat the last three rows carefully. Consider the following:
 
@@ -156,7 +156,7 @@ This helped a lot! We removed the \\(O(n)\\) check when evaluating rows, and the
 
 To top things off, we added a few more optimizations: first, Go made it easy to parallelize the search. Simply create `t` goroutines and assign each thread a subset of the middle rows.
 
-Second, we also cared about the _number_ of words in the grid. Most NYT crossword grids have around 60-80 words--more than that looks ugly, and fewer than that is essentially impossible to fill. As newbie constructors, we were looking at the 70-80 range. I won't get into details, but we figured out an \\(O(n)\\) method to compute this value using bithacks and precomputation. This way, we'd eliminate a majority of grids before the DFS check. (Hint: In every row or column, a new word starts when we move from from an edge/black square to a white square.)
+Second, we also cared about the _number_ of words in the grid. Most NYT crossword grids have around 60-80 words--more than that looks ugly, and fewer than that is essentially impossible to fill. As amateur constructors, we were looking at the 70-80 range. I won't get into details, but we figured out an \\(O(n)\\) method to compute this value using bithacks and precomputation. This way, we'd eliminate a majority of grids before the DFS check. (Hint: In every row or column, a new word starts when we move from from an edge/black square to a white square.)
 
 And that's it! The program was spitting out hundreds of grids every minute, and we eventually found one that worked. You can check out [the source code](https://github.com/akshayravikumar/crosswords), but it's quite a mess.
 

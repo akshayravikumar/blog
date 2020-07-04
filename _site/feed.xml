@@ -5,7 +5,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
 <link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2020-07-03T15:42:38-07:00</updated>
+<updated>2020-07-03T18:21:48-07:00</updated>
 <id>http://localhost:4000/</id>
 <author>
   <name>Akshay Ravikumar</name>
@@ -57,7 +57,7 @@
 
 &lt;h2 id=&quot;generating-crossword-puzzles&quot;&gt;Generating Crossword Puzzles&lt;/h2&gt;
 
-&lt;p&gt;Alright, so we needed to generate valid 15x15 crossword grids and check a set of special conditions. It turns out these conditions were extremely rare, so performance was extremely important. In this section, I’ll go through different iterations of the algorithm, describing the optimizations that eventually brought us to an acceptable state. This isn’t exactly the order in which we arrived at the solution, but it’s close.&lt;/p&gt;
+&lt;p&gt;Alright, so we needed to generate valid 15x15 crossword grids and check a set of special conditions. It turns out these conditions were extremely rare, so performance was critical. In this section, I’ll go through different iterations of the algorithm, describing the optimizations that eventually brought us to an acceptable state. This isn’t exactly the order in which we arrived at the solution, but it’s close.&lt;/p&gt;
 
 &lt;h3 id=&quot;take-1-python-and-chill&quot;&gt;Take 1: Python and Chill&lt;/h3&gt;
 
@@ -90,7 +90,7 @@
 
 &lt;h3 id=&quot;take-2-one-row-at-a-time&quot;&gt;Take 2: One Row at a Time&lt;/h3&gt;
 
-&lt;p&gt;Generating grids square by square was doomed to fail because the conditions depend on the relationship between squares–it made more sense to think in terms of rows. This way, we could eliminate invalid rows from the get-go. In fact, of the \(2^{15} = 32,768\) possible rows, &lt;strong&gt;less than 800&lt;/strong&gt; satisfy the three-letter minimum!&lt;/p&gt;
+&lt;p&gt;Generating grids square by square was doomed to fail because the conditions depend on the relationship between squares–it made more sense to think in terms of rows. This way, we could eliminate invalid rows from the get-go: in fact, of the \(2^{15} = 32,768\) possible rows, &lt;strong&gt;less than 800&lt;/strong&gt; satisfy the three-letter minimum!&lt;/p&gt;
 
 &lt;p&gt;I don’t know the exact solution, but it’s safe to say the number of valid rows is \(O(c^n)\) for some value of \(c &amp;lt; 2\). I computed this for \(n = 5, 6, 7, \dots 20\) (see &lt;a href=&quot;http://oeis.org/A130578&quot;&gt;A130578&lt;/a&gt;) and the ratio between consecutive terms indicates \(c \approx 1.6\).&lt;/p&gt;
 
@@ -154,9 +154,9 @@ x      000001000100000
 
 &lt;p&gt;Awesome! So we can precompute a map &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;avoidOneOne&lt;/code&gt; where &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;avoidOneOne[j]&lt;/code&gt; stores every &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k&lt;/code&gt; satisfying &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;j &amp;amp; k == 0&lt;/code&gt; (i.e. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;j&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k&lt;/code&gt; don’t have any &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1&lt;/code&gt; bits in the same position, hence the name). Therefore, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt; is simply the set of values in both &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;avoidOneOne[b &amp;amp; ~c]&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;avoidOneOne[a &amp;amp; ~b &amp;amp; ~c]&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;If &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;avoidOneOne[j]&lt;/code&gt; stored a list of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;uint16&lt;/code&gt; values for every &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;j&lt;/code&gt;, we’d need to write some nontrivial logic to intersect the two lists. We can expedite this by storing bitarrays instead! Go has a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bitarray&lt;/code&gt; &lt;a href=&quot;https://godoc.org/github.com/golang-collections/go-datastructures/bitarray&quot;&gt;package&lt;/a&gt; that supports sparse bitarrays, so this was pretty easy to implement. There are only \(2^{16} = 65536\) possible &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;uint16&lt;/code&gt; values, so each bitarray is around 8kilobytes in the worst case. No biggie.&lt;/p&gt;
+&lt;p&gt;If &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;avoidOneOne[j]&lt;/code&gt; stored a list of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;uint16&lt;/code&gt; values for every &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;j&lt;/code&gt;, we’d need to write some nontrivial logic to intersect the two lists. We can expedite this by storing bitarrays instead! Go has a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bitarray&lt;/code&gt; &lt;a href=&quot;https://godoc.org/github.com/golang-collections/go-datastructures/bitarray&quot;&gt;package&lt;/a&gt; that supports sparse bitarrays, so this was pretty easy to implement. There are only \(2^{16} = 65536\) possible &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;uint16&lt;/code&gt; values, so each bitarray is around 8 kilobytes in the worst case. No biggie.&lt;/p&gt;
 
-&lt;p&gt;Now, we can simply find all values of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt; by computing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;avoidOneOne[b &amp;amp; ~c].And(avoidOneOne[a &amp;amp; ~b &amp;amp; ~c]).ToNums()&lt;/code&gt;, which intersects the two bitarrays and converts the result into a list of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;uint16&lt;/code&gt; values.&lt;/p&gt;
+&lt;p&gt;Now, we can find all values of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt; by computing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;avoidOneOne[b &amp;amp; ~c].And(avoidOneOne[a &amp;amp; ~b &amp;amp; ~c]).ToNums()&lt;/code&gt;, which intersects the two bitarrays and converts the result into a list of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;uint16&lt;/code&gt; values.&lt;/p&gt;
 
 &lt;p&gt;Note that we have to treat the last three rows carefully. Consider the following:&lt;/p&gt;
 
@@ -185,7 +185,7 @@ EDGE   ---------------
 
 &lt;p&gt;To top things off, we added a few more optimizations: first, Go made it easy to parallelize the search. Simply create &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;t&lt;/code&gt; goroutines and assign each thread a subset of the middle rows.&lt;/p&gt;
 
-&lt;p&gt;Second, we also cared about the &lt;em&gt;number&lt;/em&gt; of words in the grid. Most NYT crossword grids have around 60-80 words–more than that looks ugly, and fewer than that is essentially impossible to fill. As newbie constructors, we were looking at the 70-80 range. I won’t get into details, but we figured out an \(O(n)\) method to compute this value using bithacks and precomputation. This way, we’d eliminate a majority of grids before the DFS check. (Hint: In every row or column, a new word starts when we move from from an edge/black square to a white square.)&lt;/p&gt;
+&lt;p&gt;Second, we also cared about the &lt;em&gt;number&lt;/em&gt; of words in the grid. Most NYT crossword grids have around 60-80 words–more than that looks ugly, and fewer than that is essentially impossible to fill. As amateur constructors, we were looking at the 70-80 range. I won’t get into details, but we figured out an \(O(n)\) method to compute this value using bithacks and precomputation. This way, we’d eliminate a majority of grids before the DFS check. (Hint: In every row or column, a new word starts when we move from from an edge/black square to a white square.)&lt;/p&gt;
 
 &lt;p&gt;And that’s it! The program was spitting out hundreds of grids every minute, and we eventually found one that worked. You can check out &lt;a href=&quot;https://github.com/akshayravikumar/crosswords&quot;&gt;the source code&lt;/a&gt;, but it’s quite a mess.&lt;/p&gt;
 
