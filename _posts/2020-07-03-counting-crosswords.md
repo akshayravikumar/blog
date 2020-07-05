@@ -172,7 +172,7 @@ While working on this, I came across a [FiveThirtyEight challenge](https://fivet
 
 So, what's the memory overhead of `avoidOneOne` and `avoidOneZero`? They clearly have the same size, so we'll focus on `avoidOneOne`. Let's start with a loose upper bound: for a grid of size \\(n\\), there are \\(2^n\\) keys and at most \\(2^n\\) values in each bitarray, which makes an upper bound of \\(2^n \cdot 2^n = 4^n\\).
 
-Okay, but we're only storing rows in each bitarray, right? Using the value of \\(c = 1.6\\) from earlier, we get a tighter bound of \\(2^n \cdot 1.6^n = 3.2^n\\).
+Okay, but we're only storing rows in each bitarray, right? Using the value of \\(c = 1.6\\) from earlier, we get a tighter bound of \\(2^n \cdot 1.6^n = 3.2^n\\) (this is actually \\(O(3.2^n)\\), because our \\(c^n\\) bound wasn't exact).
 
 But let's take a closer look at what `avoidOneOne` stores: again, for every value `j`, we're storing all `k` satisfying `j & k == 0`, which means `j` and `k` don't have any ones in the same place. 
 
