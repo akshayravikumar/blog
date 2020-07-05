@@ -111,9 +111,9 @@ The solution: instead of booleans, treat each square as a bit! We can fit each r
 
 Anyways, I rewrote the whole thing in Go. It'd been a few years, and I wanted to brush up. Go also made it easier to implement Grid Representation 2.0. 
 
-Now, we can precompute valid rows as a list of `uint16` values. We can also compute a map `reverse` where `reverse[x]` stores the bitwise reverse of row `x`: this makes it easier to fill the bottom half of the grid.
+Now we can precompute valid rows as a list of `uint16` values, letting `1` and `0` represent black and white, respectively. For instance, \\(100001100010000_2 = 17168\\) is a valid row, but \\(101001100010111_2 = 21271\\) isn't. We can also compute a map `reverse` where `reverse[x]` stores the bitwise reverse of row `x`: this makes it easier to fill the bottom half of the grid.
 
-So given three rows `a`, `b`, and `c`, how do we calculate all possible next rows `x`? It might help to look at a diagram (`1` represents black, and `0` represents white):
+So given three rows `a`, `b`, and `c`, how do we calculate all possible next rows `x`? It might help to look at a diagram:
 
 ```
 a      100011100010000
@@ -168,3 +168,18 @@ So we filled up the grid, wrote clues, and submitted it to the New York Times. U
 
 While working on this, I came across a [FiveThirtyEight challenge](https://fivethirtyeight.com/features/how-many-crossword-puzzles-can-you-make/) that asked how many valid 15x15 New York Times crossword grids you can make. Unfortunately, this program wasn't going to cut it: there's no point in generating every grid if you're just trying to count them. I'll talk about this in Part 2!
 
+### Appendix: Space Complexity
+
+So, what's the memory overhead of `avoidOneOne` and `avoidOneZero`? They clearly have the same size, so we'll focus on `avoidOneOne`. Let's start with a loose upper bound: for a grid of size \\(n\\), there are \\(2^n\\) keys and at most \\(2^n\\) values in each bitarray, which makes an upper bound of \\(2^n \cdot 2^n = 4^n\\).
+
+Okay, but we're only storing rows in each bitarray, right? Using the value of \\(c = 1.6\\) from earlier, we get a tighter upper bound of \\(2^n \cdot 1.6^n = 3.2^n\\).
+
+But let's take a closer look at what `avoidOneOne` stores: again, for every value `j`, we're storing all `k` satisfying `j & k == 0`, which means `j` and `k` don't have any ones in the same place. 
+
+Consider a value `j` with \\(x\\) ones: there are \\(\binom{n}{x}\\) possible values of `j`. For each `j`, there are  \\(2^{n - x}\\) values of \\(k\\) that work. This is because `k` a zero wherever `j` has an one, and the remaining \\(n-x\\) bits have no constraints. Using the Binomial Theorem, we arrive at the following upper bound:
+
+\\[
+\sum_{x=0}^n \dbinom{n}{k} 2^{n-x} = \sum_{x=0}^n \dbinom{n}{k} 1^x 2^{n-x} = (1+2)^n = 3^n
+\\]
+
+We got an even better upper bound, and we didn't even use the fact that the values are rows! In reality the value is much, much smaller. This actually matters: \\(4^{15}\\) bits is around 135 megabytes, while \\(3^{15}\\) bits is smaller than 2 megabytes. 
