@@ -176,7 +176,7 @@ Okay, but we're only storing rows in each bitarray, right? Using the value of \\
 
 But let's take a closer look at what `avoidOneOne` stores: again, for every value `j`, we're storing all `k` satisfying `j & k == 0`, which means `j` and `k` don't have any ones in the same place. 
 
-Consider a value `j` with \\(x\\) ones: there are \\(\binom{n}{x}\\) possible values of `j`. For each `j`, there are  \\(2^{n - x}\\) values of \\(k\\) that work. This is because `k` a zero wherever `j` has an one, and the remaining \\(n-x\\) bits have no constraints. Using the Binomial Theorem, we arrive at the following upper bound:
+Consider a value `j` with \\(x\\) ones: there are \\(\binom{n}{x}\\) possible values of `j`. For each `j`, there are  \\(2^{n - x}\\) values of `k` that work. This is because `k` has a zero wherever `j` has an one, and the remaining \\(n-x\\) bits have no constraints. Using the Binomial Theorem, we arrive at the following upper bound:
 
 \\[
 \sum_{x=0}^n \dbinom{n}{k} 2^{n-x} = \sum_{x=0}^n \dbinom{n}{k} 1^x 2^{n-x} = (1+2)^n = 3^n
