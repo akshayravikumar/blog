@@ -111,7 +111,7 @@ The solution: instead of booleans, treat each square as a bit! We can fit each r
 
 Anyways, I rewrote the whole thing in Go. It'd been a few years, and I wanted to brush up. Go also made it easier to implement Grid Representation 2.0. 
 
-Now, we can precompute valid rows as a list of `uint16` values. We can also compute a map `reverse` where `reverse[x]` stores the bitwise reverse of `x`: this makes it easier to fill the bottom half of the grid.
+Now, we can precompute valid rows as a list of `uint16` values. We can also compute a map `reverse` where `reverse[x]` stores the bitwise reverse of row `x`: this makes it easier to fill the bottom half of the grid.
 
 So given three rows `a`, `b`, and `c`, how do we calculate all possible next rows `x`? It might help to look at a diagram (`1` represents black, and `0` represents white):
 
@@ -124,9 +124,9 @@ x      000001000100000
 
 We have a one-letter answer whenever there's a column with `101` in rows `b`, `c`, and `x`. In other words, if `b & ~c & x` has any ones (where `&` is bitwise AND, and `~` is bitwise negation), then we're in trouble. This means we must have `b & ~c & x == 0`, which I will slightly rewrite as `(b & ~c) & x == 0`. Similarly, we must have `(a & ~b & ~c) & x == 0` to avoid any two-letter answers.
 
-Awesome! So we can precompute a map `avoidOneOne` where `avoidOneOne[j]` stores every `k` satisfying `j & k == 0` (i.e. `j` and `k` don't have any `1` bits in the same position, hence the name). Therefore, `x` is simply the set of values in both `avoidOneOne[b & ~c]` and `avoidOneOne[a & ~b & ~c]`. 
+Awesome! So we can precompute a map `avoidOneOne` where, for **all** `uint16` values `j`, `avoidOneOne[j]` stores every **row** `k` satisfying `j & k == 0`. This means `j` and `k` don't have any `1` bits in the same position, hence the name. Therefore, `x` is simply the set of values in both `avoidOneOne[b & ~c]` and `avoidOneOne[a & ~b & ~c]`. 
 
-If `avoidOneOne[j]` stored a list of `uint16` values for every `j`, we'd need to write some nontrivial logic to intersect the two lists. We can expedite this by storing bitarrays instead! Go has a `bitarray` [package](https://godoc.org/github.com/golang-collections/go-datastructures/bitarray) that supports sparse bitarrays, so this was pretty easy to implement. There are only \\(2^{16} = 65536\\) possible `uint16` values, so each bitarray is around 8 kilobytes in the worst case. No biggie.
+If `avoidOneOne[j]` stored a list of `uint16` values for every `j`, we'd need to write some nontrivial logic to intersect the two lists. We can expedite this by storing bitarrays instead! Go has a `bitarray` [package](https://godoc.org/github.com/golang-collections/go-datastructures/bitarray) that supports sparse bitarrays, so this was pretty easy to implement. 
 
 Now, we can find all values of `x` by computing `avoidOneOne[b & ~c].And(avoidOneOne[a & ~b & ~c]).ToNums()`, which intersects the two bitarrays and converts the result into a list of `uint16` values.
 
