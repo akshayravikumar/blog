@@ -182,4 +182,4 @@ Consider a value `j` with \\(x\\) ones: there are \\(\binom{n}{x}\\) possible va
 \sum_{x=0}^n \dbinom{n}{k} 2^{n-x} = \sum_{x=0}^n \dbinom{n}{k} 1^x 2^{n-x} = (1+2)^n = 3^n
 \\]
 
-We got an even better upper bound, and we didn't even use the fact that the values are rows! In reality the value is much, much smaller. This actually matters: \\(4^{15}\\) bits is around 135 megabytes, while \\(3^{15}\\) bits is smaller than 2 megabytes. 
+We got an even better bound, and we didn't even use the fact that the values are rows! In reality the space overhead is much, much smaller. This actually matters: \\(4^{15}\\) bits is around 135 megabytes, while \\(3^{15}\\) bits is smaller than 2 megabytes. 
