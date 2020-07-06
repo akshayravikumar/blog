@@ -41,7 +41,7 @@ We can do better by looking at the degrees of each vertex! Label the vertices \\
 
 \\[\begin{aligned}d_1^2 + d_2^2 + \dots + d_V^2 &< V\cdot d_1 +  V\cdot d_2 + \dots +  V\cdot d_V  \cr \cr &= V(d_1 + d_2 + \dots + d_V) \cr \cr &= VE \end{aligned}\\]
 
-So our upper bound is actually \\(O(VE)\\), leading to a final answer of \\(O(V^2+VE) = O(VE) \\). As long as \\(E >= V\\),  we can simplify this to \\(O(VE)\\)! I'll leave it to you to demonstrate that this upper bound is tight.
+So our upper bound is actually \\(O(VE)\\), leading to a final answer of \\(O(V^2+VE) = O(VE) \\). As long as \\(E \ge V\\),  we can simplify this to \\(O(VE)\\)! I'll leave it to you to demonstrate that this upper bound is tight.
 
 ## Implementation
 
