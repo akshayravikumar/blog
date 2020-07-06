@@ -122,7 +122,7 @@ c      100000100010001
 x      000001000100000
 ```
 
-We have a one-letter answer whenever there's a column with `101` in rows `b`, `c`, and `x`. In other words, if `b & ~c & x` has any ones (where `&` is bitwise AND, and `~` is bitwise negation), then we're in trouble. This means we must have `b & ~c & x == 0`, and similarly we must have `a & ~b & ~c & x == 0` to avoid any two-letter answers. Combining these two, it follows that `[(b & ~c) | (a & ~b & ~c)] & x == 0`, or `[(a | b) & ~c] & x == 0` after simplifying the Boolean logic (hopefully this simplification makes intuitive sense).
+We have a one-letter answer whenever there's a column with `101` in rows `b`, `c`, and `x`. In other words, if `b & ~c & x` has any ones (where `&` is bitwise AND, and `~` is bitwise negation), then we're in trouble. This means we must have `b & ~c & x == 0`, and similarly we must have `a & ~b & ~c & x == 0` to avoid any two-letter answers. Combining these two, it follows that `[(b & ~c) | (a & ~b & ~c)] & x == 0`, or `[(a | b) & ~c] & x == 0` after simplifying the Boolean logic (hopefully this makes intuitive sense).
 
 Awesome! So we can precompute a map `avoidOneOne` where, for **all** `uint16` values `j`, `avoidOneOne[j]` stores every **row** `k` satisfying `j & k == 0`. This means `j` and `k` don't have any `1` bits in the same position, hence the name. Therefore, `x` is simply the set of values in `avoidOneOne[(a | b) & ~c]`. 
 
@@ -137,7 +137,7 @@ EDGE   ---------------
 
 If there's a column ending in `10` or `100`, then we violate the three-letter minimum. In other words, we must have `e & ~f == 0` and `d & ~e & ~f == 0` . To deal with this, we can precompute another map `avoidOneZero`, where `avoidOneZero[j]` stores a bitarray of all `k` satisfying `j & ~k == 0` (the values here are simply the bitwise negations of the values in `avoidOneOne`).
 
-If `avoidOneOne[j]` and `avoidOneZero[j]` stored a list of `uint16` values for every `j`, we'd need to write some nontrivial logic to intersect the two lists. We can expedite this by storing bitarrays instead! Go has a `bitarray` [package](https://godoc.org/github.com/golang-collections/go-datastructures/bitarray) that supports sparse bitarrays, so this was pretty easy to implement. 
+If `avoidOneOne` and `avoidOneZero` stored a list of `uint16` values for every `j`, we'd need to write some nontrivial logic to intersect the two lists. We can expedite this by storing bitarrays instead! Go has a `bitarray` [package](https://godoc.org/github.com/golang-collections/go-datastructures/bitarray) that supports sparse bitarrays, so this was pretty easy to implement. 
 
 Here's our hyper-optimized algorithm:
 
