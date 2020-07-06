@@ -135,7 +135,7 @@ f      100000100010001
 EDGE   ---------------    
 ```
 
-If there's a column ending in `10` or `100`, then we violate the three-letter minimum. In other words, we must have `e & ~f == 0` and `d & ~e & ~f == 0` . To deal with this, we can precompute another map `avoidOneZero`, where `avoidOneZero[j]` stores a bitarray of all `k` satisfying `j & ~k == 0` (the values here are simply the bitwise negations of the values in `avoidOneOne`).
+If there's a column ending in `10` or `100`, then we violate the three-letter minimum. In other words, we must have `e & ~f == 0` and `d & ~e & ~f == 0` . To deal with this, we can precompute another map `avoidOneZero`, where `avoidOneZero[j]` stores all `k` satisfying `j & ~k == 0` (the values here are simply the bitwise negations of the values in `avoidOneOne`).
 
 If `avoidOneOne` and `avoidOneZero` stored a list of `uint16` values for every `j`, we'd need to write some nontrivial logic to intersect the two lists. We can expedite this by storing bitarrays instead! Go has a `bitarray` [package](https://godoc.org/github.com/golang-collections/go-datastructures/bitarray) that supports sparse bitarrays, so this was pretty easy to implement. 
 

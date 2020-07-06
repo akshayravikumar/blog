@@ -57,7 +57,7 @@ class C:
         return self.x == other.x
 ```
 
-Using this wrapper, we can create the graph data structure for various values of \\(V\\) and \\(E\\), taking the worst-case time over multiple trials. Here are the results, literally plotting \\(VE\\) vs. time:
+Using this wrapper, we can randomly create the graph data structure for various values of \\(V\\) and \\(E\\), taking the worst-case time over multiple trials. Here are the results, literally plotting \\(VE\\) vs. time:
 
 <img src="/images/dict-plot.svg" style="width:min(100%, 800px)">
 
