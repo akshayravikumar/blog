@@ -254,6 +254,7 @@ DEPENDENCIES
   jekyll-katex
   jekyll-minibundle
   rake
+  rouge
 
 BUNDLED WITH
    2.1.4
