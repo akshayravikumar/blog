@@ -1,13 +1,11 @@
 ---
-layout: post
+layout: post-no-feature
 title: Constructing a Graph Dictionary
 description: A cute problem I wrote for MIT's Intro to Algorithms class.
 comments: true
 hidden: true
 date: 2020-07-06
 category: articles
-image:
- feature: crossword-header.jpg
 ---
 
 I wrote this problem while I was TA'ing [6.006](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/): it didn't make it to the quiz but I thought it was cute.
@@ -37,11 +35,11 @@ How do we use this information? First, constructing the vertex dictionary takes 
 
 Now let's look at the edges. In the worst case all the edges are in same neighbor dictionary, so perhaps \\(O(E^2)\\) is the upper bound? Or, each vertex has at most \\(V - 1\\) neighbors, which leads to \\(O(V^2)\\) for each neighbor dictionary and \\(O(V^3)\\) in total.
 
-We can do better by looking at the degrees of each vertex! Label the vertices \\(1, 2, \dots, V\\) and let their outdegrees be \\(d_1, d_2, \dots, d_V\\). Now our upper bound is \\(O(d_1^2 + d_2^2 + \dots + d_V^2)\\). However, using the fact that \\(d_i < V\\) for all \\(i\\), we have the following:
+These are fine upper bounds, but we can do better by looking at the degrees of each vertex! Label the vertices \\(1, 2, \dots, V\\) and let their outdegrees be \\(d_1, d_2, \dots, d_V\\). Now our bound is \\(O(d_1^2 + d_2^2 + \dots + d_V^2)\\). However, using the fact that \\(d_i < V\\) for all \\(i\\), we have the following:
 
 \\[\begin{aligned}d_1^2 + d_2^2 + \dots + d_V^2 &< V\cdot d_1 +  V\cdot d_2 + \dots +  V\cdot d_V  \cr \cr &= V(d_1 + d_2 + \dots + d_V) \cr \cr &= VE \end{aligned}\\]
 
-So our upper bound is actually \\(O(VE)\\), leading to a final answer of \\(O(V^2+VE)\\). As long as \\(E \ge V\\),  we can simplify this to \\(O(VE)\\)! I'll leave it to you to demonstrate that this upper bound is tight.
+So our upper bound is actually \\(O(VE)\\), leading to a final answer of \\(O(V^2+VE)\\). As long as \\(E \ge V\\), we can simplify this to \\(O(VE)\\)! I'll leave it to you to demonstrate that this upper bound is tight.
 
 ## Implementation
 
