@@ -27,7 +27,7 @@ for (u, v, weight) in edges:
 
 ## Solution
 
-Python dictionaries provide operations in expected \\(O(1)\\) time, so constructing such a representation should take expected \\(O(V+E)\\). 
+Python dictionaries provide operations in expected \\(O(1)\\) time, so constructing this data structure should take expected \\(O(V+E)\\). 
 
 But what's the worst case? Python implements dictionares using a hash table with [open addressing](https://en.wikipedia.org/wiki/Open_addressing) (you can even check out the [source code](https://github.com/python/cpython/blob/master/Objects/dictobject.c)). If every key hashes to the same value, then our dictionaries are doomed: every time you add a new key, you'll need to probe through every existing key before you find an open slot. Therefore, adding \\(x\\) keys to a dictionary will take \\(O(1 + 2 + \cdots + x)= O(x^2)\\) time.
 
@@ -43,7 +43,7 @@ So our upper bound is actually \\(O(VE)\\), leading to a final answer of \\(O(V^
 
 ## Implementation
 
-Let's demonstrate this upper bound using code! We can emulate worst-case behavior by wrapping everything with an object with a constant hash value:
+Let's demonstrate this upper bound using code! We can emulate worst-case behavior by wrapping everything with an object that has a constant hash value:
 
 ```python
 class C:
