@@ -45,7 +45,7 @@ So our upper bound is actually \\(O(VE)\\), leading to a final answer of \\(O(V^
 
 ## Implementation
 
-Let's demonstrate this upper bound using Python code! We can emulate worst-case behavior by wrapping everything with an object with a constant hash value:
+Let's demonstrate this upper bound using code! We can emulate worst-case behavior by wrapping everything with an object with a constant hash value:
 
 ```python
 class C:
