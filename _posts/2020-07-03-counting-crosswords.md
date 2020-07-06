@@ -124,7 +124,7 @@ x      000001000100000
 
 We have a one-letter answer whenever there's a column with `101` in rows `b`, `c`, and `x`. In other words, if `b & ~c & x` has any ones (where `&` is bitwise AND, and `~` is bitwise negation), then we're in trouble. This means we must have `b & ~c & x == 0`, and similarly we must have `a & ~b & ~c & x == 0` to avoid any two-letter answers. Combining these two, it follows that `[(b & ~c) | (a & ~b & ~c)] & x == 0`, or `[(a | b) & ~c] & x == 0` after simplifying the Boolean logic (hopefully this simplification makes intuitive sense).
 
-Awesome! So we can precompute a map `avoidOneOne` where, for **all** `uint16` values `j`, `avoidOneOne[j]` stores every **row** `k` satisfying `j & k == 0`. This means `j` and `k` don't have any `1` bits in the same position, hence the name. Therefore, `x` is simply the set of values in both `avoidOneOne[(a | b) & ~c]`. 
+Awesome! So we can precompute a map `avoidOneOne` where, for **all** `uint16` values `j`, `avoidOneOne[j]` stores every **row** `k` satisfying `j & k == 0`. This means `j` and `k` don't have any `1` bits in the same position, hence the name. Therefore, `x` is simply the set of values in `avoidOneOne[(a | b) & ~c]`. 
 
 Note that we have to treat the last three rows carefully. Consider the following:
 
