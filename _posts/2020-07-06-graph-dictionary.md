@@ -1,46 +1,54 @@
 ---
 layout: post-no-feature
-title: Constructing a Graph Dictionary
-description: A cute problem I wrote for MIT's Intro to Algorithms class.
+title: Constructing a Python Graph
+description: What happens when you have a terrible hash function.
 comments: true
 hidden: true
 date: 2020-07-06
 category: articles
 ---
 
-I wrote this problem while I was TA'ing [6.006](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/): it didn't make it to the quiz but I thought it was cute.
+I came up with this while TA'ing [6.006](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/): it didn't make it to any quizzes or problems sets but I thought it was cute.
 
 ## Problem
 
 In Python, it's common to store graphs as a nested dictionary, such that `d[u]` stores a dictionary in the form `{v: weight of (u, v)}` for every edge `(u, v)`. This way, you check whether edge `(u, v)` exists using `if v in d[u]`, and you can retrieve the weight of `(u, v)` by calling `d[u][v]`. 
 
-Given a **connected weighted directed graph** \\(G\\) with \\(V\\) vertices and \\(E\\) edges, how long does it take to construct this data structure in the **worst case**?
+Given a **connected weighted directed** graph \\(G\\) with vertices \\(V\\) and edges \\(E\\), how long does it take to construct this data structure in the **worst case**? Express your answer using \\(\Theta\\) notation.
 
-Let's say the code looks like this, assuming we already have access to a list of `vertices` and `edges`:
+Assume we use the following code to construct the graph, given a list of `vertices` and `edges`: 
 
 ```python
-d = {v: {} for v in vertices}  
-
-for (u, v, weight) in edges:
-    d[u][v] = weight
+1  d = {v: {} for v in vertices}  
+2  for (u, v, weight) in edges:
+3      d[u][v] = weight
 ```
 
 ## Solution
 
-Python dictionaries provide operations in expected \\(O(1)\\) time, so constructing this data structure should take expected \\(O(V+E)\\). 
+Python dictionaries provide operations in expected \\(\Theta(1)\\) time, so constructing this data structure should take expected \\(\Theta(\|V\|+\|E\|)\\) time. 
 
-But what's the worst case? Python implements dictionares using a hash table with [open addressing](https://en.wikipedia.org/wiki/Open_addressing) (you can even check out the [source code](https://github.com/python/cpython/blob/master/Objects/dictobject.c)). If every key hashes to the same value, then our dictionaries are doomed: every time you add a new key, you'll need to probe through every existing key before you find an open slot. Therefore, adding \\(x\\) keys to a dictionary will take \\(O(1 + 2 + \cdots + x)= O(x^2)\\) time.
+But what's the worst case? Python implements dictionares using a hash table with [open addressing](https://en.wikipedia.org/wiki/Open_addressing) (you can even check out the [source code](https://github.com/python/cpython/blob/master/Objects/dictobject.c)). If every key hashes to the same value, then our dictionaries are doomed: every time you add a new key, you'll need to probe through every existing key before you find an open slot. Therefore, inserting \\(x\\) keys into a dictionary will take \\(\Theta(1 + 2 + \cdots + x)= \Theta(x^2)\\) time.
 
-How do we use this information? First, constructing the vertex dictionary takes \\(O(V^2)\\).
+Alright, so label the vertices \\(v_1, v_2, v_3, \dots, v_{\|V\|}\\) **in the order of insertion** into \\(d\\), and let \\(\text{deg}(v)\\) be the outdegree of vertex \\(v\\). We'll also use the following facts: 
 
-Now let's look at the edges. In the worst case all the edges are in same neighbor dictionary, so perhaps \\(O(E^2)\\) is the upper bound? Or, each vertex has at most \\(V - 1\\) neighbors, which leads to \\(O(V^2)\\) for each neighbor dictionary and \\(O(V^3)\\) in total.
+\\[\begin{aligned} \text{deg}(v) &< \|V\| \quad \text{for all}\,\, v \in V \cr \cr \sum_{i=1}^{\|V\|} \text{deg}(v_i) &= \|E\| \end{aligned}\\]
 
-These are fine upper bounds, but we can do better by looking at the degrees of each vertex! Label the vertices \\(1, 2, \dots, V\\) and let their outdegrees be \\(d_1, d_2, \dots, d_V\\). Now our bound is \\(O(d_1^2 + d_2^2 + \dots + d_V^2)\\). However, using the fact that \\(d_i < V\\) for all \\(i\\), we have the following:
+Now let's look at the code. First, for line 1, constructing the vertex dictionary takes \\(\Theta(\|V\|^2)\\) time.
 
-\\[\begin{aligned}d_1^2 + d_2^2 + \dots + d_V^2 &< V\cdot d_1 +  V\cdot d_2 + \dots +  V\cdot d_V  \cr \cr &= V(d_1 + d_2 + \dots + d_V) \cr \cr &= VE \end{aligned}\\]
+For line 3, we have two separate parts: 
 
-So our upper bound is actually \\(O(VE)\\), leading to a final answer of \\(O(V^2+VE)\\). As long as \\(E \ge V\\), we can simplify this to \\(O(VE)\\)! I'll leave it to you to demonstrate that this upper bound is tight.
+* For every vertex \\(v_i\\) there are \\(\text{deg}(v_i)\\) accesses to \\(d[v_i]\\), each of which requires probing through \\(i\\) keys before finding the right value. 
+* In addition, for every edge \\( (v_i, v_j) \\), we need to insert \\(v_j\\) into neighbor dictionary \\(d[v_i]\\). Over all neighbors of \\(v_i\\), this takes \\(\Theta(\text{deg}(v_i))^2\\) time.
 
+Summing this up over all vertices, we have:
+
+\\[\begin{aligned} \sum_{i=1}^{\|V\|} i \cdot \text{deg}(v_i) + \text{deg}(v_i)^2 &\le \sum_{i=1}^{\|V\|} \|V\| \cdot \text{deg}(v_i) + \|V\| \cdot \text{deg}(v_i) \cr \cr &= 2  \cdot \|V\| \sum_{i=1}^{\|V\|} \text{deg}(v_i) \cr \cr &= 2 \cdot \|V\| \cdot \|E\| \end{aligned}\\]
+
+In total, we have an upper bound of \\(O(\|V\|^2+\|V\| \cdot \|E\|)\\). We know the graph is connected, so it follows that \\(\|E\| \ge \|V\| - 1\\) and we can simplify this to \\(O(\|V\| \cdot \|E\|)\\).
+
+I'll leave it to you to demonstrate that this upper bound is tight, leading to a final answer of \\(\Theta(\|V\| \cdot \|E\|)\\) in the worst case!
+ 
 ## Implementation
 
 Let's demonstrate this upper bound using code! We can emulate worst-case behavior by wrapping everything with an object that has a constant hash value:
