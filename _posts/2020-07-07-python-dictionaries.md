@@ -69,7 +69,7 @@ d = {}
 N = 1000
 
 last_size = sys.getsizeof(d)
-times = []
+
 for i in range(N):
     d[i] = "foo"
     if sys.getsizeof(d) > last_size:
