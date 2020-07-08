@@ -8,9 +8,9 @@ date: 2020-07-07
 category: articles
 ---
 
-In my experience, when students learn data structures they (1) learn how the internals work theoretically (2) use off-the-shelf data structures to solve problems and (3) sometimes implement these data structures from scratch. However, I don't often see classes diving into the internals of these off-the-shelf data structure implementations, and the interesting design decisions and practical considerations that accompany them.
+In my experience, when students learn data structures they (1) learn how they work theoretically (2) use off-the-shelf data structures to solve problems and (3) sometimes implement these data structures from scratch. However, I don't often see classes exploring and experimenting with these off-the-shelf data implementations, and the interesting practical considerations that come into play.
 
-When I was a TA for [6.006](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/), I had students answer these questions about Python dictionaries (this is slightly shortened and modified). I hope they were a fun way to better understand hash tables and experiment with them "in the wild." 
+When I was a TA for [6.006](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/), I had students answer these questions about Python dictionaries. I hope they were a fun way to better understand hash tables and experiment with them "in the wild." 
 
 ## Problems
 
@@ -20,7 +20,7 @@ Using a Python program, determine how the size of a dictionary changes as you in
 
 ### Problem 2
 
-Let the _compactness factor_ of a dictionary be \\(\text{(size of dictionary entries)}/\text{(total size of the dictionary)}\\). What is the compactness factor of a Python dictionary, and how does that compare to the load factor? How does this change over different versions of Python? It might help to read the [CPython source](https://github.com/python/cpython). 
+Let the _compactness factor_ of a dictionary be \\(\text{(size of dictionary entries)}/\text{(total size of the dictionary)}\\). What is the maximum compactness factor of a Python dictionary, and how does that compare to the load factor? How does this change over different versions of Python? It might help to read the [CPython source](https://github.com/python/cpython). 
 
 ### Problem 3
 
@@ -137,7 +137,7 @@ Unsurprisingly, these correspond to when the dictionary size changes! This is be
 
 First, looking at [dict-common.h](https://github.com/python/cpython/blob/3.7/Objects/dict-common.h) and [pyport.h](https://github.com/python/cpython/blob/3.7/Include/pyport.h), we can deduce that the size of a dictionary entry is 24 bytes. 
 
-At this point, you could run `24 * len(d) / sys.getsizeof(d)` to determine the compactness factor. On Python 2, this returns \\(2/3\\), which matches the load factor stated in [dictobject.c](https://github.com/python/cpython/blob/3.7/Objects/dictobject.c). 
+At this point, you could run `24 * len(d) / sys.getsizeof(d)` right before table doubling to determine the compactness factor. On Python 2, this returns \\(2/3\\), which matches the load factor stated in [dictobject.c](https://github.com/python/cpython/blob/3.7/Objects/dictobject.c). 
 
 On Python 3.7, however, this ratio is \\(8/9\\) for smaller dictionary sizes, and \\(4/5\\) for larger dictionary sizes. The load factor is actually still \\(2/3\\), but [Python dictionaries have gotten more compact](https://mail.python.org/pipermail/python-dev/2016-September/146327.html). At a high-level, if a dictionary has capacity \\(n\\), then it'll store \\(2/3n\\) 24-byte entries that are indirectly accessed through \\(n\\) _indices_. The size of these indices depends on the size of the dictionary: 1 byte if the size is below \\(2^7 = 128\\), 2 bytes if below \\(2^{15}= 32,768\\) and so on. So for a dictionary with capacity \\(2^7 < n < 2^{15}\\), for example, the compactness factor will be \\(24 \cdot (2/3 n) / (24 \cdot (2/3 n) + 2 \cdot n) = 8/9\\). 
 
