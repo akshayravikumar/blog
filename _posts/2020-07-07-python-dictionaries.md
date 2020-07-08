@@ -142,8 +142,7 @@ On Python 3.7, however, this ratio is \\(8/9\\) for smaller dictionary sizes, an
 
 ### Problem 3
 
-If we insert \\(k\\) keys into a dictionary with \\(n\\) hash values, we expect \\(k/n\\) keys to be assigned to each hash value. For each value of \\(n\\), inserting these \\(k/n\\) values should take \\(1 + 2 + \dots + k/n = \Theta(k^2/n^2)\\) time. This is because every time we add a new key, we need to probe through all existing keys with the same hash value before we find an open slot. Adding over all \\(n\\), the time it takes to insert all \\(k\\) keys should be \\(\Theta(k^2/n)\\) in expectation. 
-Note that this isn't a super accurate bound, because probe sequences can overlap.
+If we insert \\(k\\) keys into a dictionary with \\(n\\) hash values, we expect \\(k/n\\) keys to be assigned to each hash value. For each value of \\(n\\), inserting these \\(k/n\\) values should take \\(1 + 2 + \dots + k/n = \Theta(k^2/n^2)\\) time. This is because every time we add a new key, we need to probe through all existing keys with the same hash value before we find an open slot. Adding over all \\(n\\), the time it takes to insert all \\(k\\) keys should be \\(\Theta(k^2/n)\\) in expectation. Note that probe sequences can overlap, so this isn't 100% accurate.
 
 We can verify this using the following code, which adds \\(k\\) `A(n)` objects to a table and measures how long it takes:
 
