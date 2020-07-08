@@ -1,7 +1,7 @@
 ---
 layout: post-no-feature
-title: Playing with Dictionaries
-description: A few questions to help understand hash tables.
+title: Experimenting with Dictionaries
+description: A few questions to help students understand hash tables.
 comments: true
 hidden: true
 date: 2020-07-07
