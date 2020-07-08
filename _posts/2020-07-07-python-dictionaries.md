@@ -16,7 +16,7 @@ When I was a TA for [6.006](https://ocw.mit.edu/courses/electrical-engineering-a
 
 ### Problem 1
 
-Using a Python program, determine how the size of a dictionary changes as you insert keys. How does this affect insertion time? Explain.
+Using a Python program, determine how the size of a dictionary changes as you insert keys. How does this affect insertion time, and why?
 
 ### Problem 2
 
