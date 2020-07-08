@@ -8,7 +8,7 @@ date: 2020-07-07
 category: articles
 ---
 
-In my experience, when students learn data structures they (1) learn how they work theoretically (2) use off-the-shelf data structures to solve problems and (3) sometimes implement these data structures from scratch. However, I don't often see classes exploring and experimenting with these off-the-shelf data implementations, and the interesting practical considerations that come into play.
+In my experience, when students learn data structures they (1) learn how they work theoretically (2) use off-the-shelf data structures to solve problems and (3) sometimes implement these data structures from scratch. However, I don't often see classes exploring and experimenting with these off-the-shelf implementations, and the interesting practical considerations that come into play.
 
 When I was a TA for [6.006](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/), I had students answer these questions about Python dictionaries. I hope they were a fun way to better understand hash tables and experiment with them "in the wild." 
 
