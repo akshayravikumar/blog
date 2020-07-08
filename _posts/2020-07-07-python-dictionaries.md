@@ -56,9 +56,7 @@ class B:
 
 Here are brief responses to these questions: note that I'm running these on my Macbook Pro using Python 3.7.7.
 
-Recall that Python implements dictionaries using a hash table with [open addressing](https://en.wikipedia.org/wiki/Open_addressing) (here's the [source code](https://github.com/python/cpython/blob/master/Objects/dictobject.c)). It uses an underlying array that stores key-value pairs, and Python uses hash values to "probe" through this array and find a slot for each key.
-
-If you don't want to read through all the code, there are a bunch of resources explaining the internals of a Python dictionary, like [this](https://stackoverflow.com/questions/327311/how-are-pythons-built-in-dictionaries-implemented) and [this](https://just-taking-a-ride.com/inside_python_dict/chapter1.html).
+Recall that Python implements dictionaries using a hash table with [open addressing](https://en.wikipedia.org/wiki/Open_addressing) (here's the [source code](https://github.com/python/cpython/blob/master/Objects/dictobject.c)). It uses an underlying array that stores key-value pairs, and Python uses hash values to "probe" through this array and find a slot for each key. If you don't want to read through all the code, there are a bunch of resources explaining the internals of a Python dictionary, like [this](https://stackoverflow.com/questions/327311/how-are-pythons-built-in-dictionaries-implemented) and [this](https://just-taking-a-ride.com/inside_python_dict/chapter1.html).
 
 ### Problem 1
 
