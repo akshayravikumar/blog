@@ -159,11 +159,11 @@ def create_dict(n, k):
 
 First, for a few values of \\(n\\) we can see how insertion time varies with \\(k\\). Indeed, a regression will verify that insertion time increases quadratically with \\(k\\).
 
-<img src="/images/chart1.svg" style="width:min(100%, 800px)">
+<img src="/blog/images/chart1.svg" style="width:min(100%, 800px)">
 
 Second, for a fixed value of \\(k = 2000\\) we can see how insertion time varies with \\(n\\). It shouldn't be hard to verify that time is proportional to \\(1/n\\).
 
-<img src="/images/chart2.svg" style="width:min(100%, 800px)">
+<img src="/blog/images/chart2.svg" style="width:min(100%, 800px)">
 
 Cool, these are consistent with our predictions! 
 
