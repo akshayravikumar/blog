@@ -16,15 +16,16 @@ When I was a TA for [6.006](https://ocw.mit.edu/courses/electrical-engineering-a
 
 ### Problem 1
 
-Using a Python program, determine how the size of a dictionary changes as you insert keys. How does this affect insertion time? Explain why this happens.
+Using a Python program, determine how the size of a dictionary changes as you insert keys. How does this affect insertion time? Explain.
 
 ### Problem 2
 
-Let the _compactness factor_ of a dictionary be \\(\text{(size of dictionary entries)}/\text{(total size of the dictionary)}\\). What is the maximum compactness factor of a Python dictionary, and how does that compare to the load factor? How does this change over different versions of Python? It might help to read the [CPython source](https://github.com/python/cpython). 
+Let the _compactness factor_ of a dictionary be \\(\text{(size of dictionary entries)}/\text{(total size of the dictionary)}\\). What is the maximum compactness factor of a Python dictionary, and how does that compare to the load factor? How does this change over different versions of Python, and why? It might help to read the [CPython source](https://github.com/python/cpython). 
 
 ### Problem 3
 
-Consider object `A`, which returns a deterministic hash value in the range \\([1, n]\\). For various values of \\(n\\) and \\(k\\), compute how long it takes to insert \\(k\\) `A(n)` objects into a dictionary. How long does this take in terms of \\(n\\) and \\(k\\), and does this match what you theoretically expect? Explain why. 
+Consider object `A`, which returns a deterministic hash value in the range \\([1, n]\\). For various values of \\(n\\) and \\(k\\), compute how long it takes to insert \\(k\\) `A(n)` objects into a dictionary. How long does this take in terms of \\(n\\) and \\(k\\), and does this match what you theoretically expect? How does this compare to the "real world," and what explains the difference?
+
 
 ```python
 import random    
@@ -161,13 +162,13 @@ First, for a few values of \\(n\\) we can see how insertion time varies with \\(
 
 <img src="/images/chart1.svg" style="width:min(100%, 800px)">
 
-Second, for a fixed value of \\(k = 2000\\) we can see how insertion time varies with \\(n\\). It shouldn't be hard to demonstrate verify that time is proportional to \\(1/n\\).
+Second, for a fixed value of \\(k = 2000\\) we can see how insertion time varies with \\(n\\). It shouldn't be hard to verify that time is proportional to \\(1/n\\).
 
 <img src="/images/chart2.svg" style="width:min(100%, 800px)">
 
 Cool, these are consistent with our predictions! 
 
-So why doesn't Python run into this slowdown? In short, true collisions rarely happen in practice. Python also makes sure to use every bit of the hash value--see the `perturb` logic in [dictobject.c](https://github.com/python/cpython/blob/3.7/Objects/dictobject.c)--so it isn't as simple as taking hash values mod the length of the array. For this reason, insertion cost is dominated by different probe sequences overlapping, rather than two keys having the exact same probe sequence. It isn't trivial, but one can prove that adding \\(k\\) keys takes \\(\Theta(k)\\) time in expectation.
+So why doesn't Python run into this slowdown? In short, true collisions rarely happen in practice. Python also makes sure to use every bit of the hash value--see the `perturb` logic in [dictobject.c](https://github.com/python/cpython/blob/3.7/Objects/dictobject.c)--so it isn't as simple as taking hash values mod the length of the array. For this reason, insertion cost is dominated by different probe sequences overlapping, rather than two keys having the exact same probe sequence. [It isn't trivial](https://en.wikipedia.org/wiki/Linear_probing#Analysis), but one can prove that adding \\(k\\) keys takes \\(\Theta(k)\\) time in expectation.
 
 ### Problem 4
 
