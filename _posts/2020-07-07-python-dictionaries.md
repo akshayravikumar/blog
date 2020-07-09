@@ -8,9 +8,9 @@ date: 2020-07-07
 category: articles
 ---
 
-In my experience, when students learn data structures they (1) learn how they work theoretically (2) use off-the-shelf data structures to solve problems and (3) sometimes implement these data structures from scratch. However, I don't often see classes exploring and experimenting with these off-the-shelf implementations, and the interesting practical considerations that come into play.
+In my experience, when students learn data structures they (1) learn how they work theoretically (2) use off-the-shelf data structures to solve problems and (3) sometimes implement these data structures from scratch. However, I don't often see classes exploring and experimenting with off-the-shelf implementations, and the interesting practical considerations that come into play.
 
-When I was a TA for [6.006](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/), I had students answer these questions about Python dictionaries. I hope they were a fun way to better understand hash tables and experiment with them "in the wild." I definitely learned a lot while preparing this!
+When I was a TA for [6.006](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/), I had students answer these questions about Python dictionaries. I hope they were a fun way to better understand hash tables and experiment with them "in the wild"--I definitely learned a lot while preparing this!
 
 ## Problems
 
@@ -20,7 +20,7 @@ Using a Python program, determine how the size of a dictionary changes as you in
 
 ### Problem 2
 
-Let the _compactness factor_ of a dictionary be \\(\text{(size of dictionary entries)}\\) divided by \\(\text{(total size of the dictionary)}\\). What is the maximum compactness factor of a Python dictionary, and how does that compare to the load factor? How does this change over different versions of Python, and why? It might help to read the [CPython source](https://github.com/python/cpython). 
+Define the _compactness factor_ of a dictionary as \\(\text{(size of dictionary entries)}\\) divided by \\(\text{(total size of the dictionary)}\\). What is the maximum compactness factor of a Python dictionary, and how does that compare to the load factor? How does this change over different versions of Python, and why? It might help to read the [CPython source](https://github.com/python/cpython). 
 
 ### Problem 3
 
@@ -167,7 +167,7 @@ Second, for a fixed value of \\(k = 2000\\) we can see how insertion time varies
 
 Cool, these are consistent with our predictions! 
 
-So why doesn't Python run into this slowdown? In short, true collisions rarely happen in practice. Python also makes sure to use every bit of the hash value--see the `perturb` logic in [dictobject.c](https://github.com/python/cpython/blob/3.7/Objects/dictobject.c)--so it isn't as simple as taking hash values mod the length of the array. For this reason, insertion cost is dominated by different probe sequences overlapping, rather than two keys having the exact same probe sequence. [It isn't trivial](https://en.wikipedia.org/wiki/Linear_probing#Analysis), but one can prove that adding \\(k\\) keys takes \\(\Theta(k)\\) time in expectation.
+So why doesn't Python run into this slowdown? In short, true collisions rarely happen in practice. Python also makes sure to use every bit of the hash value, as opposed to something naive like taking hash values mod the length of the array (see the `perturb` logic in [dictobject.c](https://github.com/python/cpython/blob/master/Objects/dictobject.c)). For this reason, insertion cost is dominated by different probe sequences overlapping, rather than two keys having the exact same probe sequence. [It isn't trivial](https://en.wikipedia.org/wiki/Linear_probing#Analysis), but one can prove that adding \\(k\\) keys takes \\(\Theta(k)\\) time in expectation.
 
 ### Problem 4
 
