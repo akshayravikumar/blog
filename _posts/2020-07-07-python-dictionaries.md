@@ -192,3 +192,6 @@ d[key] = "bar"
 print(len(d))
 ```
 
+Moral of the story: hash functions should be deterministic. 
+
+
