@@ -1,7 +1,7 @@
 ---
 layout: post-no-feature
 title: Hashing it Out
-description: A few questions to help students understand hash tables.
+description: A few questions to help understand hash tables.
 comments: true
 hidden: true
 date: 2020-07-10
