@@ -20,7 +20,7 @@ Using a Python program, determine how the size of a dictionary changes as you in
 
 ### Problem 2
 
-Let the _compactness factor_ of a dictionary be \\(\text{(size of dictionary entries)}/\text{(total size of the dictionary)}\\). What is the maximum compactness factor of a Python dictionary, and how does that compare to the load factor? How does this change over different versions of Python, and why? It might help to read the [CPython source](https://github.com/python/cpython). 
+Let the _compactness factor_ of a dictionary be \\(\text{(size of dictionary entries)}\\) divided by \\(\text{(total size of the dictionary)}\\). What is the maximum compactness factor of a Python dictionary, and how does that compare to the load factor? How does this change over different versions of Python, and why? It might help to read the [CPython source](https://github.com/python/cpython). 
 
 ### Problem 3
 
