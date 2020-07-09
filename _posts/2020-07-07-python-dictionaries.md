@@ -167,7 +167,7 @@ Second, for a fixed value of \\(k = 2000\\) we can see how insertion time varies
 
 Cool, these are consistent with our predictions! 
 
-So why doesn't Python run into this slowdown? In short, true collisions rarely happen in practice. Python also makes sure to use every bit of the hash value, as opposed to something naive like taking hash values mod the length of the array (see the `perturb` logic in [dictobject.c](https://github.com/python/cpython/blob/master/Objects/dictobject.c)). For this reason, insertion cost is dominated by different probe sequences overlapping, rather than two keys having the exact same probe sequence. [It isn't trivial](https://en.wikipedia.org/wiki/Linear_probing#Analysis), but one can prove that adding \\(k\\) keys takes \\(\Theta(k)\\) time in expectation.
+So why doesn't Python run into this slowdown? In short, true collisions rarely happen in practice. Python also makes sure to use every bit of the hash value, as opposed to naively taking hash values mod the length of the array (see the `perturb` logic in [dictobject.c](https://github.com/python/cpython/blob/master/Objects/dictobject.c)). For this reason, insertion cost is dominated by different probe sequences overlapping, rather than two keys having the exact same probe sequence. [It isn't trivial](https://en.wikipedia.org/wiki/Linear_probing#Analysis), but one can prove that adding \\(k\\) keys takes \\(\Theta(k)\\) time in expectation.
 
 ### Problem 4
 
