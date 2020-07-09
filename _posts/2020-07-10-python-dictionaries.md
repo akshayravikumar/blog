@@ -4,7 +4,7 @@ title: Hashing it Out
 description: A few questions to help students understand hash tables.
 comments: true
 hidden: true
-date: 2020-07-07
+date: 2020-07-10
 category: articles
 ---
 
