@@ -26,7 +26,7 @@ What is the maximum compactness factor of a Python dictionary, and how does that
 
 ### Problem 3
 
-Consider object `A`, which returns a random integer in \\([1, n]\\) on **every** call to `__hash__`. What's so bad about this? Provide two examples of problematic code using `A` objects and dictionaries, and explain what goes wrong.
+Consider object `A`, which returns a random integer in the range \\([1, n]\\) on **every** call to `__hash__`. What's so bad about this? Provide two examples of problematic code using `A` objects and dictionaries, and explain what goes wrong.
 
 ```python
 import random    
