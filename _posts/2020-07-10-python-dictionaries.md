@@ -196,7 +196,7 @@ Weird. The compactness factor approaches \\(8/9\\), but suddenly shifts to \\(4/
 
 So what's changed? In the old implementation, dictionaries stored a single array of 24-byte entries. If a dictionary has capacity \\(c\\) and a maximum load factor of \\(2/3\\), then its maximum compactness factor is \\((24 \cdot \frac{2}{3} c)/(24 \cdot c) = 2/3\\).
 
-This isn't very efficient: if a third of the entries are always going to be unoccupied, we're wasting 24 bytes on each of them. Python 3.6 solves this by storing an array of \\(c\\) _indices_, which it uses to access a separate array of \\(\frac{2}{3} c\\) 24-byte entries. When inserting a new key, Python (1) adds the key-value pair to the entries array (2) probes through the indices array until it finds an open slot, and (3) stores the index of the new entry.
+This isn't very efficient: if a third of the entries are always going to be unoccupied, we're wasting 24 bytes on each of them. Python 3.6 solves this by storing an array of \\(c\\) _indices_, which it uses to access a separate array of \\(\frac{2}{3} c\\) 24-byte entries. When inserting a new key, Python (1) adds the key-value pair to the entries array (2) probes through the indices array until it finds an open slot and (3) stores the index of the new entry.
 
 The size of these indices depends on the the value of \\(c\\): 1 byte if \\(c < 2^8 = 256\\), 2 bytes if \\(c < 2^{16}= 65,536\\) and so on. So for a dictionary with capacity \\(2^8 \le c < 2^{16}\\), the maximum compactness factor will be \\((24 \cdot \frac{2}{3} c) / (24 \cdot \frac{2}{3} c + 2 \cdot c) = 8/9\\), which matches our observations. This is a pretty sizable improvement!
 
