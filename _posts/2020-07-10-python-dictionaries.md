@@ -60,9 +60,11 @@ class B:
 
 ## Solutions
 
-Here are brief responses to these questions: note that I'm running these on my Macbook Pro using Python 3.7.7.
+Here are brief responses to these questions: unless otherwise stated, I'm running these on my Macbook Pro using Python 3.7.7.
 
-Recall that Python implements dictionaries using a hash table with [open addressing](https://en.wikipedia.org/wiki/Open_addressing) (here's the [source code](https://github.com/python/cpython/blob/master/Objects/dictobject.c)). Long story short, dictionaries have an underlying array that stores key-value pairs. When inserting a key, Python uses hash values to "probe" through this array in a specific order until it finds an open slot for that key. If you don't want to read through all the code, there are a bunch of resources explaining the internals of a Python dictionary, like [this](https://stackoverflow.com/questions/327311/how-are-pythons-built-in-dictionaries-implemented) and [this](https://just-taking-a-ride.com/inside_python_dict/chapter1.html).
+Recall that Python implements dictionaries using a hash table with [open addressing](https://en.wikipedia.org/wiki/Open_addressing). Long story short, dictionaries have an underlying array that stores key-value pairs. When inserting a key, Python uses hash values to "probe" through this array in a specific order until it finds an open slot for that key. These solutions assume you have a basic understanding of open addressing.
+
+If you don't want to read through all the [source code](https://github.com/python/cpython/blob/master/Objects/dictobject.c), there are a bunch of resources explaining the internals of a Python dictionary, like [this](https://stackoverflow.com/questions/327311/how-are-pythons-built-in-dictionaries-implemented) and [this](https://just-taking-a-ride.com/inside_python_dict/chapter1.html).
 
 ### Problem 1
 
@@ -141,9 +143,68 @@ Unsurprisingly, these correspond to when the dictionary size doubles! This is be
 
 First, looking at [dict-common.h](https://github.com/python/cpython/blob/3.7/Objects/dict-common.h) and [pyport.h](https://github.com/python/cpython/blob/3.7/Include/pyport.h), we can deduce that the size of a dictionary entry is 24 bytes. 
 
-At this point, you can run `24 * len(d) / sys.getsizeof(d)` right before table doubling to determine the compactness factor. On Python 2, this returns \\(2/3\\), which matches the load factor stated in [dictobject.c](https://github.com/python/cpython/blob/3.7/Objects/dictobject.c). 
+Given a dictionary `d`, we can compute `24 * len(d) / sys.getsizeof(d)` to determine the compactness factor. This ratio is maximized right before the dictionary size doubles. 
 
-On Python 3.7, however, this ratio is \\(8/9\\) for smaller dictionary sizes, and \\(4/5\\) for larger dictionary sizes. The load factor is actually still \\(2/3\\), but [Python dictionaries have gotten more compact](https://mail.python.org/pipermail/python-dev/2016-September/146327.html). At a high level, if a dictionary has capacity \\(c\\), then it'll store \\(\frac{2}{3} c\\) 24-byte entries that are indirectly accessed through \\(c\\) _indices_. The size of these indices depends on the the value of \\(c\\): 1 byte if \\(c < 2^8 = 256\\), 2 bytes if \\(c < 2^{16}= 65,536\\) and so on. So for a dictionary with capacity \\(2^8 \le c < 2^{16}\\), for example, the maximum compactness factor will be \\((24 \cdot \frac{2}{3} c) / (24 \cdot \frac{2}{3} c + 2 \cdot c) = 8/9\\). 
+We can modify our script from Problem 1:
+
+```python
+import sys
+
+d = {}
+N = 100000
+
+last_size = sys.getsizeof(d)
+
+for i in range(N):
+    compactness = len(d) * 24.0 / sys.getsizeof(d)
+    d[i] = "foo"
+    if sys.getsizeof(d) > last_size:
+        print("key", i, "compactness", compactness)
+        last_size = sys.getsizeof(d) 
+```
+
+On Python 2.7, this prints the following:
+
+```
+key 5 compactness 0.428571428571
+key 21 compactness 0.480916030534
+key 85 compactness 0.608591885442
+key 341 compactness 0.651177593889
+key 1365 compactness 0.66272859686
+key 5461 compactness 0.665677948885
+key 21845 compactness 0.666419223299
+key 87381 compactness 0.666604789308
+```
+
+The compactness factor clearly approaches \\(2/3\\), which matches the load factor stated in [dictobject.c](https://github.com/python/cpython/blob/3.7/Objects/dictobject.c). (Also, note that Python 2 has a different table resizing scheme!)
+
+On Python 3.7, this prints the following:
+
+```
+key 5 compactness 0.4838709677419355
+key 10 compactness 0.6382978723404256
+key 21 compactness 0.7682926829268293
+key 42 compactness 0.8456375838926175
+key 85 compactness 0.8916083916083916
+key 170 compactness 0.865874363327674
+key 341 compactness 0.8773584905660378
+key 682 compactness 0.8830384117393181
+key 1365 compactness 0.8859800951968845
+key 2730 compactness 0.8874200888503629
+key 5461 compactness 0.888160034695869
+key 10922 compactness 0.8885213005396317
+key 21845 compactness 0.8887065715603049
+key 43690 compactness 0.7999243224109415
+key 87381 compactness 0.7999627701453185
+```
+
+Weird. So the compactness factor approaches \\(8/9\\), but randomly shifts to \\(4/5\\). In fact, the maximum load factor is still \\(2/3\\), but [Python dictionaries have gotten more compact](https://mail.python.org/pipermail/python-dev/2016-September/146327.html). 
+
+So what's changed? At a high level, the old dictionaries stored a single array of 24-byte entries. Therefore, if a dictionary has capacity \\(c\\) and a maximum load factor of \\(2/3\\), then the maximum compactness factor is \\((24 \cdot \frac{2}{3} c)/(24 \cdot c) = 2/3\\).
+
+This is a bit inefficient: if a third of the entries are always going to be unoccupied, we're wasting 24 bytes on each of them. Python 3.6 solves this by storing an array of \\(c\\) _indices_, which it uses to access a separate array of \\(\frac{2}{3} c\\) 24-byte entries. When inserting a new key, Python (1) adds the key-value pair to the entries array (2) probes through the indices array until it finds an open slot, and (3) stores the index of the new entry.
+
+The size of these indices depends on the the value of \\(c\\): 1 byte if \\(c < 2^8 = 256\\), 2 bytes if \\(c < 2^{16}= 65,536\\) and so on. So for a dictionary with capacity \\(2^8 \le c < 2^{16}\\), the maximum compactness factor will be \\((24 \cdot \frac{2}{3} c) / (24 \cdot \frac{2}{3} c + 2 \cdot c) = 8/9\\). This is a pretty sizable improvement!
 
 ### Problem 3
 
@@ -171,7 +232,7 @@ Moral of the story: hash functions should be deterministic.
 
 ### Problem 4
 
-If we insert \\(k\\) keys into a dictionary with \\(n\\) hash values, we expect \\(k/n\\) keys to be assigned to each hash value. For each value of \\(n\\), inserting these \\(k/n\\) values should take \\(1 + 2 + \dots + k/n = \Theta(k^2/n^2)\\) time. This is because every time we add a new key, we need to probe through all existing keys with the same hash value before we find an open slot. Adding over all \\(n\\), the time it takes to insert all \\(k\\) keys should be \\(\Theta(k^2/n)\\) in expectation. Note that probe sequences can overlap, so this analysis isn't 100% accurate.
+If we insert \\(k\\) keys into a dictionary with \\(n\\) hash values, we expect \\(k/n\\) keys to be assigned to each hash value. For each value of \\(n\\), inserting these \\(k/n\\) values should take \\(1 + 2 + \dots + k/n = \Theta(k^2/n^2)\\) time. This is because every time we add a new key, we need to probe through all existing keys with the same hash value before we find an open slot. Adding over all \\(n\\), the time it takes to insert all \\(k\\) keys should be \\(\Theta(k^2/n)\\) in expectation. Note that probe sequences can overlap, so this analysis isn't 100% accurate--we'll get to that later!
 
 We can verify this using the following code, which adds \\(k\\) `B(n)` objects to a table and measures how long it takes:
 
@@ -196,5 +257,7 @@ Second, for a fixed value of \\(k = 2000\\) we can see how insertion time varies
 
 Cool, these are consistent with our predictions! 
 
-So why doesn't Python run into this slowdown? In short, true collisions rarely happen in practice. Python also makes sure to use every bit of the hash value, as opposed to naively taking hash values mod the length of the array (see the `perturb` logic in [dictobject.c](https://github.com/python/cpython/blob/master/Objects/dictobject.c)). For this reason, insertion cost is dominated by different probe sequences overlapping, rather than two keys having the exact same probe sequence. [It isn't trivial](https://en.wikipedia.org/wiki/Linear_probing#Analysis), but one can prove that adding \\(k\\) keys takes \\(\Theta(k)\\) time in expectation.
+So why doesn't Python run into this slowdown? In short, hash collisions rarely happen in practice. Python also makes sure to use every bit of the hash value, as opposed to naively taking hash values mod the length of the array (see the `perturb` logic in [dictobject.c](https://github.com/python/cpython/blob/master/Objects/dictobject.c)).
+
+In our example, there were so many hash collisions that insertion time was dominated by two keys having the exact same probe sequence. In the real world, however, insertion cost is dominated by different probe sequences overlapping. [It isn't trivial](https://en.wikipedia.org/wiki/Linear_probing#Analysis), but one can prove that inserting \\(k\\) keys into a dictionary takes \\(\Theta(k)\\) time in expectation. 
 
