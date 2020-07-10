@@ -48,7 +48,7 @@ class A:
 
 ### Problem 4
 
-Object `B` differs from `A` in that we return a **deterministic** hash value in the range \\([1, n]\\). For various values of \\(n\\) and \\(k\\), compute how long it takes to insert \\(k\\) `A(n)` objects into a dictionary. Does this match what you theoretically expect? How does this compare to the "real world," and what explains the difference?
+Object `B` differs from `A` in that we return a **deterministic** hash value in the range \\([1, n]\\). For various values of \\(n\\) and \\(k\\), compute how long it takes to insert \\(k\\) `B(n)` objects into a dictionary. Does this match what you theoretically expect? How does this compare to the "real world," and what explains the difference?
 
 
 ```python
