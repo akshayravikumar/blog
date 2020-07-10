@@ -10,7 +10,7 @@ category: articles
 
 In my experience, when students learn data structures they (1) learn how they work theoretically (2) use off-the-shelf data structures to solve problems and (3) sometimes implement these data structures from scratch. However, I don't often see classes exploring the off-the-shelf implementations, and the interesting practical considerations that come along with them.
 
-When I was a TA for [6.006](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/), I had students answer the following questions about Python dictionaries (solutions at the end). I hope they were a fun way to experiment with them "in the wild"--I definitely learned a lot while preparing this! 
+When I was a TA for [6.006](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/), I had students answer the following questions about Python dictionaries. I hope they were a fun way to experiment with them "in the wild"--I definitely learned a lot while preparing this! Solutions are at the end.
 
 ## Problems
 
@@ -22,7 +22,7 @@ Use a Python program to determine how the size of a dictionary, in bytes, change
 
 Assume you have inserted \\(e\\) entries into a hash table that has the capacity to store \\(c\\) entries. Then, define the _load factor_ of the hash table as \\(e/c\\). Recall that the size of a hash table periodically increases to keep the load factor below a certain threshold. 
 
-In addition, define the _compactness factor_ of a hash table as (number of bytes allocated to the \\(e\\) entries) divided by (number of bytes allocated to the entire table). 
+In addition, define the _compactness factor_ of the hash table as (number of bytes allocated to the \\(e\\) entries) divided by (number of bytes allocated to the entire table). 
 
 What is the maximum compactness factor of a Python dictionary, and how does that compare to the load factor? How has this changed over different versions of Python, and why? It might help to read the [CPython source](https://github.com/python/cpython). 
 
@@ -44,7 +44,7 @@ class A:
 
 ### Problem 4
 
-Object `B` differs from `A` in that we return a **deterministic** hash value in the range \\([1, n]\\). For various values of \\(n\\) and \\(k\\), compute how long it takes to insert \\(k\\) `A(n)` objects into a dictionary. How long does this take in terms of \\(n\\) and \\(k\\), and does this match what you theoretically expect? How does this compare to the "real world," and what explains the difference?
+Object `B` differs from `A` in that we return a **deterministic** hash value in the range \\([1, n]\\). For various values of \\(n\\) and \\(k\\), compute how long it takes to insert \\(k\\) `A(n)` objects into a dictionary. Does this match what you theoretically expect? How does this compare to the "real world," and what explains the difference?
 
 
 ```python
@@ -171,7 +171,7 @@ Moral of the story: hash functions should be deterministic.
 
 ### Problem 4
 
-If we insert \\(k\\) keys into a dictionary with \\(n\\) hash values, we expect \\(k/n\\) keys to be assigned to each hash value. For each value of \\(n\\), inserting these \\(k/n\\) values should take \\(1 + 2 + \dots + k/n = \Theta(k^2/n^2)\\) time. This is because every time we add a new key, we need to probe through all existing keys with the same hash value before we find an open slot. Adding over all \\(n\\), the time it takes to insert all \\(k\\) keys should be \\(\Theta(k^2/n)\\) in expectation. Note that probe sequences can overlap, so this isn't 100% accurate.
+If we insert \\(k\\) keys into a dictionary with \\(n\\) hash values, we expect \\(k/n\\) keys to be assigned to each hash value. For each value of \\(n\\), inserting these \\(k/n\\) values should take \\(1 + 2 + \dots + k/n = \Theta(k^2/n^2)\\) time. This is because every time we add a new key, we need to probe through all existing keys with the same hash value before we find an open slot. Adding over all \\(n\\), the time it takes to insert all \\(k\\) keys should be \\(\Theta(k^2/n)\\) in expectation. Note that probe sequences can overlap, so this analysis isn't 100% accurate.
 
 We can verify this using the following code, which adds \\(k\\) `B(n)` objects to a table and measures how long it takes:
 
@@ -180,10 +180,10 @@ import time
 
 def create_dict(n, k):
     d = {}
-    s = time.time()
+    start_time = time.time()
     for i in range(k):
         d[B(n)] = i
-    return time.time() - s
+    return time.time() - start_time
 ```
 
 First, for a few values of \\(n\\) we can see how insertion time varies with \\(k\\). Indeed, a regression will verify that insertion time increases quadratically with \\(k\\).
