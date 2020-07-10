@@ -3,6 +3,7 @@ layout: post-no-feature
 title: "Hello World"
 description: "This is a test."
 comments: true
+visible: true
 category: articles
 ---
 

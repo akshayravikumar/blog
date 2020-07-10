@@ -7,11 +7,10 @@ layout: nil
         <loc>{{ site.url }}</loc>
     </url>
 
-    {% for post in site.posts %}
-    {% if post.hidden != true %}
+    {% assign visible_posts = site.posts | where: "visible", "true" %}
+    {% for post in visible_posts %}
     <url>
         <loc>{{ site.url }}{{ post.url }}</loc>
     </url>
-    {% endif %}
     {% endfor %}
 </urlset>

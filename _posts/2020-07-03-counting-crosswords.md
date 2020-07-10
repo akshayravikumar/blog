@@ -3,6 +3,7 @@ layout: post
 title: "Counting Crosswords, Part 1"
 description: "An incredibly useless but very fun side project."
 comments: true
+visible: true
 date: 2020-07-03
 category: articles
 image:
