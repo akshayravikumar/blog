@@ -20,11 +20,9 @@ Use a Python program to determine how the size of a dictionary, in bytes, change
 
 ### Problem 2
 
-Assume you have inserted \\(e\\) entries into a hash table that has the capacity to store \\(c\\) entries. Then, define the _load factor_ of the hash table as \\(e/c\\). Recall that the size of a hash table periodically increases to keep the load factor below a certain threshold. 
+Assume you have inserted \\(e\\) entries into a hash table that has the capacity to store \\(c\\) entries. Define the _load factor_ of the hash table as \\(e/c\\). In addition, define the _compactness factor_ of the hash table as (number of bytes allocated to the \\(e\\) entries) divided by (number of bytes allocated to the entire table). 
 
-In addition, define the _compactness factor_ of the hash table as (number of bytes allocated to the \\(e\\) entries) divided by (number of bytes allocated to the entire table). 
-
-What is the maximum compactness factor of a Python dictionary, and how does that compare to the load factor? How has this changed over different versions of Python, and why? It might help to read the [CPython source](https://github.com/python/cpython). 
+What is the maximum compactness factor of a Python dictionary, and how does that compare to the maximum load factor? How has this changed over different versions of Python, and why? It might help to read the [CPython source](https://github.com/python/cpython). Recall that the size of a hash table periodically increases to keep the load factor below a certain threshold.
 
 ### Problem 3
 
@@ -145,7 +143,7 @@ First, looking at [dict-common.h](https://github.com/python/cpython/blob/3.7/Obj
 
 Given a dictionary `d`, we can compute `24 * len(d) / sys.getsizeof(d)` to determine the compactness factor. This ratio is maximized right before the dictionary size doubles. 
 
-We can modify our script from Problem 1:
+To measure the compactness factor, we can modify our script from Problem 1:
 
 ```python
 import sys
@@ -176,7 +174,7 @@ key 21845 compactness 0.666419223299
 key 87381 compactness 0.666604789308
 ```
 
-The compactness factor clearly approaches \\(2/3\\), which matches the load factor stated in [dictobject.c](https://github.com/python/cpython/blob/3.7/Objects/dictobject.c). (Also, note that Python 2 has a different table resizing scheme!)
+The compactness factor clearly approaches \\(2/3\\), which matches the load factor stated in [dictobject.c](https://github.com/python/cpython/blob/3.7/Objects/dictobject.c). (Also, note that Python 2 has a different table resizing scheme.)
 
 On Python 3.7, this prints the following:
 
@@ -198,7 +196,7 @@ key 43690 compactness 0.7999243224109415
 key 87381 compactness 0.7999627701453185
 ```
 
-Weird. So the compactness factor approaches \\(8/9\\), but randomly shifts to \\(4/5\\). In fact, the maximum load factor is still \\(2/3\\), but [Python dictionaries have gotten more compact](https://mail.python.org/pipermail/python-dev/2016-September/146327.html). 
+Weird. The the compactness factor approaches \\(8/9\\), but suddenly shifts to \\(4/5\\). In fact, the maximum load factor is still \\(2/3\\), but [Python dictionaries have gotten more compact](https://mail.python.org/pipermail/python-dev/2016-September/146327.html). 
 
 So what's changed? At a high level, the old dictionaries stored a single array of 24-byte entries. Therefore, if a dictionary has capacity \\(c\\) and a maximum load factor of \\(2/3\\), then the maximum compactness factor is \\((24 \cdot \frac{2}{3} c)/(24 \cdot c) = 2/3\\).
 
