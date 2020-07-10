@@ -257,5 +257,5 @@ Cool, these are consistent with our predictions!
 
 So why doesn't Python run into this slowdown? In short, hash collisions rarely happen in practice. Python also makes sure to use every bit of the hash value, as opposed to naively taking hash values mod the length of the array (see the `perturb` logic in [dictobject.c](https://github.com/python/cpython/blob/master/Objects/dictobject.c)).
 
-In our example, there were so many hash collisions that insertion time was dominated by two keys having the exact same probe sequence. In the real world, however, insertion cost is dominated by different probe sequences overlapping. [It isn't trivial](https://en.wikipedia.org/wiki/Linear_probing#Analysis), but one can prove that inserting \\(k\\) keys into a dictionary takes \\(\Theta(k)\\) time in expectation. 
+In our example, there were so many hash collisions that insertion time was dominated by two keys having the exact same probe sequence. In the real world, however, insertion time is dominated by different probe sequences overlapping. [It isn't trivial](https://en.wikipedia.org/wiki/Linear_probing#Analysis), but one can prove that inserting \\(k\\) keys into a dictionary takes \\(\Theta(k)\\) time in expectation. 
 
