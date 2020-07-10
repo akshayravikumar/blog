@@ -139,11 +139,7 @@ Unsurprisingly, these correspond to when the dictionary size doubles! This is be
 
 ### Problem 2
 
-First, looking at [dict-common.h](https://github.com/python/cpython/blob/3.7/Objects/dict-common.h) and [pyport.h](https://github.com/python/cpython/blob/3.7/Include/pyport.h), we can deduce that the size of a dictionary entry is 24 bytes. 
-
-Given a dictionary `d`, we can compute `24 * len(d) / sys.getsizeof(d)` to determine the compactness factor. This ratio is maximized right before the dictionary size doubles. 
-
-To measure the compactness factor, we can modify our script from Problem 1:
+First, looking at [dict-common.h](https://github.com/python/cpython/blob/3.7/Objects/dict-common.h) and [pyport.h](https://github.com/python/cpython/blob/3.7/Include/pyport.h), we can deduce that the size of a dictionary entry is 24 bytes. Therefore, given a dictionary `d`, its compactness factor is equal to `len(d) * 24 / sys.getsizeof(d)`. This ratio is maximized right before the dictionary resizes. To measure this, we can modify our script from Problem 1:
 
 ```python
 import sys
@@ -198,9 +194,9 @@ key 87381 compactness 0.7999627701453185
 
 Weird. The compactness factor approaches \\(8/9\\), but suddenly shifts to \\(4/5\\). In fact, the maximum load factor is still \\(2/3\\), but [Python dictionaries have gotten more compact](https://mail.python.org/pipermail/python-dev/2016-September/146327.html). 
 
-So what's changed? At a high level, the old dictionaries stored a single array of 24-byte entries. Therefore, if a dictionary has capacity \\(c\\) and a maximum load factor of \\(2/3\\), then the maximum compactness factor is \\((24 \cdot \frac{2}{3} c)/(24 \cdot c) = 2/3\\).
+So what's changed? In the old implementation, dictionaries stored a single array of 24-byte entries. If a dictionary has capacity \\(c\\) and a maximum load factor of \\(2/3\\), then its maximum compactness factor is \\((24 \cdot \frac{2}{3} c)/(24 \cdot c) = 2/3\\).
 
-This is a bit inefficient: if a third of the entries are always going to be unoccupied, we're wasting 24 bytes on each of them. Python 3.6 solves this by storing an array of \\(c\\) _indices_, which it uses to access a separate array of \\(\frac{2}{3} c\\) 24-byte entries. When inserting a new key, Python (1) adds the key-value pair to the entries array (2) probes through the indices array until it finds an open slot, and (3) stores the index of the new entry.
+This isn't very efficient: if a third of the entries are always going to be unoccupied, we're wasting 24 bytes on each of them. Python 3.6 solves this by storing an array of \\(c\\) _indices_, which it uses to access a separate array of \\(\frac{2}{3} c\\) 24-byte entries. When inserting a new key, Python (1) adds the key-value pair to the entries array (2) probes through the indices array until it finds an open slot, and (3) stores the index of the new entry.
 
 The size of these indices depends on the the value of \\(c\\): 1 byte if \\(c < 2^8 = 256\\), 2 bytes if \\(c < 2^{16}= 65,536\\) and so on. So for a dictionary with capacity \\(2^8 \le c < 2^{16}\\), the maximum compactness factor will be \\((24 \cdot \frac{2}{3} c) / (24 \cdot \frac{2}{3} c + 2 \cdot c) = 8/9\\), which matches our observations. This is a pretty sizable improvement!
 
