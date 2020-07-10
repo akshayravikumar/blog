@@ -3,7 +3,7 @@ layout: post-no-feature
 title: Hashing it Out
 description: A deep dive into Python dictionaries.
 comments: true
-visible: false
+visible: true
 date: 2020-07-10
 category: articles
 ---
@@ -22,7 +22,7 @@ Use a Python program to determine how the size of a dictionary, in bytes, change
 
 Assume you have inserted \\(e\\) entries into a hash table that has the capacity to store \\(c\\) entries. Define the _load factor_ of the hash table as \\(e/c\\). In addition, define the _compactness factor_ of the hash table as (number of bytes allocated to the \\(e\\) entries) divided by (number of bytes allocated to the entire table). 
 
-What is the maximum compactness factor of a Python dictionary, and how does that compare to the maximum load factor? How has this changed over different versions of Python, and why? It might help to read the [CPython source](https://github.com/python/cpython). Recall that the size of a hash table periodically increases to keep the load factor below a certain threshold.
+Recall that the size of a hash table periodically increases to keep the load factor below a certain threshold. What is the maximum compactness factor of a Python dictionary, and how does that compare to the maximum load factor? How has this changed over different versions of Python, and why? It might help to read the [CPython source](https://github.com/python/cpython). 
 
 ### Problem 3
 
