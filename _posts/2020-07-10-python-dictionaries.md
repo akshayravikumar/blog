@@ -12,6 +12,12 @@ In my experience, when students learn data structures they (1) learn how they wo
 
 When I was a TA for [6.006](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/), I had students answer the following questions about Python dictionaries. I hope they were a fun way to experiment with hash tables "in the wild"--I definitely learned a lot while preparing this! Solutions are at the end.
 
+## Background
+
+Recall that Python implements dictionaries using a hash table with [open addressing](https://en.wikipedia.org/wiki/Open_addressing). Long story short, dictionaries have an underlying array that stores key-value pairs. When inserting a key, Python uses hash values to "probe" through this array in a specific sequence until it finds an open slot for that key. This post assumes you have a basic understanding of open addressing. If you'd like a refresher on hash table concepts, [this](https://runestone.academy/runestone/books/published/pythonds/SortSearch/Hashing.html) might help.
+
+Also, the internals of a Python dictionary aren't a mystery: you can check out the [source code](https://github.com/python/cpython/blob/master/Objects/dictobject.c)! If you don't want to read through everything, there are a bunch of resources explaining Python dictionaries, like [this](https://stackoverflow.com/questions/327311/how-are-pythons-built-in-dictionaries-implemented) and [this](https://just-taking-a-ride.com/inside_python_dict/chapter1.html). 
+
 ## Problems
 
 ### Problem 1
@@ -59,10 +65,6 @@ class B:
 ## Solutions
 
 Here are brief responses to these questions: unless otherwise stated, I'm running these on my Macbook Pro using Python 3.7.7.
-
-Recall that Python implements dictionaries using a hash table with [open addressing](https://en.wikipedia.org/wiki/Open_addressing). Long story short, dictionaries have an underlying array that stores key-value pairs. When inserting a key, Python uses hash values to "probe" through this array in a specific order until it finds an open slot for that key. These solutions assume you have a basic understanding of open addressing.
-
-If you don't want to read through all the [source code](https://github.com/python/cpython/blob/master/Objects/dictobject.c), there are a bunch of resources explaining the internals of a Python dictionary, like [this](https://stackoverflow.com/questions/327311/how-are-pythons-built-in-dictionaries-implemented) and [this](https://just-taking-a-ride.com/inside_python_dict/chapter1.html).
 
 ### Problem 1
 
