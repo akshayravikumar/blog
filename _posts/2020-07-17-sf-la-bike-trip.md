@@ -29,19 +29,25 @@ After setting a date, we started planning the trip around 3-4 weeks beforehand. 
 
 At a high level, the plan was to follow Highway 1 from Golden Gate Park to Santa Monica Pier, either camping or staying at a motel every night. We'd carry our camping gear, clothes, food, tools, etc. on the back of our bike. We were going to bike for eight days, with a rest day in Big Sur and two days to relax in LA, and take a bus back to the Bay Area. Here was our itinerary:
 
+{::options parse_block_html="true" /}
+<div style="overflow-x: auto">
+
 | Day | Start | End  | Accommodations | Miles | 
 | --- | ----- | ---- | -------------- | ----- |
 | 1   | San Francisco | Santa Cruz  | A friend at UC Santa Cruz  | 90 |
 | 2   | Santa Cruz    | Monterey    | The Monterey Hotel | 53
 | 3   | Monterey      | Big Sur     | Pfeiffer Big Sur State Park  | 42 |
-| 4   | -             | -           | Chill at Pfeiffer | - |
+| 4   | -             | -           | Relax at Pfeiffer | - |
 | 5   | Big Sur       | Cambria     | Cambria Palms Motel | 73 |
-| 6   | Cambria       | Pismo       | Beachwalker Inn and Suites | 45 |
-| 7   | Pismo         | Solvang     | Refugio State Beach | 79
+| 6   | Cambria       | Pismo Beach | Beachwalker Inn and Suites | 45 |
+| 7   | Pismo Beach   | Refugio State Beach | Beach campgrounds | 79
 | 8   | Solvang       | Ventura     | Motel 6 Ventura South | 59 |
 | 9   | Ventura       | Santa Monica| Palm Motel | 56 |
 | 10  | Santa Monica  | Los Angeles | The LA Grand Hotel | - |
 | 11  | Los Angeles   | San Jose    | Megabus for us, [BikeFlights](https://www.bikeflights.com/) for the bikes| - |
+
+</div>
+{::options parse_block_html="false" /}
 
 And here's what we packed: we ended up buying everything we didn't already have from Amazon, REI, or Walmart.
 
@@ -93,23 +99,23 @@ And here's what we packed: we ended up buying everything we didn't already have 
 
 ### Day 1: San Francisco to Santa Cruz 
 
-After getting up early and packing everything, our parents drove us to San Francisco and we were off by 8 AM. It was our longest day in terms of mileage, and honestly it was pretty rough. This was our first time biking with gear, and it turns out adding 30+ pounds to your bike makes a big difference! 
+After getting up early and packing our things, our parents drove us to San Francisco and we were off by 8 AM. It was our longest day in terms of mileage, and honestly it was pretty rough. This was our first time biking with gear, and it turns out adding 30+ pounds to your bike makes a big difference! 
 
-Soon into the trip, Google Maps routed us through around six miles of narrow dirt trails by San Pedro Valley Park--with our bikes and gear, we had to walk most of it. Later, we decided to skip out on a proper lunch since we were worried about time. In the afternoon, I had to take a bunch of breaks while climbing small hills, and at some point my quads stared spasming. Luckily, we were able to make it to UC Santa Cruz before it was too dark, and took a bus to a friend's apartment on campus. We had an indulgent dinner at Saturn Cafe and slept as soon as we could.
+Soon into the trip, Google Maps routed us through around six miles of narrow dirt trails in San Pedro Valley Park; unfortunately, we had to walk most of it. Later, we decided to skip out on a proper lunch since we were worried about time. In the afternoon, I had to take a bunch of breaks while climbing small hills, and at some point my quads stared spasming. Luckily, we were able to make it to UC Santa Cruz before it was too dark, and we took a bus to a friend's apartment on campus. We had an indulgent dinner at Saturn Cafe and slept as soon as we could.
 
 {% include image.html filename="bike_setup.png" description="Our bike setup" maxpx=500 %}
 
 ### Day 2: Santa Cruz to Monterey 
 
-We left UC Santa Cruz at around 8 AM, after spending 20 minutes trying to fend off a few bizarrely hyper squirrels from the balcony where our bikes were parked. As we hoped, this was a really easy day--low mileage and little elevation gain--and we made it to Monterey by around 3 PM. After getting lunch at Ike's, we rented wetsuits and spent some time swimming at the beach! At night, we walked around the touristy parts and got some great vegan Mexican food at El Cantaro.
+After spending 20 minutes trying to fend off a few hyperactive squirrels from the balcony where our bikes were parked, we left UC Santa Cruz at 8 AM. As we hoped, this was a really easy day--low mileage and little elevation gain--and we made it to Monterey by around 3 PM. After getting lunch at Ike's, we rented wetsuits and spent some time swimming at the beach! At night, we walked around Old Fisherman's Wharf and got some great vegan Mexican food at El Cantaro.
 
-{% include image.html filename="swimming.png" description="Swimming in Monterey!" maxpx=500 %}
+{% include image.html filename="swimming.png" description="Swimming in Monterey" maxpx=500 %}
 
 ### Day 3: Monterey to Big Sur 
 
 This was our shortest day, so we took it really easy in the morning. We bought some [butt cream](https://www.amazon.com/Chamois-Buttr-Original-Anti-Chafe-Cream/dp/B000HZGTUS) (we _really_ needed it) and some groceries from Trader Joe's--we planned on staying in Big Sur the next day, so we needed enough food to last until dinner on Day 5.
 
-We weren't planning on it, but we took a detour through 17 Mile Drive, which was absolutely gorgeous. We stopped by the Safeway in Carmel-By-The-Sea to buy more groceries, and demolished a bag of pita bread and pastries for lunch. After a pretty rough climb (which wasn't fun with all the added weight), a stop to buy last-minute camping gear (skewers, foil, etc.), and a last-minute scare where we lost each other for an hour, we finally made it to the Pfeiffer Big Sur campground. Luckily, we had enough sunlight to set up camp.
+We weren't planning on it, but we took a detour through 17 Mile Drive, which was absolutely gorgeous. We stopped by the Safeway in Carmel-By-The-Sea to buy more groceries, and demolished a bag of pita bread and pastries for lunch. After a pretty rough climb (which wasn't fun with all the added weight), a stop to buy last-minute camping gear (skewers, foil, etc.), and a last-minute scare where we lost each other for an hour, we finally made it to the Pfeiffer Big Sur campground. Luckily, we had enough time to set up camp before sundown.
 
 {% include image.html filename="camp.png" description="Camp" maxpx=500 %}
 
@@ -117,33 +123,33 @@ We weren't planning on it, but we took a detour through 17 Mile Drive, which was
 
 Our rest day wasn't too exciting: we did laundry, went on a short 3-mile hike, and strolled around the campground. We were too tired to do anything more intensive: most attractions weren't within walking distance, and we didn't feel like biking. Some squirrels rummaged through our stuff while we were gone, which was mildly annoying.
 
-It was a pretty relaxing day though! We were mostly trying to rest up for the next day, which would be our biggest elevation gain by far.
+It was a pretty relaxing day though! We were primarily trying to rest up for the ride to Cambria, which was supposed to be our toughest day.
 
 {% include image.html filename="gum.png" description="Looks like the squirrels had some chewing gum" maxpx=500 %}
 
 ### Day 5: Big Sur to Cambria
 
-We were really nervous--73 miles and 4,000 feet elevation seemed like a terrible time--so we woke up at 6 AM and started biking by 7:30. To our surprise, it was a really great day! The coast was stunning and the weather wasn't too hot. We were able to rest up at a gas station before the supposedly tough climb to Ragged Point, and we made it without a hitch. We even got to see a bunch of elephant seals on the way.
+We were really nervous--73 miles and 4,000 feet elevation seemed like a terrible time--so we woke up at 6 AM and started biking by 7:30. To our surprise, it was a really great day! The coast was stunning and the weather wasn't too hot. There were a decent number of uphill sections, but they were accompanied by thrilling downhill sections where we took up the entire lane and biked as fast as we could. We were able to rest up at a gas station before the supposedly tough climb to Ragged Point, and we made it without a hitch. We even got to see a bunch of elephant seals on the way.
 
 In the end, we made it to Cambria before 5 PM, and we had time to walk around town and relax at the hotel.
 
-{% include image.html filename="seals.png" description="Elephant Seals!" maxpx=800 %}
+{% include image.html filename="seals.png" description="Elephant seals!" maxpx=800 %}
 
-### Day 6: Cambria to Pismo
+### Day 6: Cambria to Pismo Beach
 
 Another easy day: we left Cambria at around 10 AM and made it to Pismo Beach by 4 PM. We had some time to relax by the beach and grab Thai food at Fay's Fusion.
 
-### Day 7: Pismo to Refugio State Beach
+### Day 7: Pismo Beach to Refugio State Beach
 
 This was a pretty long day (80 miles and 3,000 feet elevation), but by now we had gotten the hang of things so we weren't worried. Even with a Chipotle break in Santa Maria and a Taco Bell/Starbucks break in Buellton ("The Home of Split Pea Soup"), we made it to Refugio State Beach before 7 PM.
 
-We didn't have to book anything: we just showed up, paid $10 a person, and set up shop in the biker camp. It was a large open space with scattered fire pits and benches, and we had the entire thing to ourselves. We really enjoyed this campground: we could see the ocean from our tents, and the showers so wonderful we almost finished our quarters.
+We didn't have to book anything: we just showed up, paid $10 a person, and set up shop in the hiker/biker camp. It was a large open space with assorted fire pits and benches, and we had the entire thing to ourselves. We really enjoyed this campground: we could see the ocean from our tents, and the showers so wonderful we almost finished our quarters.
 
 {% include image.html filename="refugio.jpg" description="Refugio State Beach" maxpx=500 %}
 
 ### Day 8: Refugio State Beach to Ventura
 
-This day started off on a bad note: first, we woke up to find squirrels had somehow (1) made their way into our panniers, (2) taken out a bag of Clif bars and trail mix, (3) eaten almost everything, and (4) scattered the remains within a 50-foot radius of our tent. Seriously, I have no idea how they pulled that off. On top of that, Google Maps tried routing us through a closed path and we had to backtrack, which wasted around six miles. 
+This day started off on a bad note: first, we woke up to find squirrels had somehow (1) made their way into our panniers, (2) taken out a bag of Clif bars and trail mix, (3) eaten almost everything, and (4) scattered the remains within a 50-foot radius of our tent. Seriously, I have no idea how those fuckers pulled that off. On top of that, Google Maps tried routing us through a closed path and we had to double back to our starting point, which wasted around six miles. 
 
 After some vegan food in Santa Barbara, a 7-Eleven stop, and a fresh fruit stand, we made it to Ventura by around 6 PM. The Motel 6 was a bit janky, so we Ubered to a shopping complex in Oxnard, where we watched _Ready or Not?_ and grabbed dinner.
 
@@ -151,23 +157,23 @@ After some vegan food in Santa Barbara, a 7-Eleven stop, and a fresh fruit stand
 
 The ride to Santa Monica was really relaxing--the highway had a separate bike path for a large portion of the ride, which we appreciated. 
 
-...and we finished the trip! I really can't explain our excitement as we saw the Santa Monica pier in the distance, raced towards it, and declared the trip complete. We called our parents to celebrate, and marveled at the fact that this actually happened.
+...and we reached our final destination! I really can't explain our excitement as we saw the Santa Monica pier in the distance, raced towards it, and declared the trip complete. We called our parents to celebrate, and marveled at the fact that this actually happened.
 
-After taking some pictures at the pier, we dropped our stuff off at the hotel, and basically ate at different restaurants along the Third Street Promenade for the remainder of the night.
+After taking some pictures at the pier, we dropped our stuff off at the hotel, and basically ate at various restaurants along the Third Street Promenade for the remainder of the night.
 
 {% include image.html filename="finish.jpg" description="Made it to Santa Monica!" maxpx=500 %}
 
 ### Day 10-11: The rest of the trip
 
-The next day, we took the train to downtown LA. We checked into our hotel, dropped off our bikes at a shop for BikeFlights to pick up, watched Jimmy Kimmel Live (we got tickets beforehand!), and scootered around Hollywood.
+The next day, we took the train to downtown LA. We checked into our hotel, took our bikes to a designated BikeFlights pickup shop, watched *Jimmy Kimmel Live!* (we got tickets in advance), and scootered around Hollywood.
 
-The next day, we pigged out at the Grand Central Market, explored the city, went to Madame Tussaud's, and went to the Griffith observatory. The highlight of the night was definitely sharing seven vegan donuts at Donatsu (we still don't understand how they were so good). 
+The next day, we pigged out at the Grand Central Market, explored the city, had some fun to Madame Tussaud's, and went to the Griffith observatory. The highlight of the night was definitely sharing seven vegan donuts at Donatsu (we still don't understand how they were so good). 
 
 And thus concludes our trip. We went to the bus stop that night, and after a very uncomfortable ride we were back in San Jose by 6 AM. After a short nap, we were back at work before noon.
 
 ## Takeaways
 
-We're still amazed that we pulled this off--it was definitely a highlight of 2019! Although we had a great time, we we definitely learned some lessons. Here are some major takeaways from the trip:
+We're still amazed that we pulled this off--it was definitely a highlight of 2019! Although we had a great time, we definitely learned some lessons. Here are some major takeaways from the trip:
 
 - Google Maps isn't the most reliable, especially if you're biking. At the least, take a look at the proposed route before starting.
 - Along Highway 1, you can find a gas station or convenience store every 20-30 miles--so you really don't need to pack too much food or water.
@@ -175,8 +181,8 @@ We're still amazed that we pulled this off--it was definitely a highlight of 201
 - There's always room for bikers at a campground. We booked Pfeiffer beforehand, but we definitely could have showed up and paid much less.
 - As you can tell, squirrels were a recurring problem during this trip. They are evil, and they will find a way to crawl into your bags and steal your food. Make sure to seal everything.
 - Get a Bluetooth speaker and have some offline music ready! It really livens the mood.
-- Take lots of pictures! Looking back, I wish we had more.
+- Take lots of pictures. Looking back, I wish we had more.
 
-While most people might consider a multi-day tour after having biked for a while, the opposite happened for us--we had essentially no experience beforehand, and this trip opened the door to a new hobby. Now, biking has been one of our saving graces during quarantine: we've done a bunch of rides in the area (the Bay Area is biking paradise!), and we can't wait until our next tour. We'd even love to try redoing SF to LA in half the time.
+While most people might consider a multi-day tour after having biked for a while, the opposite happened for us--we had essentially no experience beforehand, and this trip opened the door to a new hobby. Now, biking has been one of our saving graces during quarantine: we've done a bunch of rides in the area (the Bay is biking paradise), and we can't wait until our next tour. We'd even love to try redoing SF to LA in half the time.
 
-Having made it to the other side, we'd recommend this to anyone--if you're worried you can't physically handle it, fear not! To finish a long-distance tour like this, it takes 25% preparedness, 25% physical fitness, and 50% mental strength. Sometimes you're just grinding through empty highways on a not-that-wide bike lane for hours at a time, and it's going to suck. But the breathtaking scenery when you're by the coast, along with the satisfaction of doing something you never thought you could, more than make up for it.
+Having made it to the other side, we'd recommend this trip to anyone--if you're worried you can't physically handle it, fear not! To finish a long-distance tour like this, it takes 25% preparedness, 25% physical fitness, and 50% mental strength. Sometimes you're just grinding through empty highways on a not-that-wide bike lane for hours at a time, and it's going to suck. But the breathtaking scenery when you're by the coast, along with the satisfaction of doing something you never thought you could, more than make up for it.
