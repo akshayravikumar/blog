@@ -101,13 +101,13 @@ Soon into the trip, Google Maps routed us through around six miles of narrow dir
 
 ### Day 2: Santa Cruz to Monterey 
 
-We left UC Santa Cruz at around 8 AM, after spending 20 minutes trying to fend off a few bizarrely hyper squirrels from the apartment balcony, where our bikes were parked. As we hoped, this was a really easy day--low mileage and little elevation gain--and we made it to Monterey by around 3 PM. After getting lunch at Ike's, we rented wetsuits and spent some time swimming at the beach! At night, we walked around the touristy parts and got some great vegan Mexican food at El Cantaro.
+We left UC Santa Cruz at around 8 AM, after spending 20 minutes trying to fend off a few bizarrely hyper squirrels from the balcony where our bikes were parked. As we hoped, this was a really easy day--low mileage and little elevation gain--and we made it to Monterey by around 3 PM. After getting lunch at Ike's, we rented wetsuits and spent some time swimming at the beach! At night, we walked around the touristy parts and got some great vegan Mexican food at El Cantaro.
 
 {% include image.html filename="swimming.png" description="Swimming in Monterey!" maxpx=500 %}
 
 ### Day 3: Monterey to Big Sur 
 
-This was our shortest day, so we took it really easy in the morning. We bought some [butt cream](https://www.amazon.com/Chamois-Buttr-Original-Anti-Chafe-Cream/dp/B000HZGTUS) (we _really_ needed it) and some groceries from Trader Joe's--we planned on staying in Big Sur the next day, so we needed enough food to last until the day after. 
+This was our shortest day, so we took it really easy in the morning. We bought some [butt cream](https://www.amazon.com/Chamois-Buttr-Original-Anti-Chafe-Cream/dp/B000HZGTUS) (we _really_ needed it) and some groceries from Trader Joe's--we planned on staying in Big Sur the next day, so we needed enough food to last until dinner on Day 5.
 
 We weren't planning on it, but we took a detour through 17 Mile Drive, which was absolutely gorgeous. We stopped by the Safeway in Carmel-By-The-Sea to buy more groceries, and demolished a bag of pita bread and pastries for lunch. After a pretty rough climb (which wasn't fun with all the added weight), a stop to buy last-minute camping gear (skewers, foil, etc.), and a last-minute scare where we lost each other for an hour, we finally made it to the Pfeiffer Big Sur campground. Luckily, we had enough sunlight to set up camp.
 
@@ -123,7 +123,7 @@ It was a pretty relaxing day though! We were mostly trying to rest up for the ne
 
 ### Day 5: Big Sur to Cambria
 
-We were really nervous--73 miles and 4,000 feet elevation seemed like a terrible time--so we woke up at 6 AM and started biking by 7:30. To our surprise, it was a really great day! The coast was stunning and the weather wasn't too hot. We were able to rest up at a gas station before the supposedly tough climb to Ragged Point, and we made it without a hitch. We even got to see a bunch of elephant seals on the way!
+We were really nervous--73 miles and 4,000 feet elevation seemed like a terrible time--so we woke up at 6 AM and started biking by 7:30. To our surprise, it was a really great day! The coast was stunning and the weather wasn't too hot. We were able to rest up at a gas station before the supposedly tough climb to Ragged Point, and we made it without a hitch. We even got to see a bunch of elephant seals on the way.
 
 In the end, we made it to Cambria before 5 PM, and we had time to walk around town and relax at the hotel.
 
@@ -143,7 +143,7 @@ We didn't have to book anything: we just showed up, paid $10 a person, and set u
 
 ### Day 8: Refugio State Beach to Ventura
 
-This day started off on a bad note: first, we woke up to find squirrels had somehow (1) made their way into our panniers, (2) taken out a bag of snacks, (3) eaten almost all of our Clif bars and trail max, and (4) scattered the remains within a 50-foot radius of our tent. Seriously, I have no idea how those fuckers pulled that off. On top of that, Google Maps tried routing us through a closed path and we had to backtrack, which wasted around six miles. 
+This day started off on a bad note: first, we woke up to find squirrels had somehow (1) made their way into our panniers, (2) taken out a bag of Clif bars and trail mix, (3) eaten almost everything, and (4) scattered the remains within a 50-foot radius of our tent. Seriously, I have no idea how they pulled that off. On top of that, Google Maps tried routing us through a closed path and we had to backtrack, which wasted around six miles. 
 
 After some vegan food in Santa Barbara, a 7-Eleven stop, and a fresh fruit stand, we made it to Ventura by around 6 PM. The Motel 6 was a bit janky, so we Ubered to a shopping complex in Oxnard, where we watched _Ready or Not?_ and grabbed dinner.
 
