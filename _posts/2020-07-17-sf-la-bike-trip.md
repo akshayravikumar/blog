@@ -398,7 +398,7 @@ And here's what we packed: we ended up buying everything we didn't already have 
 
 After getting up early and packing our things, our parents drove us to San Francisco and we were off by 8 AM. It was our longest day in terms of mileage, and honestly it was pretty rough. This was our first time biking with gear, and it turns out adding 30+ pounds to your bike makes a big difference! 
 
-Soon into the ride, Google Maps routed us through around six miles of narrow dirt trails in San Pedro Valley Park; unfortunately, we had to walk parts of it. Later, we decided to skip out on a proper lunch since we were worried about time. I paid for it that afternoon: I bonked while climbing small hills, and at some point my quads stared spasming. Luckily, we were able to make it to UC Santa Cruz before it was too dark, and we took a bus to a friend's apartment on campus. We had an indulgent dinner at Saturn Cafe (to recuperate, we had to eat 3,500 to 4,500 calories a day) and slept as soon as we could.
+Soon into the ride, Google Maps routed us through around six miles of narrow dirt trails in San Pedro Valley Park; unfortunately, we had to walk parts of it. Later, we decided to skip out on a proper lunch since we were worried about time. I paid for it later: that afternoon, I bonked while climbing small hills, and at some point my quads stared spasming. Luckily, we were able to make it to UC Santa Cruz before it was too dark, and we took a bus to a friend's apartment on campus. We had an indulgent dinner at Saturn Cafe (to recuperate, we had to eat 3,500 to 4,500 calories a day) and slept as soon as we could.
 
 {% include image.html filename="bike_setup.png" description="Our bike setup" maxpx=800 %}
 
@@ -426,7 +426,7 @@ It was a pretty relaxing day though! We were primarily trying to rest up for the
 
 ### Day 5: Big Sur to Cambria
 
-We were really nervous--73 miles and 5,200 feet elevation seemed like a terrible time--so we woke up at 6 AM and started biking by 7:30. To our surprise, it was a really great day! The coast was stunning and the weather wasn't too hot. There were a decent number of uphill sections, but they were accompanied by thrilling downhill sections where we took up the entire lane and biked as fast as we could. We were able to rest up at a gas station before the supposedly tough climb to Ragged Point, and we made it without a hitch. We even got to see a bunch of elephant seals on the way.
+We were really nervous--73 miles and 5,600 feet elevation seemed like a terrible time--so we woke up at 6 AM and started biking by 7:30. To our surprise, it was a really great day! The coast was stunning and the weather wasn't too hot. There were a decent number of uphill sections, but they were accompanied by thrilling downhill sections where we took up the entire lane and biked as fast as we could. We were able to rest up at a gas station before the supposedly tough climb to Ragged Point, and we made it without a hitch. We even got to see a bunch of elephant seals on the way.
 
 In the end, we made it to Cambria before 5 PM, and we had time to walk around town and relax at the hotel.
 
