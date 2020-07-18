@@ -1,6 +1,7 @@
 ---
 layout: post
-title: Biking from SF to LA
+title: Cruisin' down the Coast
+description: Biking from SF to LA!
 comments: true
 visible: true
 date: 2020-07-17
