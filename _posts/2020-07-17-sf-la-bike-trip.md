@@ -397,7 +397,7 @@ And here's what we packed: we ended up buying everything we didn't already have 
 
 After getting up early and packing our things, our parents drove us to San Francisco and we were off by 8 AM. It was our longest day in terms of mileage, and honestly it was pretty rough. This was our first time biking with gear, and it turns out adding 30+ pounds to your bike makes a big difference! 
 
-Soon into the ride, Google Maps routed us through around six miles of narrow dirt trails in San Pedro Valley Park; unfortunately, we had to walk parts of it. Later, we decided to skip out on a proper lunch since we were worried about time. I paid for it later: in the afternoon, I bonked while climbing small hills, and at some point my quads stared spasming. Luckily, we were able to make it to UC Santa Cruz before it was too dark, and we took a bus to a friend's apartment on campus. We had an indulgent dinner at Saturn Cafe (to recuperate from biking, we had to eat 3,000 to 4,000 calories a day) and slept as soon as we could.
+Soon into the ride, Google Maps routed us through around six miles of narrow dirt trails in San Pedro Valley Park; unfortunately, we had to walk parts of it. Later, we decided to skip out on a proper lunch since we were worried about time. I paid for it that afternoon: I bonked while climbing small hills, and at some point my quads stared spasming. Luckily, we were able to make it to UC Santa Cruz before it was too dark, and we took a bus to a friend's apartment on campus. We had an indulgent dinner at Saturn Cafe (to recuperate, we had to eat 3,000 to 4,000 calories a day) and slept as soon as we could.
 
 {% include image.html filename="bike_setup.png" description="Our bike setup" maxpx=800 %}
 
