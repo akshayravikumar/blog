@@ -50,113 +50,344 @@ At a high level, the plan was to follow Highway 1 from Golden Gate Park to Santa
 
 </div>
 
-<div class="div-only-mobile" style="overflow-x: auto">
+<div class="div-only-mobile" style="overflow-x: auto" id="itinerary">
 
-| Day 1: San Francisco to Santa Cruz | 
-|------|
-| **Distance** | 82 miles |
-| **Elevation Gain** | 5,250 feet | 
-| **Accommodations** | A friend at UC Santa Cruz | 
-| **Strava Link**  | [Full ride](https://www.strava.com/activities/3774003713) 
+<style>
+#itinerary table {
+	margin-bottom: 0px !important;
+}
 
-| Day 2: Santa Cruz to Monterey | 
-|------|
-| **Distance** | 53 miles |
-| **Elevation Gain** | 2,200 feet | 
-| **Accommodations** | The Monterey Hotel | 
-| **Strava Link** | [Full ride](https://www.strava.com/activities/3774005251) 
+#itinerary td, #itinerary th {
+	padding-top: 0.8em;
+	padding-bottom: 0.8em;
+}
+</style>
 
+<table>
+	<thead>
+	  <tr>
+	    <th colspan="2">Day 1: San Francisco to Santa Cruz</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr>
+	    <td><strong>Distance</strong></td>
+	    <td>82 miles</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Elevation Gain</strong></td>
+	    <td>5,250 feet</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Accommodations</strong></td>
+	    <td>A friend at UC Santa Cruz</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Strava Link</strong></td>
+	    <td><a href="https://www.strava.com/activities/3774003713">Full ride</a></td>
+	  </tr>
+	</tbody>
+</table>
 
-| Day 3: Monterey to Big Sur | 
-|------|
-| **Distance** | 39 miles |
-| **Elevation Gain** | 2,600 feet | 
-| **Accommodations** | Pfeiffer Big Sur State Park | 
-| **Strava Link** | [Part 1](https://www.strava.com/activities/3773999762), [Part 2](https://www.strava.com/activities/3773997040) 
+<table>
+	<thead>
+	  <tr>
+	    <th colspan="2">Day 2: Santa Cruz to Monterey</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr>
+	    <td><strong>Distance</strong></td>
+	    <td>53 miles</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Elevation Gain</strong></td>
+	    <td>2,200 feet</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Accommodations</strong></td>
+	    <td>The Monterey Hotel</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Strava Link</strong></td>
+	    <td><a href="https://www.strava.com/activities/3774005251">Full ride</a></td>
+	  </tr>
+	</tbody>
+</table>
 
-| Day 4: Hike at Pfeiffer | 
-|------|
-| **Distance** | -  |
-| **Elevation Gain** | - | 
-| **Accommodations** | Pfeiffer Big Sur State Park | 
-| **Strava Link** | [hike](https://www.strava.com/activities/3774009919) 
+<table>
+	<thead>
+	  <tr>
+	    <th colspan="2">Day 3: Monterey to Big Sur</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr>
+	    <td><strong>Distance</strong></td>
+	    <td>39 miles</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Elevation Gain</strong></td>
+	    <td>2,600 feet</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Accommodations</strong></td>
+	    <td>Pfeiffer Big Sur State Park</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Strava Link</strong></td>
+	    <td><a href="https://www.strava.com/activities/3773999762">Part 1</a>, <a href="https://www.strava.com/activities/3773997040">Part 2</a></td>
+	  </tr>
+	</tbody>
+</table>
 
-| Day 5: Big Sur to Cambria | 
-|------|
-| **Distance** | 73 miles |
-| **Elevation Gain** | 5,600 feet | 
-| **Accommodations** | Cambria Palms Motel | 
-| **Strava Link** | [Full ride](https://www.strava.com/activities/3774012581) 
+<table>
+	<thead>
+	  <tr>
+	    <th colspan="2">Day 4: Hike at Pfeiffer</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr>
+	    <td><strong>Distance</strong></td>
+	    <td>-</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Elevation Gain</strong></td>
+	    <td>-</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Accommodations</strong></td>
+	    <td>Pfeiffer Big Sur State Park</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Strava Link</strong></td>
+	    <td><a href="https://www.strava.com/activities/3774009919">hike</a></td>
+	  </tr>
+	</tbody>
+</table>
 
+<table>
+	<thead>
+	  <tr>
+	    <th colspan="2">Day 5: Big Sur to Cambria</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr>
+	    <td><strong>Distance</strong></td>
+	    <td>73 miles</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Elevation Gain</strong></td>
+	    <td>5,600 feet</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Accommodations</strong></td>
+	    <td>Cambria Palms Motel</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Strava Link</strong></td>
+	    <td><a href="https://www.strava.com/activities/3774012581">Full ride</a></td>
+	  </tr>
+	</tbody>
+</table>
 
-| Day 6: Cambria to Pismo Beach | 
-|------|
-| **Distance** | 45 miles |
-| **Elevation Gain** | 1,650 feet | 
-| **Accommodations** | Beachwalker Inn and Suites | 
-| **Strava Link** | [Full ride](https://www.strava.com/activities/3774017928) 
+<table>
+	<thead>
+	  <tr>
+	    <th colspan="2">Day 6: Cambria to Pismo Beach</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr>
+	    <td><strong>Distance</strong></td>
+	    <td>45 miles</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Elevation Gain</strong></td>
+	    <td>1,650 feet</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Accommodations</strong></td>
+	    <td>Beachwalker Inn and Suites</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Strava Link</strong></td>
+	    <td><a href="https://www.strava.com/activities/3774017928">Full ride</a></td>
+	  </tr>
+	</tbody>
+</table>
 
-| Day 7: Pismo Beach to Refugio Stage Beach | 
-|------|
-| **Distance** | 79 miles |
-| **Elevation Gain** | 3,000 feet | 
-| **Accommodations** | Refugio Stage Beach Campgrounds | 
-| **Strava Link** | [Part 1](https://www.strava.com/activities/3774020041), [Part 2](https://www.strava.com/activities/3774023368), [Part 3](https://www.strava.com/activities/3774024266)
+<table>
+	<thead>
+	  <tr>
+	    <th colspan="2">Day 7: Pismo Beach to Refugio Stage Beach</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr>
+	    <td><strong>Distance</strong></td>
+	    <td>79 miles</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Elevation Gain</strong></td>
+	    <td>3,000 feet</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Accommodations</strong></td>
+	    <td>Refugio Stage Beach Campgrounds</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Strava Link</strong></td>
+	    <td><a href="https://www.strava.com/activities/3774020041">Part 1</a>, <a href="https://www.strava.com/activities/3774023368">Part 2</a>, <a href="https://www.strava.com/activities/3774024266">Part 3</a></td>
+	  </tr>
+	</tbody>
+</table>
 
-| Day 8: Refugio Stage Beach to Ventura | 
-|------|
-| **Distance** | 62 miles |
-| **Elevation Gain** | 1,700 feet | 
-| **Accommodations** | Motel 6 Ventura South | 
-| **Strava Link** | [Part 1](https://www.strava.com/activities/3774029154), [Part 2](https://www.strava.com/activities/3774030715)
+<table>
+	<thead>
+	  <tr>
+	    <th colspan="2">Day 8: Refugio Stage Beach to Ventura</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr>
+	    <td><strong>Distance</strong></td>
+	    <td>62 miles</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Elevation Gain</strong></td>
+	    <td>1,700 feet</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Accommodations</strong></td>
+	    <td>Motel 6 Ventura South</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Strava Link</strong></td>
+	    <td><a href="https://www.strava.com/activities/3774029154">Part 1</a>, <a href="https://www.strava.com/activities/3774030715">Part 2</a></td>
+	  </tr>
+	</tbody>
+</table>
 
-| Day 8: Ventura to Santa Monica | 
-|------|
-| **Distance** | 53 miles |
-| **Elevation Gain** | 1,200 feet | 
-| **Accommodations** | Palm Motel | 
-| **Strava Link** | [Part 1](https://www.strava.com/activities/3774032516), [Part 2](https://www.strava.com/activities/3774033991)
+<table>
+	<thead>
+	  <tr>
+	    <th colspan="2">Day 8: Ventura to Santa Monica</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr>
+	    <td><strong>Distance</strong></td>
+	    <td>53 miles</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Elevation Gain</strong></td>
+	    <td>1,200 feet</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Accommodations</strong></td>
+	    <td>Palm Motel</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Strava Link</strong></td>
+	    <td><a href="https://www.strava.com/activities/3774032516">Part 1</a>, <a href="https://www.strava.com/activities/3774033991">Part 2</a></td>
+	  </tr>
+	</tbody>
+</table>
 
-| Day 9: Santa Monica to Los Angeles | 
-|------|
-| **Distance** | - |
-| **Elevation Gain** | - | 
-| **Accommodations** | The LA Grand Hotel | 
-| **Strava Link** | -
+<table>
+	<thead>
+	  <tr>
+	    <th colspan="2">Day 9: Santa Monica to Los Angeles</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr>
+	    <td><strong>Distance</strong></td>
+	    <td>-</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Elevation Gain</strong></td>
+	    <td>-</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Accommodations</strong></td>
+	    <td>The LA Grand Hotel</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Strava Link</strong></td>
+	    <td>-</td>
+	  </tr>
+	</tbody>
+</table>
 
-| Day 10: Los Angeles to San Jose | 
-|------|
-| **Distance** | - |
-| **Elevation Gain** | - | 
-| **Accommodations** | Megabus for us, [BikeFlights](https://www.bikeflights.com/) for the bikes| 
-| **Strava Link** | -
+<table>
+	<thead>
+	  <tr>
+	    <th colspan="2">Day 10: Los Angeles to San Jose</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr>
+	    <td><strong>Distance</strong></td>
+	    <td>-</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Elevation Gain</strong></td>
+	    <td>-</td>
+	  </tr>
+	  <tr>
+	    <td><strong>Accommodations</strong></td>
+	    <td>Megabus and <a href="https://www.bikeflights.com/">BikeFlights</a></td>
+	  </tr>
+	  <tr>
+	    <td><strong>Strava Link</strong></td>
+	    <td>-</td>
+	  </tr>
+	</tbody>
+</table>
 
+<div style="height: 33px"></div>
 </div>
+
 {::options parse_block_html="false" /}
 
 And here's what we packed: we ended up buying everything we didn't already have from Amazon, REI, or Walmart.
 
 {::options parse_block_html="true" /}
 
-<div style="line-height: 2em">
+<div id="gear">
+<style>
+	#gear table {
+		margin-bottom: 0px !important;
+	}
 
+	#gear tbody tr:hover>td, #gear tbody tr:hover>th  {
+		background-color: unset !important;
+    }
+
+</style>
+
+| --- |
 | Bike Gear | 
 | ---- |
-| A pair of [panniers](https://www.amazon.com/Ibera-Bicycle-Quick-Release-Weather-Panniers/dp/B00KW2ZIMQ/)  <br/> [Bike gloves](https://www.amazon.com/dp/B016CKWB3U/ref=twister_B07CMKZT8W?th=1) (these ended up wearing down pretty quickly) <br/> [Bike patch kit](https://www.amazon.com/DAWAY-A35-Bike-Repair-Kit/dp/B01M9EBSOQ) <br/> [Helmet](https://www.amazon.com/dp/B076H8DJN1/ref=twister_B075RMG58H?_encoding=UTF8&psc=1) <br/> Three [water bottles](https://www.amazon.com/CamelBak-Podium-24OZ-Black-24/dp/B07HGR3S45) <br/> Bike lights <br/> Tire tubes <br/> Phone mount  <br/> Bungee cords <br/> Bike lock <br/> Tire patches |
+| <br/> A pair of [panniers](https://www.amazon.com/Ibera-Bicycle-Quick-Release-Weather-Panniers/dp/B00KW2ZIMQ/)  <br/> <br/> [Bike gloves](https://www.amazon.com/dp/B016CKWB3U/ref=twister_B07CMKZT8W?th=1) (these ended up wearing down pretty quickly) <br/> <br/> [Bike patch kit](https://www.amazon.com/DAWAY-A35-Bike-Repair-Kit/dp/B01M9EBSOQ) <br/> <br/> [Helmet](https://www.amazon.com/dp/B076H8DJN1/ref=twister_B075RMG58H?_encoding=UTF8&psc=1) <br/> <br/> Three [water bottles](https://www.amazon.com/CamelBak-Podium-24OZ-Black-24/dp/B07HGR3S45) <br/> <br/> Bike lights <br/> <br/> Tire tubes <br/> <br/> Phone mount  <br/> <br/> Bungee cords <br/> <br/> Bike lock <br/> <br/> Tire patches <br/> <br/> |
 
 | Camping Gear | 
 | ---- |
-| [Tent](https://www.amazon.com/Coleman-2-Person-Sundome-Tent-Navy/dp/B0009PUQG4/ref=sr_1_7?keywords=backpacking%2Btent%2Bfor%2B2&qid=1566174984&refinements=p_72%3A1248957011&rnid=1248955011&s=sporting-goods&sr=1-7&th=1) <br/> Sleeping bag <br/> [Sleeping pad](https://www.amazon.com/WellaX-Ultralight-Air-Sleeping-Pad/dp/B076PHYVD8/ref=sr_1_18_sspa?keywords=sleeping+pad&qid=1566175437&s=gateway&sr=8-18-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUExN1I4N1JKNkZJVDE1JmVuY3J5cHRlZElkPUEwMDI0NDI3MlhDSU5JSlpWVFJHQiZlbmNyeXB0ZWRBZElkPUExMDI5NDE0MzFRRVFLOU5CSUhBUSZ3aWRnZXROYW1lPXNwX2J0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=) (these were dope) |
+| <br/> [Tent](https://www.amazon.com/Coleman-2-Person-Sundome-Tent-Navy/dp/B0009PUQG4/ref=sr_1_7?keywords=backpacking%2Btent%2Bfor%2B2&qid=1566174984&refinements=p_72%3A1248957011&rnid=1248955011&s=sporting-goods&sr=1-7&th=1) <br/> <br/> Sleeping bag <br/> <br/> [Sleeping pad](https://www.amazon.com/WellaX-Ultralight-Air-Sleeping-Pad/dp/B076PHYVD8/ref=sr_1_18_sspa?keywords=sleeping+pad&qid=1566175437&s=gateway&sr=8-18-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUExN1I4N1JKNkZJVDE1JmVuY3J5cHRlZElkPUEwMDI0NDI3MlhDSU5JSlpWVFJHQiZlbmNyeXB0ZWRBZElkPUExMDI5NDE0MzFRRVFLOU5CSUhBUSZ3aWRnZXROYW1lPXNwX2J0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=) (these were dope) <br/> <br/> |
 
 | Clothing | 
 | ---- |
-| Two pairs of [bike shorts](https://www.amazon.com/Sportneer-Underwear-Anti-Slip-Resistant-Properties/dp/B07NBTQ6FB) (the padding wasn't that great) <br/> [Bike bibs](https://www.amazon.com/Spotti-Basic-Sleeve-Cycling-Jersey/dp/B01J2WHCYS), one orange and one blue (the orange one was nice and bright, but the blue one blended in too much) <br/> [Compression socks](https://www.amazon.com/Compression-Medical-Socks-Running-Fitness%EF%BC%8CPregnancy-Maternity-15-20mmHg/dp/B075H9LC3F/) (I personally found these uncomfortable) <br/> [Reflective vest](https://www.amazon.com/Reflective-Running-Ultralight-Motorcycle-Adjustable/dp/B0195R93WY) (didn't end up using) <br/> Thermal shirt and pants (the weather was nice enough that we didn't really need these) <br/> A pair of jeans <br/> A pair of pajama pants <br/> Two or three t-shirts <br/> Swim trunks  <br/> 5-6 pairs of underwear <br/> An extra pair of shoes (this was a total waste of space) <br/> Towel |
+| <br/> Two pairs of [bike shorts](https://www.amazon.com/Sportneer-Underwear-Anti-Slip-Resistant-Properties/dp/B07NBTQ6FB) (the padding wasn't that great) <br/> <br/> [Bike bibs](https://www.amazon.com/Spotti-Basic-Sleeve-Cycling-Jersey/dp/B01J2WHCYS), one orange and one blue (the orange one was nice and bright, but the blue one blended in too much) <br/> <br/> [Compression socks](https://www.amazon.com/Compression-Medical-Socks-Running-Fitness%EF%BC%8CPregnancy-Maternity-15-20mmHg/dp/B075H9LC3F/) (I personally found these uncomfortable) <br/> <br/> [Reflective vest](https://www.amazon.com/Reflective-Running-Ultralight-Motorcycle-Adjustable/dp/B0195R93WY) (didn't end up using) <br/> <br/> Thermal shirt and pants (the weather was nice enough that we didn't really need these) <br/> <br/> A pair of jeans <br/> <br/> A pair of pajama pants <br/> <br/> Two or three t-shirts <br/> <br/> Swim trunks  <br/> <br/> 5-6 pairs of underwear <br/> <br/> An extra pair of shoes (this was a total waste of space) <br/> <br/> Towel <br/> <br/> |
 
 | Other | 
 | ---- |
-| Toiletries (tooth brush, deodorant, soap, shampoo, etc.) <br/> Bluetooth speaker <br/> Battery packs  <br/> Charging cables <br/> Bug spray <br/> Sunscreen <br/> Quarters (for laundry) <br/> Clif shots <br/> Various protein and granola bars |
+| <br/> Toiletries (tooth brush, deodorant, soap, shampoo, etc.) <br/> <br/> Bluetooth speaker <br/> <br/> Battery packs  <br/> <br/> Charging cables <br/> <br/> Bug spray <br/> <br/> Sunscreen <br/> <br/> Quarters (for laundry) <br/> <br/> Clif shots <br/> <br/> Various protein and granola bars <br/> <br/> |
 
-
+<div style="height: 33px"></div>
 </div>
 {::options parse_block_html="false" /}
 
