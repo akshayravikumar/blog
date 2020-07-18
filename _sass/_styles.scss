@@ -4,6 +4,23 @@
     font-size: 1em; 
 }
 
+.div-only-mobile {
+    display: none;
+}
+.div-no-mobile {
+    display: block;
+}
+
+@media screen and (max-width: 849px) {
+    .div-no-mobile {
+        display:none
+    }
+
+    .div-only-mobile {
+        display: block;
+    }
+}
+
 body {
   font-family: $serif;
   color: $black;
@@ -525,7 +542,7 @@ header.site-header nav {
 
     tbody {
 	   tr:hover > td, tr:hover > th {
-		  background-color: $grey-medium;
+		  background-color: $grey-super-light;
 	   }
     }
 
