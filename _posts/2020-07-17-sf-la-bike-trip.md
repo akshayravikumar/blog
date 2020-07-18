@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Cruisin' down the Coast
-description: Biking from SF to LA!
+description: Our SF to LA biking trip!
 comments: true
 visible: true
 date: 2020-07-17
@@ -386,7 +386,7 @@ And here's what we packed: we ended up buying everything we didn't already have 
 
 | Other | 
 | ---- |
-| <br/> Toiletries (tooth brush, deodorant, soap, shampoo, etc.) <br/> <br/> Bluetooth speaker <br/> <br/> Battery packs  <br/> <br/> Charging cables <br/> <br/> Bug spray <br/> <br/> Sunscreen <br/> <br/> Quarters (for laundry) <br/> <br/> Clif shots <br/> <br/> Various protein and granola bars <br/> <br/> |
+| <br/> Toiletries (toothbrush, deodorant, soap, shampoo, etc.) <br/> <br/> Bluetooth speaker <br/> <br/> Battery packs  <br/> <br/> Charging cables <br/> <br/> First aid kit <br/> <br/> Bug spray <br/> <br/> Sunscreen <br/> <br/> Quarters (for laundry) <br/> <br/> Clif shots <br/> <br/> Various protein and granola bars <br/> <br/> |
 
 <div style="height: 33px"></div>
 </div>
