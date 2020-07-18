@@ -16,7 +16,7 @@ In September 2019, my friend Varun and I went on a biking trip from San Francisc
 
 How'd we get the idea? We weren't seasoned bikers or anything--honestly, we had never biked more than a couple of miles in one stretch. But our friend Sicong told us about his SF to LA experience and we were like "Damn, we need to do that."
 
-To say the least, we didn't feel very prepared. To figure out what we were capable of, we went on a few practice rides: first, we took a [41-mile ride](https://www.strava.com/activities/2238280213]) from Mountain View to San Francisco. As our first long ride, every city border we crossed felt like a massive achievement. While we took a train back from San Francisco the first time, we decided to go both ways the second time with a [100-mile ride](https://www.strava.com/activities/2342554691). 
+To say the least, we didn't feel very prepared. To figure out what we were capable of, we went on a few practice rides with our mountain bikes: first, we took a [41-mile ride](https://www.strava.com/activities/2238280213]) from Mountain View to San Francisco. As our first long ride, every city border we crossed felt like a massive achievement. While we took a train back from San Francisco the first time, we decided to go both ways the second time with a [100-mile ride](https://www.strava.com/activities/2342554691). 
 
 These rides weren't too difficult--we went at a cool 10 miles per hour and did very little climbing--but we were sore and exhausted by the end of the day. That being said, we were pleasantly surprised with how far we could go, and we decided to buy [touring bikes](https://www.rei.com/product/122462/co-op-cycles-adv-11-bike).
 
@@ -398,7 +398,7 @@ And here's what we packed: we ended up buying everything we didn't already have 
 
 After getting up early and packing our things, our parents drove us to San Francisco and we were off by 8 AM. It was our longest day in terms of mileage, and honestly it was pretty rough. This was our first time biking with gear, and it turns out adding 30+ pounds to your bike makes a big difference! 
 
-Soon into the ride, Google Maps routed us through around six miles of narrow dirt trails in San Pedro Valley Park; unfortunately, we had to walk parts of it. Later, we decided to skip out on a proper lunch since we were worried about time. I paid for it that afternoon: I bonked while climbing small hills, and at some point my quads stared spasming. Luckily, we were able to make it to UC Santa Cruz before it was too dark, and we took a bus to a friend's apartment on campus. We had an indulgent dinner at Saturn Cafe (to recuperate, we had to eat 3,000 to 4,000 calories a day) and slept as soon as we could.
+Soon into the ride, Google Maps routed us through around six miles of narrow dirt trails in San Pedro Valley Park; unfortunately, we had to walk parts of it. Later, we decided to skip out on a proper lunch since we were worried about time. I paid for it that afternoon: I bonked while climbing small hills, and at some point my quads stared spasming. Luckily, we were able to make it to UC Santa Cruz before it was too dark, and we took a bus to a friend's apartment on campus. We had an indulgent dinner at Saturn Cafe (to recuperate, we had to eat 3,500 to 4,500 calories a day) and slept as soon as we could.
 
 {% include image.html filename="bike_setup.png" description="Our bike setup" maxpx=800 %}
 
@@ -473,7 +473,7 @@ The next day, we took the train to downtown LA. We checked into our hotel, took 
 
 The next day, we pigged out at the Grand Central Market, walked around the city, went to Madame Tussaud's, and explored the Griffith observatory. The highlight of the night was definitely sharing seven vegan donuts at Dōnatsu (we still don't understand how they were so good). 
 
-And thus concludes our trip. We went to the bus stop that night, and after a very uncomfortable ride we were back in San Jose by 6 AM. After a short nap, we were back at work before noon--Varun even had to catch a flight to Boston that night.
+And thus concluded our trip. We went to the bus stop that night, and after a very uncomfortable ride we were back in San Jose by 6 AM. After a short nap, we were back at work before noon--Varun even had to catch a flight to Boston that night.
 
 {% include image.html filename="donatsu.png" description="Dōnatsu, we love you ❤️" maxpx=800 %}
 
