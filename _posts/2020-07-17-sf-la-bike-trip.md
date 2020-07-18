@@ -2,7 +2,7 @@
 layout: post
 title: Biking from SF to LA
 comments: true
-visible: false
+visible: true
 date: 2020-07-17
 category: articles
 image:
