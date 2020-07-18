@@ -255,7 +255,7 @@ We're still amazed that we pulled this off--it was definitely a highlight of the
 - There's always room for bikers at a campground. We booked Pfeiffer beforehand, but we definitely could have showed up and paid much less.
 - As you can tell, squirrels were a recurring problem during this trip. They are evil, and they will find a way to crawl into your bags and steal your food. Make sure to seal everything.
 - Get a Bluetooth speaker and have some offline music ready! It really livens the mood.
-- Make sure to separate clean clothes from dirty clothes, perhaps even in separate panniers. Even though I put my damp swim trunks in a plastic bag, they ended up stinking up everything.
+- Make sure to separate clean clothes from dirty clothes, perhaps in separate panniers. Even though I put my damp swim trunks in a plastic bag, they ended up making everything smell.
 - Although we had the tools, we had absolutely no clue how to repair a bike. We were just fortunate to have finished the trip without any issues.
 - As much as you prepare beforehand, you're bound to run into issues along the way. Be flexible, and don't panic.
 - Take lots of pictures! Looking back, I wish we had more.
