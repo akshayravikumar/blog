@@ -295,7 +295,7 @@ We didn't have to book anything: we just showed up, paid $10 a person, and set u
 
 This day started off on a bad note: first, we woke up to find squirrels had somehow (1) made their way into our panniers, (2) taken out a bag of Clif bars and trail mix, (3) eaten almost everything, and (4) scattered the remains within a 50-foot radius of our tent. Seriously, I have no idea how those fuckers pulled that off. On top of that, Google Maps routed us through a closed path and we had to backtrack to our starting point, which wasted around six miles. 
 
-We stopped for some vegan food in Santa Barbara, where we had a wonderful conversation with a veteran biker who had toured across Canada. After stopping at a 7-Eleven and a fresh fruit stand, we made it to Ventura by around 6 PM. The Motel 6 was a bit janky, so we Ubered to a shopping complex in Oxnard, where we watched _Ready or Not?_ and grabbed dinner.
+The rest of the day was great. We stopped for some vegan food in Santa Barbara, where we had a wonderful conversation with a veteran biker who had toured across Canada. After stopping at a 7-Eleven and a fresh fruit stand, we made it to Ventura by around 6 PM. The Motel 6 was a bit janky, so we Ubered to a shopping complex in Oxnard, where we watched _Ready or Not?_ and grabbed dinner.
 
 <figure style="text-align: center">
 	<iframe style="max-width: 450px; max-height: 800px; width: 99vw; height: 176vw;" max-height="960" width="100vw" height="56.25vw" src="https://www.youtube.com/embed/7NIlRcuLsbM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
