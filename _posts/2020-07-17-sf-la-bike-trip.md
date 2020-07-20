@@ -28,7 +28,7 @@ And that's all we did! In retrospect, this really wasn't enough: we had only don
 
 After setting a date, we started planning the trip around 3-4 weeks beforehand. We used [this website](https://www.californiabicycletour.com/bike/self-guided-sf-la.php) to plan an itinerary: it even provides several options depending on how many days you want to bike. We also found [this blog](https://ryochiba.com/2017/09/09/bicycle-tour-sf-to-la.html) helpful to figure out what to pack.
 
-At a high level, the plan was to follow Highway 1 from Golden Gate Park to Santa Monica Pier, either camping or staying at a motel every night. We'd carry our camping gear, clothes, food, tools, etc. on the back of our bike. We were going to bike for eight days, with a rest day in Big Sur and two days to relax in LA, and take a bus back to the Bay Area. Here was our itinerary:
+At a high level, the plan was to follow Highway 1 from Golden Gate Park to Santa Monica Pier, either camping or staying at a motel every night. We'd carry our camping gear, clothes, food, tools, etc. on the back of our bikes. We were going to ride for eight days, with a rest day in Big Sur, and take a bus back to the Bay Area after two days in LA. Here was our itinerary:
 
 
 {::options parse_block_html="true" /}
