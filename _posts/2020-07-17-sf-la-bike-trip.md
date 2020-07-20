@@ -316,7 +316,7 @@ After taking some pictures at the pier, we dropped our stuff off at the hotel, a
 
 The next day, we took the train to downtown LA. We checked into our hotel, took our bikes to a designated BikeFlights pickup shop, watched *Jimmy Kimmel Live!* (we got tickets in advance), and scootered around Hollywood.
 
-The next day, we pigged out at the Grand Central Market, walked around the city, went to Madame Tussaud's, and explored the Griffith observatory. The highlight of the night was definitely sharing seven vegan donuts at Dōnatsu (we still don't understand how they were so good). 
+On our last day, we pigged out at the Grand Central Market, walked around the city, went to Madame Tussaud's, and explored the Griffith observatory. The highlight of the night was definitely sharing seven vegan donuts at Dōnatsu (we still don't understand how they were so good).
 
 And thus concluded our trip. We went to the bus stop that night, and after a very uncomfortable ride we were back in San Jose by 6 AM. After a short nap, we were back at work before noon--Varun even had to catch a flight to Boston that night.
 
