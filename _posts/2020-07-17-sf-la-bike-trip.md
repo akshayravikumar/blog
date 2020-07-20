@@ -257,7 +257,7 @@ After spending 20 minutes trying to fend off a few hyperactive squirrels from th
 
 This was our shortest day, so we took it really easy in the morning. We bought some [ass cream](https://www.amazon.com/Chamois-Buttr-Original-Anti-Chafe-Cream/dp/B000HZGTUS) (we _really_ needed it) and some groceries from Trader Joe's--we planned on staying in Big Sur the next day, so we needed enough food to last until dinner on Day 5.
 
-We weren't planning on it, but we took a detour through 17 Mile Drive, which was absolutely gorgeous. We stopped by the Safeway in Carmel-By-The-Sea to buy more groceries, and demolished a bag of pita bread and pastries for lunch. After a pretty rough climb (which wasn't fun with all the added weight), a stop to buy last-minute camping gear (skewers, foil, etc.), and a snafu where we lost each other for an hour, we finally made it to the Pfeiffer Big Sur campground. Luckily, we had enough time to set up camp before sundown.
+We weren't planning on it, but we took a detour through 17 Mile Drive, which was absolutely gorgeous. We stopped by the Safeway in Carmel-By-The-Sea to buy more groceries, and demolished a bag of pita bread and pastries for lunch. After a pretty rough climb (which wasn't fun with all the groceries), a stop to buy last-minute camping gear (skewers, foil, etc.), and a snafu where we lost each other for an hour, we finally made it to the Pfeiffer Big Sur campground. Luckily, we had enough time to set up camp before sundown.
 
 {% include image.html filename="camp.png" description="Our campsite" maxpx=800 %}
 
