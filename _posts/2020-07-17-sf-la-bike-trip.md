@@ -285,7 +285,7 @@ Another easy day: we left Cambria at around 10 AM and made it to Pismo Beach by 
 
 ### Day 7: Pismo Beach to Refugio State Beach
 
-This was a pretty long day (80 miles and 3,000 feet elevation), but we had gotten the hang of things so we weren't worried. Even with a Chipotle break in Santa Maria and a Taco Bell/Starbucks/groceries break in Buellton ("The Home of Split Pea Soup"), we made it to Refugio State Beach before 7 PM.
+This was a pretty long day (80 miles and 3,000 feet elevation), but we had gotten the hang of things so we weren't worried. Even with a Chipotle break in Santa Maria and a food/groceries break in Buellton ("The Home of Split Pea Soup"), we made it to Refugio State Beach before 7 PM.
 
 We didn't have to book anything: we just showed up, paid $10 a person, and set up shop in the hiker/biker camp. It was a large open space with assorted fire pits and benches, and we had the entire thing to ourselves. We really liked this campground--our tent was right next to the beach, and the showers were so wonderfully relaxing that we almost finished our quarters. 
 
