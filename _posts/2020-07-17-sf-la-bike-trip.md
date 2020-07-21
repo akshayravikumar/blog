@@ -285,9 +285,11 @@ Another easy day: we left Cambria at around 10 AM and made it to Pismo Beach by 
 
 ### Day 7: Pismo Beach to Refugio State Beach
 
-This was a pretty long day (80 miles and 3,000 feet elevation), but we had gotten the hang of things so we weren't worried. Even with a Chipotle break in Santa Maria and a Taco Bell/Starbucks break in Buellton ("The Home of Split Pea Soup"), we made it to Refugio State Beach before 7 PM.
+This was a pretty long day (80 miles and 3,000 feet elevation), but we had gotten the hang of things so we weren't worried. Even with a Chipotle break in Santa Maria and a Taco Bell/Starbucks/groceries break in Buellton ("The Home of Split Pea Soup"), we made it to Refugio State Beach before 7 PM.
 
-We didn't have to book anything: we just showed up, paid $10 a person, and set up shop in the hiker/biker camp. It was a large open space with assorted fire pits and benches, and we had the entire thing to ourselves. We really enjoyed this campground: we could see the ocean from our tents, and the showers were so comfortable we almost finished our quarters.
+We didn't have to book anything: we just showed up, paid $10 a person, and set up shop in the hiker/biker camp. It was a large open space with assorted fire pits and benches, and we had the entire thing to ourselves. We really liked this campground--our tent was right next to the beach, and the showers were so wonderfully relaxing that we almost finished our quarters. 
+
+That night, we enjoyed the wondrous ocean view and cool breeze while eating cold Taco Bell and canned chili, which were both, for the record, quite unappetizing. 
 
 {% include image.html filename="refugio.jpg" description="Refugio State Beach" maxpx=500 %}
 
@@ -295,7 +297,7 @@ We didn't have to book anything: we just showed up, paid $10 a person, and set u
 
 This day started off on a bad note: first, we woke up to find squirrels had somehow (1) made their way into our panniers, (2) taken out a bag of Clif bars and trail mix, (3) eaten almost everything, and (4) scattered the remains within a 50-foot radius of our tent. Seriously, I have no idea how those fuckers pulled that off. On top of that, Google Maps routed us through a closed path and we had to backtrack to our starting point, which wasted around six miles. 
 
-The rest of the day was great. We stopped for some vegan food in Santa Barbara, where we had a wonderful conversation with a veteran biker who had toured across Canada. After stopping at a 7-Eleven and a fresh fruit stand, we made it to Ventura by around 6 PM. The Motel 6 was a bit janky, so we Ubered to a shopping complex in Oxnard, where we watched _Ready or Not?_ and grabbed dinner.
+The rest of the day was great. We stopped for some vegan food in Santa Barbara, where we had a pleasant conversation with a veteran biker who had toured across Canada. After stopping at a 7-Eleven and a fresh fruit stand, we made it to Ventura by around 6 PM. The Motel 6 was a bit janky, so we Ubered to a shopping complex in Oxnard, where we watched _Ready or Not?_ and grabbed dinner.
 
 <figure style="text-align: center">
 	<iframe style="max-width: 450px; max-height: 800px; width: 99vw; height: 176vw;" max-height="960" width="100vw" height="56.25vw" src="https://www.youtube.com/embed/7NIlRcuLsbM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
