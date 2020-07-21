@@ -263,7 +263,7 @@ We weren't planning on it, but we took a detour through 17 Mile Drive, which was
 
 ### Day 4: Hiking at Big Sur
 
-Our rest day wasn't too exciting: we did laundry, went on an unbelievably boring 3-mile hike on [Buzzard's Roost trail](https://www.strava.com/activities/3774009919), and strolled around the campground. We were too tired to do anything more intensive: we didn't feel like biking, and most of the hikes within walking distance were closed because of the heat. To pass the time, we dipped our toes in a stream while eating Trader Joe's chili and tortillas with Nutella and peanut butter. Some squirrels rummaged through our stuff while we were gone, which was mildly annoying--they even hid one of our slippers in the dirt 20 feet from our campsite.
+Our rest day wasn't too exciting: we did laundry, went on an unbelievably boring 3-mile hike on [Buzzard's Roost trail](https://www.strava.com/activities/3774009919), and strolled around the campground. We were too tired to do anything more intensive: we didn't feel like biking, and most of the hikes within walking distance were closed because of the heat. To pass the time, we dipped our toes in a stream while eating Trader Joe's chili and tortillas with Nutella and peanut butter (protip: tortillas are much easier to pack than bread). Some squirrels rummaged through our stuff while we were gone, which was mildly annoying--they even hid one of our slippers in the dirt 20 feet from our campsite.
 
 It was a pretty relaxing day though! We were primarily trying to rest up for the ride to Cambria, which was supposed to be our toughest day.
 
