@@ -289,7 +289,7 @@ This was a pretty long day (80 miles and 3,000 feet elevation), but we had gotte
 
 We didn't have to book anything: we just showed up, paid $10 a person, and set up shop in the hiker/biker camp. It was a large open space with assorted fire pits and benches, and we had the entire thing to ourselves. We really liked this campground--our tent was right next to the beach, and the showers were so wonderfully relaxing that we almost finished our quarters. 
 
-That night, we enjoyed the spectacular ocean view and cool breeze while eating cold Taco Bell and canned chili, which were both, for the record, quite unappetizing. 
+That night, we enjoyed the spectacular ocean view and cool breeze while eating mushy Taco Bell and canned chili, which were both, for the record, quite unappetizing. 
 
 {% include image.html filename="refugio.jpg" description="Refugio State Beach" maxpx=500 %}
 
