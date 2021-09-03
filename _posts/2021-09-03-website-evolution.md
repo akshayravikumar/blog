@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: post-no-feature
 title: The Evolution of My Personal Website
 description: A little piece of personal history.
 comments: true
@@ -12,7 +12,7 @@ I just updated my [personal website](https://akshayr.xyz) for the first time in 
 
 First, I iterated through every commit in the repo, opened the `index.html` page in [Selenium](https://www.selenium.dev/), took a screenshot, and saved it as a PNG. I had to wait three seconds between page loads because my website has a few animations.
 
-```
+```python
 import git
 import time
 import os
@@ -42,14 +42,14 @@ for commit in repo.iter_commits(rev='master'):
 
 There were ~260 commits, so this took 13 minutes. After that, I used `ffmpeg` to string the PNGs together into a video.
 
-```
+```bash
 ffmpeg -framerate 10 -pattern_type glob -i 'screenshots/*.png' -vf reverse -pix_fmt yuv420p  -c:v libx264 out.mp4
 ```
 
 And here's the end result!
 
 <figure style="text-align: center">
-	<iframe style="max-width: 450px; max-height: 800px; width: 99vw; height: 176vw;" max-height="960" width="100vw" height="56.25vw" src="https://www.youtube.com/embed/48ei9SThEyQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/48ei9SThEyQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	<figcaption style="margin-top: 1em;">The Evolution of My Personal Website</figcaption>
 </figure>
 
