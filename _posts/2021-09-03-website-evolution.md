@@ -8,7 +8,7 @@ date: 2021-09-03
 category: articles
 ---
 
-I just updated my [personal website](https://akshayr.xyz) for the first time in a while, to reflect my dope new job at [schoolhouse.world](https://schoolhouse.world). While doing so, I decided to checkout random commits in the [repository](https://github.com/akshayravikumar/blog) to see how the website has changed over time. This was surprisingly fun, so naturally, I wrote up a script to visualize the changes.
+I just updated my [personal website](https://akshayr.xyz) for the first time in a while, to reflect my dope new job at [schoolhouse.world](https://schoolhouse.world). While doing so, I decided to checkout random commits in the [repository](https://github.com/akshayravikumar/blog) to see how the website has changed over time. This was surprisingly fun and nostalgic, so naturally, I wrote up a script to visualize the changes.
 
 First, I iterated through every commit in the repo, opened the `index.html` page in [Selenium](https://www.selenium.dev/), took a screenshot, and saved it as a PNG. I had to wait three seconds between page loads because my website has a few animations.
 
