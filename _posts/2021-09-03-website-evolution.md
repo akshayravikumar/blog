@@ -52,4 +52,4 @@ And here's the end result!
 	<figcaption style="margin-top: 1em;">The Evolution of My Personal Website</figcaption>
 </figure>
 
-My personal website is a tiny piece of who I am, and it evolves along with me. While the changes aren't drastic, they document transformations in my age, appearance, maturity, career, and programming skill over the last five years. I can only imagine what it'll look like five years from now!
+My personal website is a tiny piece of who I am, and it evolves along with me. While the changes aren't drastic, they document transformations in my age, appearance, maturity, career, aesthetic, and programming skill over the last five years. I can only imagine what it'll look like five years from now!
