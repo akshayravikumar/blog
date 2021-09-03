@@ -48,7 +48,7 @@ ffmpeg -framerate 10 -pattern_type glob -i 'screenshots/*.png' -vf reverse -pix_
 And here's the end result!
 
 <figure style="text-align: center">
-	<iframe style="max-width: 1200px; max-height: 870px; width: 100vw; height: 72.5vw;" max-height="960" width="100vw" height="72.5vw" src="https://www.youtube.com/embed/48ei9SThEyQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	<iframe style="max-width: 600px; max-height: 435px; width: 100vw; height: 72.5vw;" max-height="960" width="100vw" height="72.5vw" src="https://www.youtube.com/embed/48ei9SThEyQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	<figcaption style="margin-top: 1em;">The Evolution of My Personal Website</figcaption>
 </figure>
 
