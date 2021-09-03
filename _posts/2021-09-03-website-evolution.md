@@ -53,4 +53,4 @@ And here's the end result!
 </figure>
 
 
-My personal website is a tiny piece of who I am, and it evolves along with me. While the changes aren't drastic, they document transformations in my age, appearance, maturity, aesthetic, career, and programming skill over the last five years. I can only imagine what it'll look like five years from now!
+My personal website is a tiny piece of who I am, and it evolves along with me. While the changes aren't drastic, they document transformations in my age, appearance, maturity, aesthetic, career, and programming skill over the last seven years. I can only imagine what it'll look like seven years from now!
