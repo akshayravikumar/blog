@@ -8,9 +8,9 @@ date: 2021-09-03
 category: articles
 ---
 
-I just updated my [personal website](https://akshayr.xyz) for the first time in a while, to reflect my dope new job at [schoolhouse.world](https://schoolhouse.world). While doing so, I decided to checkout random commits in the [repository](https://github.com/akshayravikumar/blog) to see how the website has evolved over time. This was surprisingly fun and nostalgic, so I coded up a quick script to visualize the commits for me.
+I just updated my [personal website](https://akshayr.xyz) for the first time in a while, to reflect my dope new job at [schoolhouse.world](https://schoolhouse.world). While doing so, I decided to checkout random commits in the [repository](https://github.com/akshayravikumar/blog) to see how the website has changed over time. This was surprisingly fun, so naturally, I wrote up a script to visualize the changes.
 
-First, I iterated through every commit in the repo, opened the `index.html` page in [Selenium](https://www.selenium.dev/), took a screenshot, and saved it as a PNG. I had to wait three seconds between page loads because my website has a few animations.
+First, I iterated through every commit in the repo, opened the index page in [Selenium](https://www.selenium.dev/), took a screenshot, and saved it as a PNG. I had to wait three seconds between page loads because my website has a few animations.
 
 ```python
 import git
@@ -37,13 +37,12 @@ for commit in repo.iter_commits(rev='master'):
     time.sleep(3)
     driver.get_screenshot_as_file(SCREENSHOT_DIR_NAME + "/" + str(index).zfill(3) + ".png")
     index += 1
-    print(index)
 ```
 
 There were ~260 commits, so this took 13 minutes. After that, I used `ffmpeg` to string the PNGs together into a video.
 
 ```bash
-ffmpeg -framerate 10 -pattern_type glob -i 'screenshots/*.png' -vf reverse -pix_fmt yuv420p  -c:v libx264 out.mp4
+ffmpeg -framerate 10 -pattern_type glob -i 'screenshots/*.png' -vf reverse -pix_fmt yuv420p -c:v libx264 out.mp4
 ```
 
 And here's the end result!
