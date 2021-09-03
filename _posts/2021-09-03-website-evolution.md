@@ -48,8 +48,9 @@ ffmpeg -framerate 10 -pattern_type glob -i 'screenshots/*.png' -vf reverse -pix_
 And here's the end result!
 
 <figure style="text-align: center">
-	<iframe width="560" height="315" src="https://www.youtube.com/embed/48ei9SThEyQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-	<figcaption style="margin-top: 1em;">The Evolution of My Personal Website</figcaption>
+	<iframe style="max-width: 1200px; max-height: 870px; width: 100vw; height: 72.5vw;" max-height="960" width="100vw" height="56.25vw" src="https://www.youtube.com/embed/48ei9SThEyQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	<figcaption style="margin-top: 1em;">When squirrels attack</figcaption>
 </figure>
+
 
 My personal website is a tiny piece of who I am, and it evolves along with me. While the changes aren't drastic, they document transformations in my age, appearance, maturity, career, aesthetic, and programming skill over the last five years. I can only imagine what it'll look like five years from now!
