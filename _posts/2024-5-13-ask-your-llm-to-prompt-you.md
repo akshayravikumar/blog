@@ -15,7 +15,7 @@ We talk a lot about this problem in education—the kids are cheating!—but it'
 
 I am fortunate to have a fully-developed brain while the AI revolution is happening, because I can recognize this problem and fix it for myself.
 So what's the fix?
-Large Language Models are incredibly capable, but prompt engineering matters because a good prompt "activates" the pertinent information in the inner workings of the model.
+Large Language Models are incredibly capable, but prompt engineering matters because a good prompt "activates" the pertinent weights in the model.
 Humans are pretty similar! We have a ton of knowledge, wisdom, and decision-making ability—or at least the neuroplasticity to develop them—and sometimes, all it takes is the right prompt.
 
 Basically, I find that LLMs are very good at prompting me. 
