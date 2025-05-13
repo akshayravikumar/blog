@@ -1,7 +1,7 @@
 ---
 layout: post-no-feature
 title: Ask Your LLM to Prompt You
-description: A neat little tip to keep your brain intact.
+description: A neat little trick to keep your mind intact.
 comments: true
 visible: true
 date: 2025-05-13
