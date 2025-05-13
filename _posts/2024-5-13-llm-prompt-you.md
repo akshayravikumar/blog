@@ -8,7 +8,7 @@ date: 2025-05-13
 category: articles
 ---
 
-I've always had the unfortunate tendency to outsource my agency—rely on my friends, family, and the internet instead of making decisions for myself.
+I've always had the misguided tendency to outsource my agency—rely on my friends, family, and the internet instead of making decisions for myself.
 Once ChatGPT came out, I felt the need to bring it everything: personal problems, work decisions, even "what should I write in this birthday card."
 I was usually looking for an answer, or at the least validation.
 We talk a lot about this problem in education—the kids are cheating!—but it's been increasingly easy to "cheat" at life too!
